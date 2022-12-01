@@ -1,6 +1,6 @@
 import React, { FC } from 'react'
 
-import styles from './Button.module.css'
+import styles from './Button.module.scss'
 
 type Props = {
     name: string
