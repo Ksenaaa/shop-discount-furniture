@@ -1,0 +1,38 @@
+@import './constants/fonts';
+@import './constants/colors';
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Montserrat';
+  font-weight: 400;
+  color: $font-color-main-text;
+}
+
+html {
+  height: 100%;
+}
+
+body {
+  line-height: 1;
+}
+
+ol, ul {
+  list-style: none;
+}
+
+a {
+  &, &:visited, &:hover {
+    text-decoration: none;
+  }
+  &:focus, &:active {
+    outline: none;
+  }
+}
+
+.wrapper {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+}
