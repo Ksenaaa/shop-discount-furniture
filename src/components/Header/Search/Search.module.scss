@@ -1,0 +1,30 @@
+@import 'styles/colors';
+@import 'styles/fontMixin';
+
+.wrapper {
+    height: 40px;
+    width: 640px;
+    position: relative;
+
+    input {
+        padding: 0 40px 0 10px;
+        border: 2px solid $orange;
+        opacity: 0.5;
+        border-radius: 2px;
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+
+        &::placeholder {
+           @include fontSize(400, 14px, 17.07px)
+        }
+    }
+
+    & img {
+        position: absolute;
+        right: 4px;
+        top: 4px;
+    }
+}

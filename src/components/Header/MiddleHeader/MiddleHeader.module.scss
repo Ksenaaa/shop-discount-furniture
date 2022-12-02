@@ -1,0 +1,24 @@
+.wrapper {
+    width: 100%;
+    max-width: 1312px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 auto;
+    position: relative;
+
+    .logo img {
+        height: 82px;
+    }
+
+    .search {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+
+    .selectedUser img:first-child {
+        margin-right: 12px;
+    }
+}

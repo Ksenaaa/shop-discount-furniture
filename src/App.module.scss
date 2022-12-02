@@ -1,5 +1,5 @@
-@import './constants/fonts';
-@import './constants/colors';
+@import './styles/fonts';
+@import './styles/colors';
 
 * {
   margin: 0;
@@ -7,7 +7,7 @@
   box-sizing: border-box;
   font-family: 'Montserrat';
   font-weight: 400;
-  color: $font-color-main-text;
+  color: $dark;
 }
 
 html {
@@ -23,16 +23,22 @@ ol, ul {
 }
 
 a {
+  transition: .3s all;
+  
   &, &:visited, &:hover {
     text-decoration: none;
   }
+
+  &:hover {
+    opacity: 0.6;
+  }
+
   &:focus, &:active {
     outline: none;
   }
+
 }
 
 .wrapper {
   height: 100vh;
-  display: flex;
-  align-items: center;
 }

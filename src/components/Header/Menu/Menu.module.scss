@@ -1,0 +1,27 @@
+@import 'styles/colors';
+@import 'styles/fontMixin';
+
+.wrapper {
+    height: 43px;
+    background: $grey;
+
+    .menu_list {
+        margin: 0 auto;
+        max-width: 919px;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        transform: translateY(50%);
+
+        .menu_item {
+            & a {
+                @include fontSize(400, 16px, 19.5px);
+                color: $black;
+            }
+
+            &:first-letter {
+                text-transform: uppercase;
+            }
+        }
+    }
+}

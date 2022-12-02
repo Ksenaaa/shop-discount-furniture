@@ -12,9 +12,3 @@
     font-family: 'Century Gothic';
     @import url('https://fonts.cdnfonts.com/css/century-gothic');
 }
-
-@mixin fontz($w, $s, $h) {
-    font-weight: $w;
-    font-size: $s;
-    line-height: $h;
-}
