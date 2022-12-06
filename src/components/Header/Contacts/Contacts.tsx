@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { FC, useRef, useState } from 'react'
 
 import facebookIcon from 'img/svg/facebook-icon.svg'
 import instagramIcon from 'img/svg/instagram-icon.svg'
@@ -16,19 +16,19 @@ export const Contacts = () => {
                     <div className={styles.adress}>
                         <img src={adressIcon} alt="adress" />
                         <p className={styles.adress_text}>
-                            10203 Kotzebue Street Suit #112, San Antonio, Texas
+                            Battersea Power Station, London SW11 8BN, Great Britain
                         </p>
                     </div>
                     <div className={styles.call}>
                         <img src={callIcon} alt="call" />
                         <p className={styles.call_text}>
-                            +1(210) 400 6938
+                            +4(477) 000 8282
                         </p>
                     </div>
                     <div className={styles.time}>
                         <img src={timeIcon} alt="time" />
                         <p className={styles.time_text}>
-                            Mon to sat: 9 am - 7pm, Sunday: 10am -5pm
+                            Mon to sat: 8 am - 6pm, Sunday: 9am -4pm
                         </p>
                     </div>
                 </div>

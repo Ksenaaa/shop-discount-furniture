@@ -15,7 +15,7 @@
 
         .menu_item {
             & a {
-                @include fontSize(400, 16px, 19.5px);
+                @include fontStyle(400, 16px, 19.5px);
                 color: $black;
             }
 
@@ -23,5 +23,47 @@
                 text-transform: uppercase;
             }
         }
+    }
+}
+
+.wrapper_active_menu {
+    padding: 40px;
+    height: 100vh;
+
+    .menu_list {
+        margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+
+        .menu_item {
+            & a {
+                @include fontStyle(400, 24px, 40px);
+            }
+
+            &:first-letter {
+                text-transform: uppercase;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 975px) {
+    .wrapper {
+        .menu_list {
+            padding: 0 15px;
+
+            .menu_item {
+                & a {
+                    @include fontStyle(400, 14px, 19px);
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 680px) {
+    .wrapper {
+        display: none;
     }
 }

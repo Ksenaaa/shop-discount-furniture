@@ -1,5 +1,6 @@
 @import 'styles/colors';
 @import 'styles/fontMixin';
+@import 'styles/animation';
 
 .wrapper {
     height: 32px;
@@ -31,12 +32,12 @@
             }
         
             .adress_text, .time_text {
-                @include fontSize(400, 12px, 14.63px);
+                @include fontStyle(400, 12px, 14.63px);
                 color: $white;
             }
         
             .call_text {
-                @include fontSize(700, 14px, 17.07px);
+                @include fontStyle(700, 14px, 17.07px);
                 color: $white;
             }
         }
@@ -49,5 +50,11 @@
                 margin-right: 4px;
             }
         }
+    }
+}
+
+@media screen and (max-width: 975px) {
+    .wrapper_contant {
+        display: none;
     }
 }

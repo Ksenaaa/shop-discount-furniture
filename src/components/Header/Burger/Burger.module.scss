@@ -1,0 +1,59 @@
+@import 'styles/colors';
+@import 'styles/animation';
+
+.burger {
+    display: none;
+    height: 20px;
+    width: 25px;
+    position: relative;
+    margin: 5px 15px;
+    cursor: pointer;
+    transition: $button-animation-time;
+
+    & div {
+        position: absolute;
+        background: $orange;
+        height: 2.5px;
+        width: 100%;
+        transition: $button-animation-time;
+    }
+    
+    &_first_line {
+        top: 0;
+    }
+    
+    &_second_line {
+        top: 50%;
+        transform: translateY(-50%);
+    }
+
+    &_third_line {
+        bottom: 0;
+    }
+
+    &_first_line_cross {
+        top: 10px;
+        transform: rotate(45deg);
+    }
+    
+    &_second_line_cross {
+        top: 10px;
+        transform: rotate(45deg);
+    }
+
+    &_third_line_cross {
+        top: 10px;
+        transform: rotate(-45deg);
+    }
+
+    &:hover {
+        opacity: 0.6;
+    }
+}
+
+
+@media screen and (max-width: 975px) {
+    .burger {
+        display: block;
+    }    
+}
