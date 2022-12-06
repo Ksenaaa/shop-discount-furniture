@@ -26,17 +26,17 @@ export const MiddleHeader = () => {
                     <img src={logoName} alt="furniture f" />
                 </a>
             </div> 
-            <div className={cn(styles.search, activeSearch && styles.search_active)} onClick={onActiveSearch}>
+            <div className={cn(styles.search, activeSearch && styles.searchActive)} onClick={onActiveSearch}>
                 <Search />  
             </div>
             <div className={styles.selectedUser}>
                 <div className={styles.heart}>
-                    <img src={heartIcon} alt="heart" className={styles.blue_heart}/>
-                    <img src={orangeHeartIcon} alt="heart" className={styles.orange_heart}/>
+                    <img src={heartIcon} alt="heart" className={styles.blueHeart}/>
+                    <img src={orangeHeartIcon} alt="heart" className={styles.orangeHeart}/>
                 </div>
                 <div className={styles.basket}>
-                    <img src={basketIcon} alt="basket" className={styles.blue_basket}/>
-                    <img src={orangeBasketIcon} alt="basket" className={styles.orange_basket}/>
+                    <img src={basketIcon} alt="basket" className={styles.blueBasket}/>
+                    <img src={orangeBasketIcon} alt="basket" className={styles.orangeBasket}/>
                 </div>
             </div>   
         </div>

@@ -19,11 +19,11 @@ export const Header = () => {
             <Contacts />
             <MiddleHeader />
             <Menu />
-            <div className={styles.burger_wrapper} onClick={onClickBurger}>
+            <div className={styles.burgerWrapper} onClick={onClickBurger}>
                 <Burger isActiveMenu={menuBurgerActive} />
             </div>
             {menuBurgerActive && 
-                <div className={styles.burger_menu}>
+                <div className={styles.burgerMenu}>
                     <Menu isActiveMenu={menuBurgerActive} />
                 </div>
             }

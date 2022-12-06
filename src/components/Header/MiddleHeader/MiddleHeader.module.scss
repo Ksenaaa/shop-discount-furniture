@@ -48,14 +48,14 @@
             justify-content: center;
             display: flex;
             cursor: pointer;
-            transition: $button-animation-time;
+            transition: $buttonAnimationTime;
         }
 
         .heart:hover, .basket:hover {
             opacity: 0.6;
         }
         
-        .orange_heart, .orange_basket {
+        .orangeHeart, .orangeBasket {
             display: none;
         }      
     }
@@ -63,7 +63,7 @@
 
 @media screen and (min-width: 976px) {
     .search {
-        @include center-position;
+        @include centerPosition;
     }
 }
 
@@ -76,11 +76,11 @@
             top: -40px;
             right: 15px;
     
-            .blue_heart, .blue_basket {
+            .blueHeart, .blueBasket {
                 display: none;
             }
 
-            .orange_heart, .orange_basket {
+            .orangeHeart, .orangeBasket {
                 display: block;
             }    
         }
@@ -103,7 +103,7 @@
             }
         }
 
-        .search_active {
+        .searchActive {
             input {
                 display: block;
                 animation-name: active;

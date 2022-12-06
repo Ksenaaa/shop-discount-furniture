@@ -8,7 +8,7 @@
   box-sizing: border-box;
   font-family: 'Montserrat';
   font-weight: 400;
-  color: $dark-blue;
+  color: $darkBlue;
 }
 
 html {
@@ -24,7 +24,7 @@ ol, ul {
 }
 
 a {
-  transition: $button-animation-time;
+  transition: $buttonAnimationTime;
   
   &, &:visited, &:hover {
     text-decoration: none;

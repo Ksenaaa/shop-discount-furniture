@@ -2,20 +2,13 @@
 @import 'styles/fontMixin';
 
 .wrapper {
-    height: 43px;
-    background: $grey;
-
-    .menu_list {
+    .menuList {
         margin: 0 auto;
-        max-width: 919px;
         display: flex;
-        flex-direction: row;
         justify-content: space-between;
-        transform: translateY(50%);
 
-        .menu_item {
+        .menuItem {
             & a {
-                @include fontStyle(400, 16px, 19.5px);
                 color: $black;
             }
 
@@ -26,23 +19,31 @@
     }
 }
 
-.wrapper_active_menu {
-    padding: 40px;
-    height: 100vh;
+.wrapperMenu {
+    height: 43px;
+    background: $grey;
 
-    .menu_list {
-        margin: 0 auto;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
+    .menuList {
+        max-width: 919px;
+        flex-direction: row;
+        transform: translateY(50%);
 
-        .menu_item {
+        .menuItem {
             & a {
-                @include fontStyle(400, 24px, 40px);
+                @include fontStyle(400, 16px, 19.5px);
             }
+        }
+    }
+}
 
-            &:first-letter {
-                text-transform: uppercase;
+.wrapperActiveMenu {
+    .menuList {
+        padding: 25px;
+        flex-direction: column;
+
+        .menuItem {
+            & a {
+                @include fontStyle(400, 28px, 40px);
             }
         }
     }
@@ -50,20 +51,23 @@
 
 @media screen and (max-width: 975px) {
     .wrapper {
-        .menu_list {
-            padding: 0 15px;
+        padding: 0 15px;
+    }
 
-            .menu_item {
+    .wrapperMenu {
+        .menuList {
+            .menuItem {
                 & a {
                     @include fontStyle(400, 14px, 19px);
                 }
             }
         }
     }
+
 }
 
 @media screen and (max-width: 680px) {
-    .wrapper {
+    .wrapperMenu {
         display: none;
     }
 }

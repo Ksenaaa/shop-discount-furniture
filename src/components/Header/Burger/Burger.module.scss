@@ -8,40 +8,40 @@
     position: relative;
     margin: 5px 15px;
     cursor: pointer;
-    transition: $button-animation-time;
+    transition: $buttonAnimationTime;
 
     & div {
         position: absolute;
         background: $orange;
         height: 2.5px;
         width: 100%;
-        transition: $button-animation-time;
+        transition: $buttonAnimationTime;
     }
     
-    &_first_line {
+    &FirstLine {
         top: 0;
     }
     
-    &_second_line {
+    &SecondLine {
         top: 50%;
         transform: translateY(-50%);
     }
 
-    &_third_line {
+    &ThirdLine {
         bottom: 0;
     }
 
-    &_first_line_cross {
+    &FirstLineCross {
         top: 10px;
         transform: rotate(45deg);
     }
     
-    &_second_line_cross {
+    &SecondLineCross {
         top: 10px;
         transform: rotate(45deg);
     }
 
-    &_third_line_cross {
+    &ThirdLineCross {
         top: 10px;
         transform: rotate(-45deg);
     }

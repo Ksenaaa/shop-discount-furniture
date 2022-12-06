@@ -4,11 +4,11 @@
 
 .wrapper {
     height: 32px;
-    background: $sea-grey;
+    background: $seaGrey;
     opacity: 0.9;
     box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.25);
 
-    &_contant {
+    &Contant {
         height: 100%;
         margin: 0 auto;
         display: flex;
@@ -31,12 +31,12 @@
                 }
             }
         
-            .adress_text, .time_text {
+            .adressText, .timeText {
                 @include fontStyle(400, 12px, 14.63px);
                 color: $white;
             }
         
-            .call_text {
+            .callText {
                 @include fontStyle(700, 14px, 17.07px);
                 color: $white;
             }
@@ -46,7 +46,7 @@
             display: flex;
             flex-direction: row;
             
-            .facebook_logo {
+            .facebookLogo {
                 margin-right: 4px;
             }
         }
@@ -54,7 +54,7 @@
 }
 
 @media screen and (max-width: 975px) {
-    .wrapper_contant {
+    .wrapperContant {
         display: none;
     }
 }

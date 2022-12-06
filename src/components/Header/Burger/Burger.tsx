@@ -10,9 +10,9 @@ type Props = {
 export const Burger: FC<Props> = ({ isActiveMenu }) => {
     return (
         <div className={styles.burger}>
-            <div className={cn(styles.burger_first_line, isActiveMenu && styles.burger_first_line_cross)}></div>
-            <div className={cn(styles.burger_second_line, isActiveMenu && styles.burger_second_line_cross)}></div>
-            <div className={cn(styles.burger_third_line, isActiveMenu && styles.burger_third_line_cross)}></div>
+            <div className={cn(styles.burgerFirstLine, isActiveMenu && styles.burgerFirstLineCross)}></div>
+            <div className={cn(styles.burgerSecondLine, isActiveMenu && styles.burgerSecondLineCross)}></div>
+            <div className={cn(styles.burgerThirdLine, isActiveMenu && styles.burgerThirdLineCross)}></div>
         </div>
     )
 }
