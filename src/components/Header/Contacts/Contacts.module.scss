@@ -1,0 +1,60 @@
+@import 'styles/colors';
+@import 'styles/fontMixin';
+@import 'styles/animation';
+
+.wrapper {
+    height: 32px;
+    background: $seaGrey;
+    opacity: 0.9;
+    box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.25);
+
+    &Contant {
+        height: 100%;
+        margin: 0 auto;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        max-width: 1312px;
+
+        .info {
+            display: flex;
+            flex-direction: row;
+
+            .adress, .call, .time {
+                margin-right: 16px;
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+
+                & img {
+                    margin: 0 7px;
+                }
+            }
+        
+            .adressText, .timeText {
+                @include fontStyle(400, 12px, 15px);
+                color: $white;
+            }
+        
+            .callText {
+                @include fontStyle(700, 14px, 17px);
+                color: $white;
+            }
+        }
+
+        .social {
+            display: flex;
+            flex-direction: row;
+            
+            .facebookLogo {
+                margin-right: 4px;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 975px) {
+    .wrapperContant {
+        display: none;
+    }
+}

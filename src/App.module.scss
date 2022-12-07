@@ -1,5 +1,6 @@
-@import './constants/fonts';
-@import './constants/colors';
+@import './styles/fonts';
+@import './styles/colors';
+@import './styles/animation';
 
 * {
   margin: 0;
@@ -7,7 +8,7 @@
   box-sizing: border-box;
   font-family: 'Montserrat';
   font-weight: 400;
-  color: $font-color-main-text;
+  color: $darkBlue;
 }
 
 html {
@@ -23,16 +24,22 @@ ol, ul {
 }
 
 a {
+  transition: $buttonAnimationTime;
+  
   &, &:visited, &:hover {
     text-decoration: none;
   }
+
+  &:hover {
+    opacity: 0.6;
+  }
+
   &:focus, &:active {
     outline: none;
   }
+
 }
 
 .wrapper {
   height: 100vh;
-  display: flex;
-  align-items: center;
 }

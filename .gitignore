@@ -6,6 +6,7 @@
 .pnp.js
 src/stories
 .storybook
+src/components/Item
 
 # testing
 /coverage
