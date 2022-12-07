@@ -31,12 +31,7 @@
         bottom: 0;
     }
 
-    &FirstLineCross {
-        top: 10px;
-        transform: rotate(45deg);
-    }
-    
-    &SecondLineCross {
+    &FirstLineCross, &SecondLineCross {
         top: 10px;
         transform: rotate(45deg);
     }

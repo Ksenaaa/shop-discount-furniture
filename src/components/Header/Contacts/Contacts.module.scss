@@ -32,12 +32,12 @@
             }
         
             .adressText, .timeText {
-                @include fontStyle(400, 12px, 14.63px);
+                @include fontStyle(400, 12px, 15px);
                 color: $white;
             }
         
             .callText {
-                @include fontStyle(700, 14px, 17.07px);
+                @include fontStyle(700, 14px, 17px);
                 color: $white;
             }
         }

@@ -30,7 +30,7 @@
 
         .menuItem {
             & a {
-                @include fontStyle(400, 16px, 19.5px);
+                @include fontStyle(400, 16px, 20px);
             }
         }
     }
