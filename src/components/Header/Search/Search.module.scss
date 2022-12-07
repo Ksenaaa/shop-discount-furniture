@@ -1,9 +1,10 @@
 @import 'styles/colors';
 @import 'styles/fontMixin';
+@import 'styles/animation';
 
 .wrapper {
-    height: 40px;
-    width: 640px;
+    height: 100%;
+    width: 100%;
     position: relative;
 
     input {
@@ -18,7 +19,7 @@
         bottom: 0;
 
         &::placeholder {
-           @include fontSize(400, 14px, 17.07px)
+           @include fontStyle(400, 14px, 17px)
         }
     }
 
@@ -26,5 +27,11 @@
         position: absolute;
         right: 4px;
         top: 4px;
+        cursor: pointer;
+        transition: $buttonAnimationTime;
+
+        &:hover {
+            opacity: 0.6;
+        }
     }
 }

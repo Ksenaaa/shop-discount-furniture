@@ -2,20 +2,13 @@
 @import 'styles/fontMixin';
 
 .wrapper {
-    height: 43px;
-    background: $grey;
-
-    .menu_list {
+    .menuList {
         margin: 0 auto;
-        max-width: 919px;
         display: flex;
-        flex-direction: row;
         justify-content: space-between;
-        transform: translateY(50%);
 
-        .menu_item {
+        .menuItem {
             & a {
-                @include fontSize(400, 16px, 19.5px);
                 color: $black;
             }
 
@@ -23,5 +16,58 @@
                 text-transform: uppercase;
             }
         }
+    }
+}
+
+.wrapperMenu {
+    height: 43px;
+    background: $grey;
+
+    .menuList {
+        max-width: 919px;
+        flex-direction: row;
+        transform: translateY(50%);
+
+        .menuItem {
+            & a {
+                @include fontStyle(400, 16px, 20px);
+            }
+        }
+    }
+}
+
+.wrapperActiveMenu {
+    .menuList {
+        padding: 25px;
+        flex-direction: column;
+
+        .menuItem {
+            & a {
+                @include fontStyle(400, 28px, 40px);
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 975px) {
+    .wrapper {
+        padding: 0 15px;
+    }
+
+    .wrapperMenu {
+        .menuList {
+            .menuItem {
+                & a {
+                    @include fontStyle(400, 14px, 19px);
+                }
+            }
+        }
+    }
+
+}
+
+@media screen and (max-width: 680px) {
+    .wrapperMenu {
+        display: none;
     }
 }
