@@ -38,10 +38,8 @@
    .wrapper {
       height: 300px;
 
-      .swipeWrapper {
-         .swipeLeft, .swipeRight {
-            height: 60px;
-         }
+      .swipeWrapper .swipeLeft, .swipeRight {
+         height: 60px;
       }
    }
 }

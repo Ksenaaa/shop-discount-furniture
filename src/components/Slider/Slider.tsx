@@ -2,25 +2,16 @@ import React, { useEffect, useRef, useState } from 'react'
 
 import swipeLeft from 'img/svg/swipe-left.svg'
 import swipeRight from 'img/svg/swipe-right.svg'
-import sliderPic1 from 'img/jpg/living-room-pic-1.jpg'
-import sliderPic2 from 'img/jpg/bad-room-pic-1.jpg'
-import sliderPic3 from 'img/jpg/living-room-pic-2.jpg'
-import sliderPic4 from 'img/jpg/living-room-pic-3.jpg'
 import { SliderItem } from './SliderItem'
 
 import styles from './Slider.module.scss'
+import { sliderPics } from 'constants/sliderPics'
 
 export const Slider = () => {
     const [numberPic, setNumberPic] = useState(0)
 
     const refContainer = useRef<HTMLDivElement>(null) 
 
-    const sliderPics = [
-        { img: sliderPic1, id: 1 },
-        { img: sliderPic2, id: 2 },
-        { img: sliderPic3, id: 3 },
-        { img: sliderPic4, id: 4 },
-    ]
 
     const nextPicture = () => {
         setNumberPic(preState => sliderPics.length-1 === preState ? 0 : preState + 1)
@@ -36,7 +27,7 @@ export const Slider = () => {
     }
 
     useEffect(() => {
-        const timeNext = setTimeout(() => nextPicture(), 1000)
+        const timeNext = setTimeout(() => nextPicture(), 3000)
         return () => clearTimeout(timeNext)
     }, [numberPic])
 

@@ -7,13 +7,11 @@
     height: 100%;
     position: relative;
     
-    .picture {
-        & img {
-            @include centerPosition;
-            min-width: 100%;
-            width: 100%;
-            min-height: 100%;
-        }
+    .picture img {
+        @include centerPosition;
+        min-width: 100%;
+        width: 100%;
+        min-height: 100%;
     }
     
     .text {
@@ -45,34 +43,30 @@
 }
 
 @media screen and (max-width: 975px) {
-    .wrapper {
-        .text {
-            margin-top: 60px;
+    .wrapper .text {
+        margin-top: 60px;
 
-            .title {
-                @include fontStyle(600, 44px, 78px);
-            }
-            
-            .desk {
-                @include fontStyle(400, 20px, 29px);
-            }
+        .title {
+            @include fontStyle(600, 44px, 78px);
+        }
+        
+        .desk {
+            @include fontStyle(400, 20px, 29px);
         }
     }
 }
 
 @media screen and (max-width: 680px) {
-    .wrapper {
-        .text {
-            margin-top: 20px;
+    .wrapper .text{
+        margin-top: 20px;
 
-            .title {
-                width: 250px;
-                @include fontStyle(600, 30px, 30px);
-            }
-            
-            .desk {
-                @include fontStyle(400, 18px, 29px);
-            }
+        .title {
+            width: 250px;
+            @include fontStyle(600, 30px, 30px);
+        }
+        
+        .desk {
+            @include fontStyle(400, 18px, 29px);
         }
     }
 }
