@@ -3,14 +3,15 @@
    height: 400px;
    overflow: hidden;
    position: relative;
+   margin: 0 auto;
    
-   .sliderPics {
-      width: 100%;
-      position: absolute;
-      top: 50%;
-      transform: translateY(-50%);
+   .containerSlider {
+      height: 100%;
+      overflow-x: scroll;
+      overflow: hidden;
       display: flex;
-      flex-direction: row;
+      flex-direction: column;
+      flex-wrap: wrap;
    }
 
    .swipeWrapper {
@@ -32,3 +33,30 @@
       }
    }
 }
+
+@media screen and (max-width: 975px) {
+   .wrapper {
+      height: 300px;
+
+      .swipeWrapper {
+         .swipeLeft, .swipeRight {
+            height: 60px;
+         }
+      }
+   }
+}
+
+@media screen and (max-width: 680px) {
+   .wrapper {
+      height: 200px;
+
+      .swipeWrapper {
+         padding: 0 10px;
+
+         .swipeLeft, .swipeRight {
+            height: 30px;
+         }
+      }
+   }
+}
+   
