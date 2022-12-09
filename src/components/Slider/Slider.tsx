@@ -1,29 +1,41 @@
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useCallback, useEffect, useRef, useState } from 'react'
 
 import swipeLeft from 'img/svg/swipe-left.svg'
 import swipeRight from 'img/svg/swipe-right.svg'
 import { SliderItem } from './SliderItem'
+import { useHttp } from 'hooks/http.hooks'
+import { IImgSlider } from 'interface/IImgSlider'
 
 import styles from './Slider.module.scss'
-import { sliderPics } from 'constants/sliderPics'
 
 export const Slider = () => {
+    const [pictures, setPictures] = useState<IImgSlider[]>([])
     const [numberPic, setNumberPic] = useState(0)
 
     const refContainer = useRef<HTMLDivElement>(null) 
 
+    const { request } = useHttp()
+
+    const getImgForSlider = useCallback(async() => {
+        const data = await request({ url: 'slider' })
+        setPictures(data)
+    }, [request])
+
+    useEffect(() => {
+        getImgForSlider()
+    }, [getImgForSlider])
 
     const nextPicture = () => {
-        setNumberPic(preState => sliderPics.length-1 === preState ? 0 : preState + 1)
+        setNumberPic(preState => pictures.length-1 === preState ? 0 : preState + 1)
     }
 
     const previousPicture = () => {
-        setNumberPic(preState => preState === 0 ? sliderPics.length-1 : preState - 1)
+        setNumberPic(preState => preState === 0 ? pictures.length-1 : preState - 1)
     }
 
     const findItem = (num: number) => {
         const child = refContainer?.current as HTMLDivElement
-        child.children[num].scrollIntoView({ behavior: 'smooth', block: 'start' })
+        child?.children[num]?.scrollIntoView({ behavior: 'smooth', block: 'start' })
     }
 
     useEffect(() => {
@@ -38,7 +50,7 @@ export const Slider = () => {
     return (
         <div className={styles.wrapper}>
             <div className={styles.containerSlider} ref={refContainer}>
-                {sliderPics.map(pic => 
+                {pictures?.map(pic => 
                     <SliderItem key={pic.id} picture={pic} />
                 )}
             </div>
