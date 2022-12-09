@@ -1,20 +1,18 @@
 @import 'styles/colors';
 @import 'styles/fontMixin';
 
-.wrapper {
-    .menuList {
-        margin: 0 auto;
-        display: flex;
-        justify-content: space-between;
+.wrapper .menuList {
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
 
-        .menuItem {
-            & a {
-                color: $black;
-            }
+    .menuItem {
+        & a {
+            color: $black;
+        }
 
-            &:first-letter {
-                text-transform: uppercase;
-            }
+        &:first-letter {
+            text-transform: uppercase;
         }
     }
 }
@@ -28,24 +26,18 @@
         flex-direction: row;
         transform: translateY(50%);
 
-        .menuItem {
-            & a {
-                @include fontStyle(400, 16px, 20px);
-            }
+        .menuItem a {
+            @include fontStyle(400, 16px, 20px);
         }
     }
 }
 
-.wrapperActiveMenu {
-    .menuList {
-        padding: 25px;
-        flex-direction: column;
+.wrapperActiveMenu .menuList{
+    padding: 45px;
+    flex-direction: column;
 
-        .menuItem {
-            & a {
-                @include fontStyle(400, 28px, 40px);
-            }
-        }
+    .menuItem a {
+        @include fontStyle(400, 28px, 40px);
     }
 }
 
@@ -54,16 +46,9 @@
         padding: 0 15px;
     }
 
-    .wrapperMenu {
-        .menuList {
-            .menuItem {
-                & a {
-                    @include fontStyle(400, 14px, 19px);
-                }
-            }
-        }
+    .wrapperMenu .menuList .menuItem a{
+        @include fontStyle(400, 14px, 19px);
     }
-
 }
 
 @media screen and (max-width: 680px) {
