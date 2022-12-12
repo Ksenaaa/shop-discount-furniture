@@ -10,7 +10,7 @@ import styles from './Slider.module.scss'
 
 export const Slider = () => {
     const [pictures, setPictures] = useState<IImgSlider[]>([])
-    const [numberPic, setNumberPic] = useState(0)
+    const [indexPicture, setIndexPicture] = useState(0)
 
     const refContainer = useRef<HTMLDivElement>(null) 
 
@@ -26,14 +26,15 @@ export const Slider = () => {
     }, [getImgForSlider])
 
     const nextPicture = () => {
-        setNumberPic(preState => pictures.length-1 === preState ? 0 : preState + 1)
+        setIndexPicture(preState => pictures.length-1 === preState ? 0 : preState + 1)
     }
 
     const previousPicture = () => {
-        setNumberPic(preState => preState === 0 ? pictures.length-1 : preState - 1)
+        setIndexPicture(preState => preState === 0 ? pictures.length-1 : preState - 1)
     }
 
     const findItem = (num: number) => {
+        if (!refContainer?.current) return
         const child = refContainer?.current as HTMLDivElement
         child?.children[num]?.scrollIntoView({ behavior: 'smooth', block: 'start' })
     }
@@ -41,11 +42,11 @@ export const Slider = () => {
     useEffect(() => {
         const timeNext = setTimeout(() => nextPicture(), 3000)
         return () => clearTimeout(timeNext)
-    }, [numberPic])
+    }, [indexPicture, nextPicture])
 
-    useEffect(() =>{
-        findItem(numberPic)
-    }, [numberPic])
+    useEffect(() => {
+        findItem(indexPicture)
+    }, [indexPicture])
 
     return (
         <div className={styles.wrapper}>
