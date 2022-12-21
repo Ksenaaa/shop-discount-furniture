@@ -1,0 +1,21 @@
+import { IImgSlider } from 'interface/IImgSlider'
+
+import { api } from './api'
+
+export const sliderApi = api.injectEndpoints({
+    endpoints: (builder) => ({
+        getItems: builder.query<IImgSlider[], void>({
+            query: () => ({
+                url: 'slider'
+            }),
+            providesTags: (result = []) => [
+                ...result.map(({ id }) => ({ type: 'Slider', id } as const)),
+                { type: 'Slider' as const, id: 'LIST' }
+            ]
+        })
+    })
+})
+
+export const {
+    useGetItemsQuery
+} = sliderApi

@@ -1,9 +1,9 @@
 import React, { useState } from 'react'
 
+import { Burger } from './Burger'
 import { Contacts } from './Contacts'
 import { Menu } from './Menu'
 import { MiddleHeader } from './MiddleHeader'
-import { Burger } from './Burger'
 
 import styles from './Header.module.scss'
 
@@ -22,7 +22,7 @@ export const Header = () => {
             <div className={styles.burgerWrapper} onClick={onClickBurger}>
                 <Burger isActiveMenu={menuBurgerActive} />
             </div>
-            {menuBurgerActive && 
+            {menuBurgerActive &&
                 <div className={styles.burgerMenu}>
                     <Menu isActiveMenu={menuBurgerActive} />
                 </div>

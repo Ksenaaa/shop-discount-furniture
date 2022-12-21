@@ -1,7 +1,8 @@
 import React, { FC } from 'react'
 
-import { Button } from 'components/Button'
 import { IImgSlider } from 'interface/IImgSlider'
+
+import { Button } from 'components/Button'
 
 import styles from './SliderItem.module.scss'
 
@@ -18,7 +19,7 @@ export const SliderItem: FC<Props> = ({ picture }) => {
             <div className={styles.text}>
                 <p className={styles.desk}>2 PC sectionals from only $298</p>
                 <h2 className={styles.title}>Save big save now</h2>
-                <Button name='Purchase now' />
+                <Button name="Purchase now" />
             </div>
         </div>
     )
