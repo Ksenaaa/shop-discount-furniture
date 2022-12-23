@@ -1,35 +1,31 @@
-import React, { useCallback, useEffect, useRef } from 'react'
+import React, { useCallback, useEffect, useRef, useState } from 'react'
 
-import { useAppDispatch, useAppSelector } from 'hooks/reduxHooks'
 import swipeLeft from 'img/svg/swipe-left.svg'
 import swipeRight from 'img/svg/swipe-right.svg'
-import { nextPicture, previousPicture } from 'store/counterSliderSlice'
-import { useGetItemsQuery } from 'store/services/slider'
+import { useGetSliderImgsQuery } from 'store/services/slider'
 
-import { Loading } from 'components/Loading'
+import { Loader } from 'components/Loader'
 
 import { SliderItem } from './SliderItem'
 
 import styles from './Slider.module.scss'
 
 export const Slider = () => {
-    const { indexPicture } = useAppSelector(state => state.countSlider)
+    const [indexPicture, setIndexPicture] = useState<number>(0)
 
-    const { data: sliderPictures, isLoading } = useGetItemsQuery()
-
-    const dispatch = useAppDispatch()
+    const { data: sliderPictures, isLoading } = useGetSliderImgsQuery()
 
     const refContainer = useRef<HTMLDivElement>(null)
 
-    const onClickNext = useCallback(() => {
-        dispatch(nextPicture(sliderPictures?.length))
-    }, [dispatch, sliderPictures?.length])
+    const onClickNext = useCallback(() =>
+        sliderPictures?.length && setIndexPicture(preState => sliderPictures.length - 1 === preState ? 0 : preState + 1)
+    , [sliderPictures?.length])
 
-    const onClickPrevious = useCallback(() => {
-        dispatch(previousPicture(sliderPictures?.length))
-    }, [dispatch, sliderPictures?.length])
+    const onClickPrevious = useCallback(() =>
+        sliderPictures?.length && setIndexPicture(preState => preState === 0 ? sliderPictures.length - 1 : preState - 1)
+    , [sliderPictures?.length])
 
-    const findItem = (num: number) => {
+    const switchingImg = (num: number) => {
         if (!refContainer?.current) return
         const child = refContainer?.current as HTMLDivElement
 
@@ -37,19 +33,22 @@ export const Slider = () => {
     }
 
     useEffect(() => {
-        const timeNext = setTimeout(() => dispatch(nextPicture(sliderPictures?.length)), 3000)
+        const timeNext = setTimeout(() =>
+            sliderPictures?.length && setIndexPicture(preState =>
+                sliderPictures.length - 1 === preState ? 0 : preState + 1)
+        , 3000)
 
         return () => clearTimeout(timeNext)
-    }, [indexPicture, dispatch, sliderPictures?.length])
+    }, [sliderPictures?.length, indexPicture])
 
     useEffect(() => {
-        findItem(indexPicture)
+        switchingImg(indexPicture)
     }, [indexPicture])
 
     return (
         <div className={styles.wrapper}>
             {isLoading ?
-                <Loading /> :
+                <Loader /> :
                 <div className={styles.containerSlider} ref={refContainer}>
                     {sliderPictures?.map(pic =>
                         <SliderItem key={pic.id} picture={pic} />

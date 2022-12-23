@@ -4,7 +4,7 @@ import { api } from './api'
 
 export const sliderApi = api.injectEndpoints({
     endpoints: (builder) => ({
-        getItems: builder.query<IImgSlider[], void>({
+        getSliderImgs: builder.query<IImgSlider[], void>({
             query: () => ({
                 url: 'slider'
             }),
@@ -17,5 +17,5 @@ export const sliderApi = api.injectEndpoints({
 })
 
 export const {
-    useGetItemsQuery
+    useGetSliderImgsQuery
 } = sliderApi

@@ -2,12 +2,9 @@ import { configureStore } from '@reduxjs/toolkit'
 
 import { api } from 'store/services/api'
 
-import countSliderSlice from './counterSliderSlice'
-
 const store = configureStore({
     reducer: {
-        [api.reducerPath]: api.reducer,
-        countSlider: countSliderSlice
+        [api.reducerPath]: api.reducer
     },
     middleware: (getDefaultMiddleware) =>
         getDefaultMiddleware().concat(api.middleware)

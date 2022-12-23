@@ -1,10 +1,10 @@
 import React from 'react'
 
-import styles from './Loading.module.scss'
+import styles from './Loader.module.scss'
 
-export const Loading = () => {
+export const Loader = () => {
     return (
-        <div className={styles.wrapperLoading}>
+        <div className={styles.wrapperLoader}>
             <div className={styles.ldsEllipsis}>
                 <div></div>
                 <div></div>

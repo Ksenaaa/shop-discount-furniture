@@ -7,14 +7,8 @@ const baseQuery = fetchBaseQuery({
 const baseQueryWithRetry = retry(baseQuery, { maxRetries: 6 })
 
 export const api = createApi({
-    reducerPath: 'splitApi',
+    reducerPath: 'furnitureApi',
     baseQuery: baseQueryWithRetry,
     tagTypes: ['Slider'],
     endpoints: () => ({})
-})
-
-export const enhancedApi = api.enhanceEndpoints({
-    endpoints: () => ({
-        getPost: () => 'test'
-    })
 })
