@@ -1,4 +1,4 @@
-import { IImgSlider } from 'interface/IImgSlider'
+import { IImgSlider } from 'interface/sliderInterface'
 
 import { api } from './api'
 

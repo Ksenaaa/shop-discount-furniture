@@ -33,9 +33,10 @@ export const Slider = () => {
     }
 
     useEffect(() => {
-        const timeNext = setTimeout(() =>
-            sliderPictures?.length && setIndexPicture(preState =>
-                sliderPictures.length - 1 === preState ? 0 : preState + 1)
+        if (!sliderPictures?.length) return
+
+        const timeNext = setTimeout(() => setIndexPicture(preState =>
+            sliderPictures.length - 1 === preState ? 0 : preState + 1)
         , 3000)
 
         return () => clearTimeout(timeNext)

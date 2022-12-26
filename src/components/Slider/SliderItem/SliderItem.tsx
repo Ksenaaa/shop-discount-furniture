@@ -1,6 +1,6 @@
 import React, { FC } from 'react'
 
-import { IImgSlider } from 'interface/IImgSlider'
+import { IImgSlider } from 'interface/sliderInterface'
 
 import { Button } from 'components/Button'
 
