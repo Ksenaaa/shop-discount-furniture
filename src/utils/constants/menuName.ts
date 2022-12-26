@@ -6,5 +6,5 @@ export const menuName = [
     { id: 'decoreMore', name: 'decore & more' },
     { id: 'kids', name: 'kids' },
     { id: 'specials', name: 'specials' },
-    { id: 'decor', name: 'decor' },
+    { id: 'decor', name: 'decor' }
 ]

@@ -1,9 +1,9 @@
-import React, { FC, useRef, useState } from 'react'
+import React from 'react'
 
-import facebookIcon from 'img/svg/facebook-icon.svg'
-import instagramIcon from 'img/svg/instagram-icon.svg'
 import adressIcon from 'img/svg/adress-icon.svg'
 import callIcon from 'img/svg/call-icon.svg'
+import facebookIcon from 'img/svg/facebook-icon.svg'
+import instagramIcon from 'img/svg/instagram-icon.svg'
 import timeIcon from 'img/svg/time-icon.svg'
 
 import styles from './Contacts.module.scss'

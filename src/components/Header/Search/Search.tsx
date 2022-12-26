@@ -8,7 +8,7 @@ export const Search = () => {
     return (
         <div className={styles.wrapper}>
             <form action="">
-                <input type="text" name='search' className={styles.input} placeholder='I search...'/>
+                <input type="text" name="search" className={styles.input} placeholder="I search..."/>
             </form>
             <img src={searchIcon} alt="search" />
         </div>
