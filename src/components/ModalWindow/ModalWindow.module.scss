@@ -1,0 +1,63 @@
+@import 'styles/colors';
+@import 'styles/fontMixin';
+
+.modalList {
+    padding: 8px 16px 16px;
+    background: $grey;
+    border-radius: 0px 0px 5px 5px;
+    position: absolute;
+    left: 0;
+    top: 100%;
+    z-index: 999;
+    animation-name: active;
+    animation-duration: 0.4s;
+    transform-origin: 50% 0%;
+    @keyframes active {
+        0% { transform: scaleY(0) }
+        100% { transform: scaleY(1) }
+    }
+    
+    .modalItem {
+        @include fontStyle(400, 16px, 20px);
+        width: 100%;
+        margin-bottom: 8px;
+        color: $black;
+        cursor: pointer;
+        
+        &:last-child {
+            margin-bottom: 0;
+        }
+
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+
+    .isActive {
+        @include fontStyle(700, 16px, 20px);
+    }
+}
+
+.modalListWithIcon {
+    width: 192px;
+
+    .modalItem {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        & img {
+            margin-top: 2px;
+            margin-left: 4px;
+        }
+    }
+}
+
+.substrate {
+    position: fixed;
+    top: 0;
+    right: 0;
+    z-index: 998;
+    width: 100vw;
+    height: 100vh;
+}

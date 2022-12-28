@@ -1,4 +1,7 @@
 import React, { FC } from 'react'
+import { useTranslation } from 'react-i18next'
+
+import cn from 'classnames'
 
 import { IImgSlider } from 'interface/sliderInterface'
 
@@ -11,15 +14,17 @@ type Props = {
 }
 
 export const SliderItem: FC<Props> = ({ picture }) => {
+    const { t, i18n } = useTranslation()
+
     return (
-        <div className={styles.wrapper}>
+        <div className={cn(styles.wrapper, i18n.language === 'ua' && styles.wrapperUa)}>
             <div className={styles.picture}>
                 <img src={picture.img} alt={picture.name} />
             </div>
             <div className={styles.text}>
-                <p className={styles.desk}>2 PC sectionals from only $298</p>
-                <h2 className={styles.title}>Save big save now</h2>
-                <Button name="Purchase now" />
+                <p className={styles.desk}>{t('slider.desk')}</p>
+                <h2 className={styles.title}>{t('slider.title')}</h2>
+                <Button name={t('button.sliderItem')} />
             </div>
         </div>
     )

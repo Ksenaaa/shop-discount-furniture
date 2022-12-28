@@ -51,6 +51,16 @@
     }
 }
 
+@media screen and (max-width: 800px) {
+    .wrapperActiveMenu .menuList {
+        padding: 30px;
+    }
+
+    .wrapperMenu .menuList .menuItemUa a{
+        @include fontStyle(400, 12px, 14px);
+    }
+}
+
 @media screen and (max-width: 680px) {
     .wrapperMenu {
         display: none;

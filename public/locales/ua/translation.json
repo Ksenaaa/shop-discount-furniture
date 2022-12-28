@@ -1,0 +1,26 @@
+{
+    "slider": {
+        "desk": "2 секції ПК всього за $298",
+        "title": "Велика економія зараз"
+    },
+    "button": {
+        "sliderItem": "Купити зараз"
+    },
+    "menu": [
+        { "id": "livingRoom", "name": "вітальня" },
+        { "id": "diningRoom", "name": "їдальня" },
+        { "id": "bedrooms", "name": "спальні" },
+        { "id": "mattresses", "name": "матраци" },
+        { "id": "decoreMore", "name": "декор і багато іншого" },
+        { "id": "kids", "name": "дитячі" },
+        { "id": "specials", "name": "спеціальні пропозиції" },
+        { "id": "decor", "name": "декор" }
+    ],
+    "search": {
+        "iSearch": "Я шукаю..."
+    },
+    "contacts": {
+        "adress": "Електростанція Баттерсі, Лондон SW11 8BN, Велика Британія",
+        "workingTime": "Пн - Сб: 8:00 - 18:00, Неділя: 9:00 - 16:00"
+    }
+}

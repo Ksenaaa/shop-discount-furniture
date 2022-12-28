@@ -35,16 +35,14 @@ export const Slider = () => {
     useEffect(() => {
         if (!sliderPictures?.length) return
 
+        switchingImg(indexPicture)
+
         const timeNext = setTimeout(() => setIndexPicture(preState =>
             sliderPictures.length - 1 === preState ? 0 : preState + 1)
         , 3000)
 
         return () => clearTimeout(timeNext)
     }, [sliderPictures?.length, indexPicture])
-
-    useEffect(() => {
-        switchingImg(indexPicture)
-    }, [indexPicture])
 
     return (
         <div className={styles.wrapper}>

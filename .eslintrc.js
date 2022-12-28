@@ -49,7 +49,8 @@ module.exports = {
     "no-multi-spaces": "error",
     "no-multiple-empty-lines": ["error", { "max": 1, "maxEOF": 0, "maxBOF": 0 }],
     "no-trailing-spaces": "error",
-    "no-unused-vars": "warn",
+    "no-unused-vars": "off",
+    "@typescript-eslint/no-unused-vars": ["warn"],
     "object-curly-spacing": ["error", "always"],
     "padded-blocks": ["error", "never"],
     "padding-line-between-statements": [
@@ -68,7 +69,7 @@ module.exports = {
     "space-unary-ops": "error",
     "sort-imports": ["error", { "ignoreDeclarationSort": true }],
     "flowtype/space-after-type-colon": ["error", "always"],
-    "import/order": ["error", {
+    "import/order": ["warn", {
       "groups": [["builtin", "unknown", "external"], "internal", "parent", "sibling", "index", "object"],
       "newlines-between": "always",
       "pathGroups": [
