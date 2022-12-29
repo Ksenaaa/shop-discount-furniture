@@ -4,6 +4,7 @@ import { useTranslation } from 'react-i18next'
 import cn from 'classnames'
 
 import { IImgSlider } from 'interface/sliderInterface'
+import { LanguageName } from 'utils/constants/languages'
 
 import { Button } from 'components/Button'
 
@@ -17,7 +18,7 @@ export const SliderItem: FC<Props> = ({ picture }) => {
     const { t, i18n } = useTranslation()
 
     return (
-        <div className={cn(styles.wrapper, i18n.language === 'ua' && styles.wrapperUa)}>
+        <div className={cn(styles.wrapper, { [styles.wrapperUa]: i18n.language === LanguageName.UA })}>
             <div className={styles.picture}>
                 <img src={picture.img} alt={picture.name} />
             </div>

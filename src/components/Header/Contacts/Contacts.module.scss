@@ -59,7 +59,7 @@
                     margin-bottom: 11px;
                     color: $white;
                     cursor: pointer;
-                    transition: $buttonAnimationTime;
+                    transition: $animationTransitionTime;
                     
                     &:hover {
                         opacity: 0.6;

@@ -7,6 +7,7 @@ import callIcon from 'img/svg/call-icon.svg'
 import facebookIcon from 'img/svg/facebook-icon.svg'
 import instagramIcon from 'img/svg/instagram-icon.svg'
 import timeIcon from 'img/svg/time-icon.svg'
+import { lngs } from 'utils/constants/languages'
 
 import { ModalWindow } from 'components/ModalWindow'
 
@@ -16,12 +17,6 @@ export const Contacts = () => {
     const { isOpen: isOpenModalLanguage, onToggle: onToggleModalLanguage } = useToggle()
 
     const { t, i18n } = useTranslation()
-
-    const lngs = ['en', 'ua']
-
-    const onToggleModal = useCallback(() =>
-        onToggleModalLanguage()
-    , [])
 
     const changeLanguage = useCallback((lng: string) =>
         i18n.changeLanguage(lng)
@@ -53,7 +48,7 @@ export const Contacts = () => {
 
                 <div className={styles.social}>
                     <div className={styles.wrapperLanguage}>
-                        <div className={styles.language} onClick={onToggleModal}>
+                        <div className={styles.language} onClick={onToggleModalLanguage}>
                             {i18n.language}
                         </div>
                         {isOpenModalLanguage &&

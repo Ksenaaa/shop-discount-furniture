@@ -19,7 +19,7 @@ export const ModalWindowItem: FC<Props> = ({ item, isActive, onClickItem, icon }
 
     return (
         <li
-            className={cn(styles.modalItem, isActive === item && styles.isActive)}
+            className={cn(styles.modalItem, { [styles.isActive]: isActive === item })}
             onClick={onClick}
         >
             {item}

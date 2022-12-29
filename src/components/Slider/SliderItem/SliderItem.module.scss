@@ -69,7 +69,7 @@
 }
 
 @media screen and (max-width: 735px) {
-    .wrapperUa .text{
+    .wrapperUa .text {
         .title {
             width: 250px;
             @include fontStyle(600, 30px, 30px);
@@ -82,7 +82,7 @@
 }
 
 @media screen and (max-width: 680px) {
-    .wrapper .text{
+    .wrapper .text {
         margin-top: 20px;
 
         .title {
@@ -97,7 +97,7 @@
 }
 
 @media screen and (max-width: 348px) {
-    .wrapperUa .text{
+    .wrapperUa .text {
         .title {
             @include fontStyle(600, 26px, 25px);
         }

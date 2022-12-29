@@ -20,8 +20,6 @@ export const ModalWindow: FC<Props> = ({ modalList, isActive, onChangeItem, onTo
         onToggleModal()
     }, [])
 
-    const onCloseModal = () => onToggleModal()
-
     return (
         <>
             <ul className={cn(styles.modalList, icon && styles.modalListWithIcon)}>
@@ -35,7 +33,7 @@ export const ModalWindow: FC<Props> = ({ modalList, isActive, onChangeItem, onTo
                     />
                 )}
             </ul>
-            <div className={styles.substrate} onClick={onCloseModal}></div>
+            <div className={styles.substrate} onClick={onToggleModal}></div>
         </>
     )
 }

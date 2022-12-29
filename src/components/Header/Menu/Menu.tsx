@@ -3,6 +3,8 @@ import { useTranslation } from 'react-i18next'
 
 import cn from 'classnames'
 
+import { LanguageName } from 'utils/constants/languages'
+
 import styles from './Menu.module.scss'
 
 type Props = {
@@ -23,7 +25,10 @@ export const Menu: FC<Props> = ({ isActiveMenu }) => {
         <div className={cn(styles.wrapper, !isActiveMenu ? styles.wrapperMenu : styles.wrapperActiveMenu)}>
             <ol className={styles.menuList}>
                 {menuName?.map(item =>
-                    <li key={item.id} className={cn(styles.menuItem, i18n.language === 'ua' && styles.menuItemUa)}>
+                    <li
+                        key={item.id}
+                        className={cn(styles.menuItem, { [styles.menuItemUa]: i18n.language === LanguageName.UA })}
+                    >
                         <a href={`/${item.id}`}>{item.name}</a>
                     </li>
                 )}

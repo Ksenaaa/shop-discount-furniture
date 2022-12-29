@@ -1,5 +1,6 @@
 @import 'styles/colors';
 @import 'styles/fontMixin';
+@import 'styles/animation';
 
 .modalList {
     padding: 8px 16px 16px;
@@ -10,7 +11,7 @@
     top: 100%;
     z-index: 999;
     animation-name: active;
-    animation-duration: 0.4s;
+    animation-duration: $animationDurationTime;
     transform-origin: 50% 0%;
     @keyframes active {
         0% { transform: scaleY(0) }

@@ -3,6 +3,7 @@ import React, { useCallback, useEffect, useRef, useState } from 'react'
 import swipeLeft from 'img/svg/swipe-left.svg'
 import swipeRight from 'img/svg/swipe-right.svg'
 import { useGetSliderImgsQuery } from 'store/services/slider'
+import { moveDuration } from 'utils/constants/moveDuration'
 
 import { Loader } from 'components/Loader'
 
@@ -37,11 +38,11 @@ export const Slider = () => {
 
         switchingImg(indexPicture)
 
-        const timeNext = setTimeout(() => setIndexPicture(preState =>
+        const timeoutId = setTimeout(() => setIndexPicture(preState =>
             sliderPictures.length - 1 === preState ? 0 : preState + 1)
-        , 3000)
+        , moveDuration)
 
-        return () => clearTimeout(timeNext)
+        return () => clearTimeout(timeoutId)
     }, [sliderPictures?.length, indexPicture])
 
     return (

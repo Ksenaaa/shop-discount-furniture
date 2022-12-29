@@ -5,5 +5,9 @@ export const useToggle = (initialState = false) => {
 
     const onToggle = useCallback(() => setOpen(prevState => !prevState), [])
 
-    return { isOpen, onToggle }
+    const onOpen = useCallback(() => setOpen(true), [])
+
+    const onClose = useCallback(() => setOpen(false), [])
+
+    return { isOpen, onToggle, onOpen, onClose }
 }
