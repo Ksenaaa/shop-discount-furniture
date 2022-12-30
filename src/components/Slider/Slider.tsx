@@ -6,7 +6,7 @@ import { useGetSliderImgsQuery } from 'store/services/slider'
 
 import { Loader } from 'components/Loader'
 
-import { timeoutSliderItem } from './constants/timeoutSliderItem'
+import { timeoutSlider } from './constants/timeoutSlider'
 import { SliderItem } from './SliderItem'
 
 import styles from './Slider.module.scss'
@@ -40,7 +40,7 @@ export const Slider = () => {
 
         const timeoutId = setTimeout(() => setIndexPicture(preState =>
             sliderPictures.length - 1 === preState ? 0 : preState + 1)
-        , timeoutSliderItem)
+        , timeoutSlider)
 
         return () => clearTimeout(timeoutId)
     }, [sliderPictures?.length, indexPicture])
