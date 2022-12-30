@@ -1,14 +1,27 @@
-import React from 'react'
+import React, { useCallback } from 'react'
+import { useTranslation } from 'react-i18next'
 
+import { useToggle } from 'hooks/toggleHook'
 import adressIcon from 'img/svg/adress-icon.svg'
 import callIcon from 'img/svg/call-icon.svg'
 import facebookIcon from 'img/svg/facebook-icon.svg'
 import instagramIcon from 'img/svg/instagram-icon.svg'
 import timeIcon from 'img/svg/time-icon.svg'
+import { lngs } from 'utils/constants/languages'
+
+import { ModalWindow } from 'components/ModalWindow'
 
 import styles from './Contacts.module.scss'
 
 export const Contacts = () => {
+    const { isOpen: isOpenModalLanguage, onToggle: onToggleModalLanguage } = useToggle()
+
+    const { t, i18n } = useTranslation()
+
+    const changeLanguage = useCallback((lng: string) =>
+        i18n.changeLanguage(lng)
+    , [])
+
     return (
         <div className={styles.wrapper}>
             <div className={styles.wrapperContant}>
@@ -16,7 +29,7 @@ export const Contacts = () => {
                     <div className={styles.adress}>
                         <img src={adressIcon} alt="adress" />
                         <p className={styles.adressText}>
-                            Battersea Power Station, London SW11 8BN, Great Britain
+                            {t('contacts.adress')}
                         </p>
                     </div>
                     <div className={styles.call}>
@@ -28,12 +41,26 @@ export const Contacts = () => {
                     <div className={styles.time}>
                         <img src={timeIcon} alt="time" />
                         <p className={styles.timeText}>
-                            Mon to sat: 8 am - 6pm, Sunday: 9am -4pm
+                            {t('contacts.workingTime')}
                         </p>
                     </div>
                 </div>
 
                 <div className={styles.social}>
+                    <div className={styles.wrapperLanguage}>
+                        <div className={styles.language} onClick={onToggleModalLanguage}>
+                            {i18n.language}
+                        </div>
+                        {isOpenModalLanguage &&
+                            <ModalWindow
+                                modalList={lngs}
+                                isActive={i18n.language}
+                                onChangeItem={changeLanguage}
+                                onToggleModal={onToggleModalLanguage}
+                                icon={false}
+                            />
+                        }
+                    </div>
                     <div className={styles.facebookLogo}>
                         <a href="https://www.facebook.com/">
                             <img src={facebookIcon} alt="facebook"/>

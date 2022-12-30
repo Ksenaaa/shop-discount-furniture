@@ -32,7 +32,7 @@
     }
 }
 
-.wrapperActiveMenu .menuList{
+.wrapperActiveMenu .menuList {
     padding: 45px;
     flex-direction: column;
 
@@ -46,8 +46,18 @@
         padding: 0 15px;
     }
 
-    .wrapperMenu .menuList .menuItem a{
+    .wrapperMenu .menuList .menuItem a {
         @include fontStyle(400, 14px, 19px);
+    }
+}
+
+@media screen and (max-width: 800px) {
+    .wrapperActiveMenu .menuList {
+        padding: 30px;
+    }
+
+    .wrapperMenu .menuList .menuItemUa a {
+        @include fontStyle(400, 12px, 14px);
     }
 }
 

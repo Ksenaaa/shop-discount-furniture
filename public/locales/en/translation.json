@@ -1,0 +1,26 @@
+{
+    "slider": {
+        "desk": "2 PC sectionals from only $298",
+        "title": "Save big save now"
+    },
+    "button": {
+        "sliderItem": "Purchase now"
+    },
+    "menu": [
+        { "id": "livingRoom", "name": "living room" },
+        { "id": "diningRoom", "name": "dining room" },
+        { "id": "bedrooms", "name": "bedrooms" },
+        { "id": "mattresses", "name": "mattresses" },
+        { "id": "decoreMore", "name": "decore & more" },
+        { "id": "kids", "name": "kids" },
+        { "id": "specials", "name": "specials" },
+        { "id": "decor", "name": "decor" }
+    ],
+    "search": {
+        "iSearch": "I search..."
+    },
+    "contacts": {
+        "adress": "Battersea Power Station, London SW11 8BN, Great Britain",
+        "workingTime": "Mon to sat: 8 am - 6pm, Sunday: 9am -4pm"
+    }
+}

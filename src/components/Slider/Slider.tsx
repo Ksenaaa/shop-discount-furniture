@@ -6,6 +6,7 @@ import { useGetSliderImgsQuery } from 'store/services/slider'
 
 import { Loader } from 'components/Loader'
 
+import { timeoutSlider } from './constants/timeoutSlider'
 import { SliderItem } from './SliderItem'
 
 import styles from './Slider.module.scss'
@@ -35,16 +36,14 @@ export const Slider = () => {
     useEffect(() => {
         if (!sliderPictures?.length) return
 
-        const timeNext = setTimeout(() => setIndexPicture(preState =>
-            sliderPictures.length - 1 === preState ? 0 : preState + 1)
-        , 3000)
-
-        return () => clearTimeout(timeNext)
-    }, [sliderPictures?.length, indexPicture])
-
-    useEffect(() => {
         switchingImg(indexPicture)
-    }, [indexPicture])
+
+        const timeoutId = setTimeout(() => setIndexPicture(preState =>
+            sliderPictures.length - 1 === preState ? 0 : preState + 1)
+        , timeoutSlider)
+
+        return () => clearTimeout(timeoutId)
+    }, [sliderPictures?.length, indexPicture])
 
     return (
         <div className={styles.wrapper}>

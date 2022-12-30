@@ -46,7 +46,7 @@
             justify-content: center;
             display: flex;
             cursor: pointer;
-            transition: $buttonAnimationTime;
+            transition: $animationTransitionTime;
         }
 
         .heart:hover, .basket:hover {
@@ -73,6 +73,7 @@
             position: absolute;
             top: -40px;
             right: 15px;
+            z-index: 1000;
     
             .blueHeart, .blueBasket {
                 display: none;
