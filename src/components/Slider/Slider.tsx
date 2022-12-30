@@ -3,10 +3,10 @@ import React, { useCallback, useEffect, useRef, useState } from 'react'
 import swipeLeft from 'img/svg/swipe-left.svg'
 import swipeRight from 'img/svg/swipe-right.svg'
 import { useGetSliderImgsQuery } from 'store/services/slider'
-import { moveDuration } from 'utils/constants/moveDuration'
 
 import { Loader } from 'components/Loader'
 
+import { timeoutSliderItem } from './constants/timeoutSliderItem'
 import { SliderItem } from './SliderItem'
 
 import styles from './Slider.module.scss'
@@ -40,7 +40,7 @@ export const Slider = () => {
 
         const timeoutId = setTimeout(() => setIndexPicture(preState =>
             sliderPictures.length - 1 === preState ? 0 : preState + 1)
-        , moveDuration)
+        , timeoutSliderItem)
 
         return () => clearTimeout(timeoutId)
     }, [sliderPictures?.length, indexPicture])
