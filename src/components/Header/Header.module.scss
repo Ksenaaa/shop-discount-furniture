@@ -1,37 +1,37 @@
 @import 'styles/colors';
 
 .wrapper {
-   height: 171px;
-   display: flex;
-   flex-direction: column;
-   justify-content: space-between;
-   position: relative;
+  height: 171px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: relative;
 
-   .burgerWrapper {
-      position: absolute;
-      top: 0;
-      left: 0;
-      z-index: 1001;
-   }
+  .burgerWrapper {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1001;
+  }
 
-   .burgerMenu {
-      width: 100%;
-      height: 100vh;
-      background: $grey;
-      position: absolute;
-      z-index: 1000;
-      animation-name: active;
-      animation-duration: 0.4s;
-      @keyframes active {
-         from {height: 0}
-         to {height: 100vh}
-      }
-   }
+  .burgerMenu {
+    width: 100%;
+    height: 100vh;
+    background: $grey;
+    position: absolute;
+    z-index: 1000;
+    animation-name: active;
+    animation-duration: 0.4s;
+    @keyframes active {
+      from {height: 0}
+      to {height: 100vh}
+    }
+  }
 }
 
 @media screen and (max-width: 680px) {
-   .wrapper {
-      height: 93px;
-      box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.25);
-   }
+  .wrapper {
+    height: 93px;
+    box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.25);
+  }
 }

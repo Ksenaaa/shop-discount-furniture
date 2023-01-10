@@ -1,68 +1,89 @@
 @import 'styles/colors';
 @import 'styles/fontMixin';
+@import 'styles/_fontFamily.scss';
 
 .wrapper .menuList {
-    margin: 0 auto;
-    display: flex;
-    justify-content: space-between;
-
-    .menuItem {
-        & a {
-            color: $black;
-        }
-
-        &:first-letter {
-            text-transform: uppercase;
-        }
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  
+  .menuItem {
+    & a {
+      color: $black;
     }
+    
+    &:first-letter {
+      text-transform: uppercase;
+    }
+  }
 }
 
 .wrapperMenu {
-    height: 43px;
-    background: $grey;
-
-    .menuList {
-        max-width: 919px;
-        flex-direction: row;
-        transform: translateY(50%);
-
-        .menuItem a {
-            @include fontStyle(400, 16px, 20px);
-        }
+  height: 43px;
+  background: $grey;
+  
+  .menuList {
+    max-width: 919px;
+    flex-direction: row;
+    transform: translateY(50%);
+    
+    .menuItem a {
+      @include fontStyle(400, 16px, 20px);
     }
+
+    .activeMenuItem a {
+      font-weight: 700;
+    }
+  }
 }
 
-.wrapperActiveMenu .menuList {
-    padding: 45px;
-    flex-direction: column;
+.wrapperActiveMenuBurger .menuList {
+  padding: 45px;
+  flex-direction: column;
+  
+  .menuItem a {
+    @include fontStyle(400, 28px, 40px);
+  }
 
-    .menuItem a {
-        @include fontStyle(400, 28px, 40px);
-    }
+  .activeMenuItem a {
+    font-weight: 700;
+  }
 }
 
 @media screen and (max-width: 975px) {
-    .wrapper {
-        padding: 0 15px;
+  .wrapper {
+    padding: 0 15px;
+  }
+  
+  .wrapperMenu .menuList {
+    .menuItem a {
+      @include fontStyle(400, 14px, 19px);
     }
 
-    .wrapperMenu .menuList .menuItem a {
-        @include fontStyle(400, 14px, 19px);
+    .activeMenuItem a {
+      font-weight: 700;
     }
+  }
 }
 
 @media screen and (max-width: 800px) {
-    .wrapperActiveMenu .menuList {
-        padding: 30px;
+  .wrapperActiveMenuBurger .menuList {
+    padding: 30px;
+  }
+  
+  .wrapperMenu .menuList {
+    .menuItemUa a {
+      @include fontStyle(400, 12px, 14px);
     }
 
-    .wrapperMenu .menuList .menuItemUa a {
-        @include fontStyle(400, 12px, 14px);
+    .activeMenuItem a {
+      font-weight: 700;
     }
+  }
 }
 
 @media screen and (max-width: 680px) {
-    .wrapperMenu {
-        display: none;
-    }
+  .wrapperMenu {
+    display: none;
+  }
 }

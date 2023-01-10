@@ -1,4 +1,6 @@
-import React, { useState } from 'react'
+import React from 'react'
+
+import { useToggle } from 'hooks/toggleHook'
 
 import { Burger } from './Burger'
 import { Contacts } from './Contacts'
@@ -8,25 +10,21 @@ import { MiddleHeader } from './MiddleHeader'
 import styles from './Header.module.scss'
 
 export const Header = () => {
-    const [menuBurgerActive, setMenuBurgerActive] = useState(false)
+  const { isOpen: menuBurgerActive, onToggle: setMenuBurgerActive } = useToggle()
 
-    const onClickBurger = () => {
-        setMenuBurgerActive(preState => !preState)
-    }
-
-    return (
-        <div className={styles.wrapper}>
-            <Contacts />
-            <MiddleHeader />
-            <Menu />
-            <div className={styles.burgerWrapper} onClick={onClickBurger}>
-                <Burger isActiveMenu={menuBurgerActive} />
-            </div>
-            {menuBurgerActive &&
-                <div className={styles.burgerMenu}>
-                    <Menu isActiveMenu={menuBurgerActive} />
-                </div>
-            }
+  return (
+    <div className={styles.wrapper}>
+      <Contacts />
+      <MiddleHeader />
+      <Menu />
+      <div className={styles.burgerWrapper} onClick={setMenuBurgerActive}>
+        <Burger isActiveMenu={menuBurgerActive} />
+      </div>
+      {menuBurgerActive &&
+        <div className={styles.burgerMenu}>
+          <Menu isActiveMenuBurger={menuBurgerActive} onClickItemMenu={setMenuBurgerActive} />
         </div>
-    )
+      }
+    </div>
+  )
 }

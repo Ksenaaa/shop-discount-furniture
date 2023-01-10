@@ -1,12 +1,12 @@
-@import './styles/fonts';
-@import './styles/colors';
-@import './styles/animation';
+@import 'styles/fontFamily';
+@import 'styles/colors';
+@import 'styles/animation';
 
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Montserrat';
+  font-family: $montserrat;
   font-weight: 400;
   color: $darkBlue;
 }
@@ -37,9 +37,4 @@ a {
   &:focus, &:active {
     outline: none;
   }
-
-}
-
-.wrapper {
-  height: 100vh;
 }

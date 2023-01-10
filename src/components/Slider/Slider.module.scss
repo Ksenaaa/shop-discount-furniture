@@ -1,59 +1,60 @@
 .wrapper {
-   max-width: 1440px;
-   height: 400px;
-   overflow: hidden;
-   position: relative;
-   margin: 0 auto;
-   
-   .containerSlider {
-      height: 100%;
-      overflow-x: scroll;
-      overflow: hidden;
-      display: flex;
-      flex-direction: column;
-      flex-wrap: wrap;
-   }
+  max-width: 1440px;
+  height: 400px;
+  overflow: hidden;
+  position: relative;
+  margin: 0 auto;
+  
+  .containerSlider {
+    height: 100%;
+    overflow-x: scroll;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+  }
 
-   .swipeWrapper {
-      display: flex;
-      justify-content: space-between;
-      position: absolute;
-      top: 50%;
-      left: 0;
-      right: 0;
-      transform: translateY(-50%);
-      padding: 0 24px;
+  .swipeWrapper {
+    display: flex;
+    justify-content: space-between;
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    transform: translateY(-50%);
+    padding: 0 24px;
 
-      .swipeLeft, .swipeRight {
-         cursor: pointer;
-      }
-   
-      .swipeLeft:hover, .swipeRight:hover {
-         opacity: 0.6;
-      }
-   }
+    .swipeLeft, .swipeRight {
+      cursor: pointer;
+    }
+  
+    .swipeLeft:hover, .swipeRight:hover {
+      opacity: 0.6;
+    }
+  }
 }
 
 @media screen and (max-width: 975px) {
-   .wrapper {
-      height: 300px;
+  .wrapper {
+    height: 300px;
 
-      .swipeWrapper .swipeLeft, .swipeRight {
-         height: 60px;
-      }
-   }
+    .swipeWrapper .swipeLeft, .swipeRight {
+      height: 60px;
+    }
+  }
 }
 
 @media screen and (max-width: 680px) {
-   .wrapper {
-      height: 200px;
+  .wrapper {
+    height: 200px;
 
-      .swipeWrapper {
-         padding: 0 10px;
+    .swipeWrapper {
+      padding: 0 10px;
 
-         .swipeLeft, .swipeRight {
-            height: 30px;
-         }
+      .swipeLeft, .swipeRight {
+        height: 30px;
+        width: 30px;
       }
-   }
+    }
+  }
 }
