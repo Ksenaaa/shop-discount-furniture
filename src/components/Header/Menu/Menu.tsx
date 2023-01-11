@@ -7,7 +7,7 @@ import cn from 'classnames'
 import { useTranslation } from 'next-i18next'
 
 import { LanguageName } from 'utils/constants/languages'
-import { routing } from 'utils/constants/routing'
+import { routes } from 'utils/constants/routes'
 
 import styles from './Menu.module.scss'
 
@@ -41,7 +41,7 @@ export const Menu: FC<Props> = ({ isMenuBurgerActive, onClick }) => {
               [styles.activeMenuItem]: router.pathname.split('/').includes(item.path)
             })}
           >
-            <Link href={`/${routing.CATALOG}/${item.path}`}>{item.name}</Link>
+            <Link href={`/${routes.CATALOG}/${item.path}`}>{item.name}</Link>
           </li>
         )}
       </ul>
