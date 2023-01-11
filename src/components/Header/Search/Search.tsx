@@ -1,32 +1,39 @@
-import React, { ChangeEvent, useState } from 'react'
-import { useTranslation } from 'react-i18next'
+import React, { ChangeEvent, FC, useState } from 'react'
+
+import Image from 'next/image'
+
+import { useTranslation } from 'next-i18next'
 
 import searchIcon from 'img/svg/search-logo.svg'
 
 import styles from './Search.module.scss'
 
-export const Search = () => {
-    const [text, setText] = useState('')
+type Props = {
+  onClick: () => void
+}
 
-    const { t } = useTranslation()
+export const Search: FC<Props> = ({ onClick }) => {
+  const [text, setText] = useState('')
 
-    const placeholder = t('search.iSearch')
+  const { t } = useTranslation()
 
-    const onChangeText = (e: ChangeEvent<HTMLInputElement>) => setText(e.target.value)
+  const placeholder = t('search.iSearch')
 
-    return (
-        <div className={styles.wrapper}>
-            <form action="">
-                <input
-                    type="text"
-                    name="search"
-                    className={styles.input}
-                    placeholder={placeholder}
-                    onChange={onChangeText}
-                    value={text}
-                />
-            </form>
-            <img src={searchIcon} alt="search" />
-        </div>
-    )
+  const onChangeText = (e: ChangeEvent<HTMLInputElement>) => setText(e.target.value)
+
+  return (
+    <div className={styles.wrapper}>
+      <form action="">
+        <input
+          type="text"
+          name="search"
+          className={styles.input}
+          placeholder={placeholder}
+          onChange={onChangeText}
+          value={text}
+        />
+      </form>
+      <Image src={searchIcon} alt="search" onClick={onClick} />
+    </div>
+  )
 }

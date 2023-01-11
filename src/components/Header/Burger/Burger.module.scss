@@ -2,53 +2,53 @@
 @import 'styles/animation';
 
 .burger {
-    display: none;
-    height: 20px;
-    width: 25px;
-    position: relative;
-    margin: 5px 15px;
-    cursor: pointer;
-    transition: $animationTransitionTime;
+  display: none;
+  height: 20px;
+  width: 25px;
+  position: relative;
+  margin: 5px 15px;
+  cursor: pointer;
+  transition: $animationTransition;
 
-    & div {
-        position: absolute;
-        background: $orange;
-        height: 2.5px;
-        width: 100%;
-        transition: $animationTransitionTime;
-    }
-    
-    &FirstLine {
-        top: 0;
-    }
-    
-    &SecondLine {
-        top: 50%;
-        transform: translateY(-50%);
-    }
+  & div {
+    position: absolute;
+    background: $orange;
+    height: 2.5px;
+    width: 100%;
+    transition: $animationTransition;
+  }
+  
+  &FirstLine {
+    top: 0;
+  }
+  
+  &SecondLine {
+    top: 50%;
+    transform: translateY(-50%);
+  }
 
-    &ThirdLine {
-        bottom: 0;
-    }
+  &ThirdLine {
+    bottom: 0;
+  }
 
-    &FirstLineCross, &SecondLineCross {
-        top: 10px;
-        transform: rotate(45deg);
-    }
+  &FirstLineCross, &SecondLineCross {
+    top: 10px;
+    transform: rotate(45deg);
+  }
 
-    &ThirdLineCross {
-        top: 10px;
-        transform: rotate(-45deg);
-    }
+  &ThirdLineCross {
+    top: 10px;
+    transform: rotate(-45deg);
+  }
 
-    &:hover {
-        opacity: 0.6;
-    }
+  &:hover {
+    opacity: 0.6;
+  }
 }
 
 
 @media screen and (max-width: 975px) {
-    .burger {
-        display: block;
-    }    
+  .burger {
+    display: block;
+  }    
 }

@@ -5,6 +5,7 @@ module.exports = {
     jest: true,
   },
   extends: [
+    "next/core-web-vitals",
     "eslint:recommended",
     "plugin:react/recommended",
     "plugin:@typescript-eslint/recommended",
@@ -30,14 +31,14 @@ module.exports = {
     "arrow-spacing": "error",
     "block-spacing": ["error", "always"],
     "brace-style": "error",
-    "camelcase": "error",
+    "camelcase": ["error", { "allow": ["aa_bb"] }],
     "comma-dangle": ["error", "never"],
     "comma-spacing": ["error", { "before": false, "after": true }],
     "comma-style": ["error", "last"],
     "computed-property-spacing": ["error", "never"],
     "eol-last": ["error", "always"],
     "func-call-spacing": ["error", "never"],
-    "indent": ["error", 4],
+    "indent": ["error", 2],
     "jsx-quotes": ["error", "prefer-double"],
     "key-spacing": ["error", { "beforeColon": false }],
     "keyword-spacing": ["error", { "after": true }],
@@ -63,6 +64,7 @@ module.exports = {
     "prefer-template": "error",
     "quotes": ["error", "single"],
     "rest-spread-spacing": ["error", "never"],
+    "react/no-unknown-property": ["error", { "ignore": ["jsx", "global"] }],
     "semi": ["error", "never", { "beforeStatementContinuationChars": "never" }],
     "space-in-parens": ["error", "never"],
     "space-infix-ops": "error",
@@ -105,6 +107,11 @@ module.exports = {
         },
         {
           "pattern": "components/**",
+          "group": "internal",
+          "position": "after"
+        },
+        {
+          "pattern": "pages/**",
           "group": "internal",
           "position": "after"
         },

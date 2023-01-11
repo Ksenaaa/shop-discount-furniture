@@ -1,38 +1,50 @@
 import React, { FC } from 'react'
-import { useTranslation } from 'react-i18next'
+
+import Link from 'next/link'
+import { useRouter } from 'next/router'
 
 import cn from 'classnames'
+import { useTranslation } from 'next-i18next'
 
 import { LanguageName } from 'utils/constants/languages'
+import { routes } from 'utils/constants/routes'
 
 import styles from './Menu.module.scss'
 
 type Props = {
-    isActiveMenu?: boolean;
+  isMenuBurgerActive?: boolean;
+  onClick?: () => void;
 }
 
 type menuNameType = {
-    id: string,
-    name: string
+  id: string,
+  name: string,
+  path: string
 }
 
-export const Menu: FC<Props> = ({ isActiveMenu }) => {
-    const { t, i18n } = useTranslation()
+export const Menu: FC<Props> = ({ isMenuBurgerActive, onClick }) => {
+  const { t, i18n } = useTranslation()
 
-    const menuName = t('menu', { returnObjects: true }) as menuNameType[]
+  const router = useRouter()
 
-    return (
-        <div className={cn(styles.wrapper, !isActiveMenu ? styles.wrapperMenu : styles.wrapperActiveMenu)}>
-            <ol className={styles.menuList}>
-                {menuName?.map(item =>
-                    <li
-                        key={item.id}
-                        className={cn(styles.menuItem, { [styles.menuItemUa]: i18n.language === LanguageName.UA })}
-                    >
-                        <a href={`/${item.id}`}>{item.name}</a>
-                    </li>
-                )}
-            </ol>
-        </div>
-    )
+  const menuName = t('menu', { returnObjects: true }) as menuNameType[]
+
+  return (
+    <div className={cn(styles.wrapper, !isMenuBurgerActive ? styles.wrapperMenu : styles.wrapperActiveMenuBurger)}>
+      <ul className={styles.menuList}>
+        {menuName?.map(item =>
+          <li
+            key={item.id}
+            onClick={onClick}
+            className={cn(styles.menuItem, {
+              [styles.menuItemUa]: i18n.language === LanguageName.UA,
+              [styles.activeMenuItem]: router.pathname.split('/').includes(item.path)
+            })}
+          >
+            <Link href={`/${routes.CATALOG}/${item.path}`}>{item.name}</Link>
+          </li>
+        )}
+      </ul>
+    </div>
+  )
 }

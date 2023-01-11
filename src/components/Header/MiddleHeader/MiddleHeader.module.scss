@@ -2,114 +2,114 @@
 @import 'styles/animation';
 
 .wrapper {
-    width: 100%;
-    max-width: 1312px;
+  width: 100%;
+  max-width: 1312px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 auto;
+  position: relative;
+    
+  .logo a {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin: 0 auto;
-    position: relative;
+
+    img {
+      height: 82px;
+      width: 82px;
+    }
+  }
+
+  .search {
+    height: 40px;
+    width: 100%;
+    max-width: 640px;
+  }
     
-    .logo a {
-        display: flex;
-
-        img {
-            height: 82px;
-            max-width: 300px
-        }
+  .selectedUser {
+    display: flex;
+    flex-direction: row;
+    
+    & div {
+      width: 32px;
+      height: 32px;
+      
+      img {
+        margin: auto;
+      }
     }
 
-    .search {
-        height: 40px;
-        width: 100%;
-        max-width: 640px;
+    .heart {
+      margin-right: 12px;
+    }
+
+    .heart, .basket {
+      justify-content: center;
+      display: flex;
+      cursor: pointer;
+      transition: $animationTransition;
+    }
+
+    .heart:hover, .basket:hover {
+      opacity: 0.6;
     }
     
-    .selectedUser {
-        display: flex;
-        flex-direction: row;
-        
-        & div {
-            width: 32px;
-            height: 32px;
-            
-            img {
-                margin: auto;
-            }
-        }
-
-        .heart {
-            margin-right: 12px;
-        }
-
-        .heart, .basket {
-            justify-content: center;
-            display: flex;
-            cursor: pointer;
-            transition: $animationTransitionTime;
-        }
-
-        .heart:hover, .basket:hover {
-            opacity: 0.6;
-        }
-        
-        .orangeHeart, .orangeBasket {
-            display: none;
-        }      
+    .orangeHeart, .orangeBasket {
+      display: none;
     }
+  }
 }
 
 @media screen and (min-width: 976px) {
-    .search {
-        @include centerPosition;
-    }
+  .search {
+    @include centerPosition;
+  }
 }
 
 @media screen and (max-width: 975px) {
-    .wrapper {
-        padding: 0 15px;
+  .wrapper {
+    padding: 0 15px;
 
-        .selectedUser {
-            position: absolute;
-            top: -40px;
-            right: 15px;
-            z-index: 1000;
-    
-            .blueHeart, .blueBasket {
-                display: none;
-            }
+    .selectedUser {
+      position: absolute;
+      top: -40px;
+      right: 15px;
+      z-index: 1000;
 
-            .orangeHeart, .orangeBasket {
-                display: block;
-            }    
-        }
+      .blueHeart, .blueBasket {
+        display: none;
+      }
+
+      .orangeHeart, .orangeBasket {
+        display: block;
+      }    
     }
+  }
 }
 
 @media screen and (max-width: 680px) {
-    .wrapper {
-        padding-bottom: 3px;
-        
-        .logo a img {
-            height: 55px;
-        }
-
-        .search input {
-            display: none;
-        }
-
-        .searchActive input {
-            display: block;
-            animation-name: active;
-            animation-duration: 2s;
-            @keyframes active {
-                from {left: 90%}
-                to {left: 0}
-            }
-        }
-
-        .selectedUser {
-            top: -36px;
-        }
+  .wrapper {
+    padding-bottom: 3px;
+    
+    .logo a img {
+      height: 55px;
+      width: 55px;
     }
+
+    .search input {
+      display: none;
+    }
+
+    .searchActive input {
+      display: block;
+      animation: active $animationDurationTime;
+      @keyframes active {
+        from {left: 90%}
+        to {left: 0}
+      }
+    }
+
+    .selectedUser {
+      top: -36px;
+    }
+  }
 }
