@@ -7,15 +7,13 @@ import { GetStaticProps } from 'next'
 
 import { Slider } from 'components/Slider'
 
-import styles from './Home.module.scss'
-
 const Home = () => {
   return (
     <>
       <Head>
         <title>Home</title>
       </Head>
-      <div className={styles.wrapper}>
+      <div>
         <Slider />
       </div>
     </>

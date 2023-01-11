@@ -1,3 +1,5 @@
+@import 'styles/animation';
+
 .wrapperLoader {
   width: 100%;
   height: 100%;
@@ -24,22 +26,22 @@
 
       &:nth-child(1) {
         left: 8px;
-        animation: ldsEllipsis1 0.6s infinite;
+        animation: ldsEllipsis1 $animationLoader;
       }
 
       &:nth-child(2) {
         left: 8px;
-        animation: ldsEllipsis2 0.6s infinite;
+        animation: ldsEllipsis2 $animationLoader;
       }
 
       &:nth-child(3) {
         left: 32px;
-        animation: ldsEllipsis2 0.6s infinite;
+        animation: ldsEllipsis2 $animationLoader;
       }
 
       &:nth-child(4) {
         left: 56px;
-        animation: ldsEllipsis3 0.6s infinite;
+        animation: ldsEllipsis3 $animationLoader;
       }
 
       @keyframes ldsEllipsis1 {

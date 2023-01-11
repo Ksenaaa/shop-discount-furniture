@@ -13,12 +13,12 @@ import facebookIcon from 'img/svg/facebook-icon.svg'
 import instagramIcon from 'img/svg/instagram-icon.svg'
 import timeIcon from 'img/svg/time-icon.svg'
 
-import { ModalWindow } from 'components/ModalWindow'
+import { Modal } from 'components/Modal'
 
 import styles from './Contacts.module.scss'
 
 export const Contacts = () => {
-  const { isOpen: isOpenModalLanguage, onToggle: onToggleModalLanguage } = useToggle()
+  const { isOpen: isOpenModalLanguage, onToggle: toggleModalLanguage } = useToggle()
 
   const { t } = useTranslation()
 
@@ -54,16 +54,16 @@ export const Contacts = () => {
 
         <div className={styles.social}>
           <div className={styles.wrapperLanguage}>
-            <div className={styles.language} onClick={onToggleModalLanguage}>
+            <div className={styles.language} onClick={toggleModalLanguage}>
               {locale}
             </div>
             {isOpenModalLanguage && locales && locale &&
-              <ModalWindow
+              <Modal
                 modalList={locales}
-                isActive={locale}
+                activeItem={locale}
                 onChangeItem={changeLanguage}
-                onToggleModal={onToggleModalLanguage}
-                icon={false}
+                onToggleModal={toggleModalLanguage}
+                isThereIcon={false}
               />
             }
           </div>

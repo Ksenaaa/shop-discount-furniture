@@ -26,6 +26,8 @@
 
     .swipeLeft, .swipeRight {
       cursor: pointer;
+      width: 80px;
+      height: 80px;
     }
   
     .swipeLeft:hover, .swipeRight:hover {
@@ -38,7 +40,8 @@
   .wrapper {
     height: 300px;
 
-    .swipeWrapper .swipeLeft, .swipeRight {
+    .swipeWrapper .swipeLeft, .swipeWrapper .swipeRight {
+      width: 60px;
       height: 60px;
     }
   }

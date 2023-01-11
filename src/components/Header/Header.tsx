@@ -10,19 +10,19 @@ import { MiddleHeader } from './MiddleHeader'
 import styles from './Header.module.scss'
 
 export const Header = () => {
-  const { isOpen: menuBurgerActive, onToggle: setMenuBurgerActive } = useToggle()
+  const { isOpen: isMenuBurgerActive, onToggle: toggleMenuBurgerActive } = useToggle()
 
   return (
     <div className={styles.wrapper}>
       <Contacts />
       <MiddleHeader />
       <Menu />
-      <div className={styles.burgerWrapper} onClick={setMenuBurgerActive}>
-        <Burger isActiveMenu={menuBurgerActive} />
+      <div className={styles.burgerWrapper} onClick={toggleMenuBurgerActive}>
+        <Burger isActiveMenu={isMenuBurgerActive} />
       </div>
-      {menuBurgerActive &&
+      {isMenuBurgerActive &&
         <div className={styles.burgerMenu}>
-          <Menu isActiveMenuBurger={menuBurgerActive} onClickItemMenu={setMenuBurgerActive} />
+          <Menu isMenuBurgerActive={isMenuBurgerActive} onClick={toggleMenuBurgerActive} />
         </div>
       }
     </div>

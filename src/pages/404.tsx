@@ -7,12 +7,14 @@ import { useRouter } from 'next/router'
 
 import { GetStaticProps } from 'next'
 
+import { timeoutTransition } from 'utils/constants/timeoutTransition'
+
 const Error = () => {
   const { t } = useTranslation()
   const router = useRouter()
 
   useEffect(() => {
-    setTimeout(() => router.push('/'), 2000)
+    setTimeout(() => router.push('/'), timeoutTransition)
   }, [router])
 
   return (

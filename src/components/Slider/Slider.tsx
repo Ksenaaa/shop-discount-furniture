@@ -5,10 +5,10 @@ import Image from 'next/image'
 import swipeLeft from 'img/svg/swipe-left.svg'
 import swipeRight from 'img/svg/swipe-right.svg'
 import { useGetSliderImgsQuery } from 'store/services/slider'
+import { timeoutTransition } from 'utils/constants/timeoutTransition'
 
 import { Loader } from 'components/Loader'
 
-import { timeoutSlider } from './constants/timeoutSlider'
 import { SliderItem } from './SliderItem'
 
 import styles from './Slider.module.scss'
@@ -20,11 +20,11 @@ export const Slider = () => {
 
   const refContainer = useRef<HTMLDivElement>(null)
 
-  const onClickNext = useCallback(() =>
+  const handlerClickNext = useCallback(() =>
     sliderPictures?.length && setIndexPicture(preState => sliderPictures.length - 1 === preState ? 0 : preState + 1)
   , [sliderPictures?.length])
 
-  const onClickPrevious = useCallback(() =>
+  const handlerClickPrevious = useCallback(() =>
     sliderPictures?.length && setIndexPicture(preState => preState === 0 ? sliderPictures.length - 1 : preState - 1)
   , [sliderPictures?.length])
 
@@ -42,7 +42,7 @@ export const Slider = () => {
 
     const timeoutId = setTimeout(() => setIndexPicture(preState =>
       sliderPictures.length - 1 === preState ? 0 : preState + 1)
-    , timeoutSlider)
+    , timeoutTransition)
 
     return () => clearTimeout(timeoutId)
   }, [sliderPictures?.length, indexPicture])
@@ -58,8 +58,8 @@ export const Slider = () => {
         </div>
       }
       <div className={styles.swipeWrapper}>
-        <Image src={swipeLeft} alt="swipeLeft" className={styles.swipeLeft} onClick={onClickPrevious}/>
-        <Image src={swipeRight} alt="swipeRight" className={styles.swipeRight} onClick={onClickNext}/>
+        <Image src={swipeLeft} alt="swipeLeft" className={styles.swipeLeft} onClick={handlerClickPrevious}/>
+        <Image src={swipeRight} alt="swipeRight" className={styles.swipeRight} onClick={handlerClickNext}/>
       </div>
     </div>
   )

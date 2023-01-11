@@ -1,10 +1,11 @@
-import React, { useState } from 'react'
+import React from 'react'
 
 import Image from 'next/image'
 import Link from 'next/link'
 
 import cn from 'classnames'
 
+import { useToggle } from 'hooks/toggleHook'
 import orangeBasketIcon from 'img/svg/basket-icon-orange.svg'
 import basketIcon from 'img/svg/basket-icon.svg'
 import orangeHeartIcon from 'img/svg/heart-icon-orange.svg'
@@ -17,11 +18,7 @@ import { Search } from '../Search'
 import styles from './MiddleHeader.module.scss'
 
 export const MiddleHeader = () => {
-  const [activeSearch, setActiveSearch] = useState(false)
-
-  const onActiveSearch = () => {
-    setActiveSearch(true)
-  }
+  const { isOpen: isSearchActive, onToggle: toggleSearchActive } = useToggle()
 
   return (
     <div className={styles.wrapper}>
@@ -31,8 +28,8 @@ export const MiddleHeader = () => {
           <Image src={logoName} alt="furniture f" priority />
         </Link>
       </div>
-      <div className={cn(styles.search, activeSearch && styles.searchActive)} onClick={onActiveSearch}>
-        <Search />
+      <div className={cn(styles.search, isSearchActive && styles.searchActive)}>
+        <Search onClick={toggleSearchActive}/>
       </div>
       <div className={styles.selectedUser}>
         <div className={styles.heart}>

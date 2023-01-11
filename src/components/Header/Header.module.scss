@@ -1,4 +1,5 @@
 @import 'styles/colors';
+@import 'styles/animation';
 
 .wrapper {
   height: 171px;
@@ -20,8 +21,7 @@
     background: $grey;
     position: absolute;
     z-index: 1000;
-    animation-name: active;
-    animation-duration: 0.4s;
+    animation: active $animationDurationTime;
     @keyframes active {
       from {height: 0}
       to {height: 100vh}

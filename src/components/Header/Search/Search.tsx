@@ -1,4 +1,4 @@
-import React, { ChangeEvent, useState } from 'react'
+import React, { ChangeEvent, FC, useState } from 'react'
 
 import Image from 'next/image'
 
@@ -8,7 +8,11 @@ import searchIcon from 'img/svg/search-logo.svg'
 
 import styles from './Search.module.scss'
 
-export const Search = () => {
+type Props = {
+  onClick: () => void
+}
+
+export const Search: FC<Props> = ({ onClick }) => {
   const [text, setText] = useState('')
 
   const { t } = useTranslation()
@@ -29,7 +33,7 @@ export const Search = () => {
           value={text}
         />
       </form>
-      <Image src={searchIcon} alt="search" />
+      <Image src={searchIcon} alt="search" onClick={onClick} />
     </div>
   )
 }

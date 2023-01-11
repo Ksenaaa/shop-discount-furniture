@@ -13,8 +13,6 @@ export const Catalog = () => {
       <div>Kids</div>
       <div>Living</div>
       <div>Badroom</div>
-      <div>cdcd</div>
-      <div>cdcd</div>
     </div>
   )
 }

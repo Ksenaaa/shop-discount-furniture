@@ -13,7 +13,8 @@ export const sliderApi = api.injectEndpoints({
         { type: 'Slider' as const, id: 'LIST' }
       ]
     })
-  })
+  }),
+  overrideExisting: true
 })
 
 export const {

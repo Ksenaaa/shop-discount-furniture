@@ -10,8 +10,7 @@
   left: 0;
   top: 100%;
   z-index: 999;
-  animation-name: active;
-  animation-duration: $animationDurationTime;
+  animation: active $animationDurationTime;
   transform-origin: 50% 0%;
   @keyframes active {
     0% { transform: scaleY(0) }
@@ -34,7 +33,7 @@
     }
   }
 
-  .isActive {
+  .activeItem {
     @include fontStyle(700, 16px, 20px);
   }
 }

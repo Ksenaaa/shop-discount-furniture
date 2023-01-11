@@ -8,11 +8,13 @@ import { useTranslation } from 'next-i18next'
 
 import { LanguageName } from 'utils/constants/languages'
 
+import { pathToParent } from './constants/pathToParent'
+
 import styles from './Menu.module.scss'
 
 type Props = {
-  isActiveMenuBurger?: boolean;
-  onClickItemMenu?: () => void;
+  isMenuBurgerActive?: boolean;
+  onClick?: () => void;
 }
 
 type menuNameType = {
@@ -21,7 +23,7 @@ type menuNameType = {
   path: string
 }
 
-export const Menu: FC<Props> = ({ isActiveMenuBurger, onClickItemMenu }) => {
+export const Menu: FC<Props> = ({ isMenuBurgerActive, onClick }) => {
   const { t, i18n } = useTranslation()
 
   const router = useRouter()
@@ -29,18 +31,18 @@ export const Menu: FC<Props> = ({ isActiveMenuBurger, onClickItemMenu }) => {
   const menuName = t('menu', { returnObjects: true }) as menuNameType[]
 
   return (
-    <div className={cn(styles.wrapper, !isActiveMenuBurger ? styles.wrapperMenu : styles.wrapperActiveMenuBurger)}>
+    <div className={cn(styles.wrapper, !isMenuBurgerActive ? styles.wrapperMenu : styles.wrapperActiveMenuBurger)}>
       <ul className={styles.menuList}>
-        {Array.isArray(menuName) && menuName.map(item =>
+        {menuName && menuName.map(item =>
           <li
             key={item.id}
-            onClick={onClickItemMenu}
+            onClick={onClick}
             className={cn(styles.menuItem, {
               [styles.menuItemUa]: i18n.language === LanguageName.UA,
               [styles.activeMenuItem]: router.pathname.split('/').includes(item.path)
             })}
           >
-            <Link href={`/catalog/${item.path}`}>{item.name}</Link>
+            <Link href={`/${pathToParent.CATALOG}/${item.path}`}>{item.name}</Link>
           </li>
         )}
       </ul>

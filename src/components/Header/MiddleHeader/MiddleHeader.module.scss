@@ -101,8 +101,7 @@
 
     .searchActive input {
       display: block;
-      animation-name: active;
-      animation-duration: 2s;
+      animation: active $animationDurationTime;
       @keyframes active {
         from {left: 90%}
         to {left: 0}
