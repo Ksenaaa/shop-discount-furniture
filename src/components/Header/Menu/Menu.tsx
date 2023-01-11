@@ -7,8 +7,7 @@ import cn from 'classnames'
 import { useTranslation } from 'next-i18next'
 
 import { LanguageName } from 'utils/constants/languages'
-
-import { pathToParent } from './constants/pathToParent'
+import { routing } from 'utils/constants/routing'
 
 import styles from './Menu.module.scss'
 
@@ -33,7 +32,7 @@ export const Menu: FC<Props> = ({ isMenuBurgerActive, onClick }) => {
   return (
     <div className={cn(styles.wrapper, !isMenuBurgerActive ? styles.wrapperMenu : styles.wrapperActiveMenuBurger)}>
       <ul className={styles.menuList}>
-        {menuName && menuName.map(item =>
+        {menuName?.map(item =>
           <li
             key={item.id}
             onClick={onClick}
@@ -42,7 +41,7 @@ export const Menu: FC<Props> = ({ isMenuBurgerActive, onClick }) => {
               [styles.activeMenuItem]: router.pathname.split('/').includes(item.path)
             })}
           >
-            <Link href={`/${pathToParent.CATALOG}/${item.path}`}>{item.name}</Link>
+            <Link href={`/${routing.CATALOG}/${item.path}`}>{item.name}</Link>
           </li>
         )}
       </ul>

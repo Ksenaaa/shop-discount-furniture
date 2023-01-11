@@ -46,7 +46,7 @@
       justify-content: center;
       display: flex;
       cursor: pointer;
-      transition: $animationTransitionTime;
+      transition: $animationTransition;
     }
 
     .heart:hover, .basket:hover {

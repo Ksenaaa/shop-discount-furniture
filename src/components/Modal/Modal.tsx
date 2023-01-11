@@ -11,10 +11,10 @@ type Props = {
   activeItem: string,
   onChangeItem: (item: string) => void,
   onToggleModal: () => void,
-  isThereIcon: boolean
+  isIconVisible: boolean
 }
 
-export const Modal: FC<Props> = ({ modalList, activeItem, onChangeItem, onToggleModal, isThereIcon }) => {
+export const Modal: FC<Props> = ({ modalList, activeItem, onChangeItem, onToggleModal, isIconVisible }) => {
   const handlerClickItem = useCallback((itemName: string) => {
     onChangeItem(itemName)
     onToggleModal()
@@ -22,14 +22,14 @@ export const Modal: FC<Props> = ({ modalList, activeItem, onChangeItem, onToggle
 
   return (
     <>
-      <ul className={cn(styles.modalList, isThereIcon && styles.modalListWithIcon)}>
+      <ul className={cn(styles.modalList, isIconVisible && styles.modalListWithIcon)}>
         {modalList.map((item, i) =>
           <ModalItem
             key={i}
             item={item}
             activeItem={activeItem}
             onClickItem={handlerClickItem}
-            isThereIcon={isThereIcon}
+            isIconVisible={isIconVisible}
           />
         )}
       </ul>

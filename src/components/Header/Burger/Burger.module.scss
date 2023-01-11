@@ -8,14 +8,14 @@
   position: relative;
   margin: 5px 15px;
   cursor: pointer;
-  transition: $animationTransitionTime;
+  transition: $animationTransition;
 
   & div {
     position: absolute;
     background: $orange;
     height: 2.5px;
     width: 100%;
-    transition: $animationTransitionTime;
+    transition: $animationTransition;
   }
   
   &FirstLine {

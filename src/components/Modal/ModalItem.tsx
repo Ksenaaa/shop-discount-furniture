@@ -13,10 +13,10 @@ type Props = {
   item: string,
   activeItem: string,
   onClickItem: (item: string) => void,
-  isThereIcon: boolean
+  isIconVisible: boolean
 }
 
-export const ModalItem: FC<Props> = ({ item, activeItem, onClickItem, isThereIcon }) => {
+export const ModalItem: FC<Props> = ({ item, activeItem, onClickItem, isIconVisible }) => {
   const handlerClick = () => onClickItem(item)
 
   return (
@@ -25,7 +25,7 @@ export const ModalItem: FC<Props> = ({ item, activeItem, onClickItem, isThereIco
       onClick={handlerClick}
     >
       {item}
-      {isThereIcon && <Image src={activeItem !== item ? arrow : arrowActive} alt="arrow" />}
+      {isIconVisible && <Image src={activeItem !== item ? arrow : arrowActive} alt="arrow" />}
     </li>
   )
 }

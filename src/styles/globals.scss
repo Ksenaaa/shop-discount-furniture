@@ -24,7 +24,7 @@ ol, ul {
 }
 
 a {
-  transition: $animationTransitionTime;
+  transition: $animationTransition;
   
   &, &:visited, &:hover {
     text-decoration: none;

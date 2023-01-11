@@ -63,7 +63,7 @@ export const Contacts = () => {
                 activeItem={locale}
                 onChangeItem={changeLanguage}
                 onToggleModal={toggleModalLanguage}
-                isThereIcon={false}
+                isIconVisible={false}
               />
             }
           </div>
