@@ -6,15 +6,15 @@ import { GetStaticProps } from 'next'
 
 import styles from './Index.module.scss'
 
-const LivingRoom = () => {
+export const DiningRooms = () => {
   return (
     <div className={styles.wrapper}>
-      <h1>LivingRoom</h1>
+      <h1>DiningRooms</h1>
     </div>
   )
 }
 
-export default LivingRoom
+export default DiningRooms
 
 export const getStaticProps: GetStaticProps = async ({ locale }) => ({
   props: {

@@ -21,7 +21,7 @@ export const SliderItem: FC<Props> = ({ picture }) => {
 
   return (
     <div className={cn(styles.wrapper, { [styles.wrapperUa]: i18n.language === LanguageName.UA })}>
-      <Image src={picture.img} alt={picture.name} fill className={styles.picture}/>
+      <Image src={picture.img} alt={picture.name} fill className={styles.picture} />
       <div className={styles.text}>
         <p className={styles.desk}>{t('slider.desk')}</p>
         <h2 className={styles.title}>{t('slider.title')}</h2>

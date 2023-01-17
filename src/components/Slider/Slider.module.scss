@@ -7,11 +7,10 @@
   
   .containerSlider {
     height: 100%;
-    overflow-x: scroll;
-    overflow: hidden;
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
+    transition: ease all 0.5s;
   }
 
   .swipeWrapper {
