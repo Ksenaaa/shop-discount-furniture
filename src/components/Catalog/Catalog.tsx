@@ -15,7 +15,7 @@ type Props = {
   styleCatalog: string
 }
 
-type menuNameType = {
+type MenuNameType = {
   id: string,
   name: string,
   path: string
@@ -26,7 +26,7 @@ export const Catalog: FC<Props> = ({ onClick, styleCatalog }) => {
 
   const router = useRouter()
 
-  const menuName = t('menu', { returnObjects: true }) as menuNameType[]
+  const menuName = t('menu', { returnObjects: true }) as MenuNameType[]
 
   return (
     <div className={styles[styleCatalog]}>
