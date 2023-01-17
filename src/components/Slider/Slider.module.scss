@@ -1,3 +1,5 @@
+@import 'styles/animation';
+
 .wrapper {
   max-width: 1440px;
   height: 400px;
@@ -7,11 +9,10 @@
   
   .containerSlider {
     height: 100%;
-    overflow-x: scroll;
-    overflow: hidden;
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
+    transition: $animationSlider;
   }
 
   .swipeWrapper {
