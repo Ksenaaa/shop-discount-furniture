@@ -7,11 +7,11 @@
     "sliderItem": "Купити зараз"
   },
   "menu": [
-    { "id": "livingRoom", "name": "вітальня", "path": "living-room" },
-    { "id": "diningRoom", "name": "їдальня", "path": "dining-room" },
+    { "id": "livingRooms", "name": "вітальні", "path": "living-rooms" },
+    { "id": "diningRooms", "name": "їдальні", "path": "dining-rooms" },
     { "id": "bedrooms", "name": "спальні", "path": "bedrooms" },
     { "id": "mattresses", "name": "матраци", "path": "mattresses" },
-    { "id": "decoreMore", "name": "декор і багато іншого", "path": "decore-more" },
+    { "id": "decorMore", "name": "декор і багато іншого", "path": "decor-more" },
     { "id": "kids", "name": "дитячі", "path": "kids" },
     { "id": "specials", "name": "спеціальні пропозиції", "path": "specials" },
     { "id": "decor", "name": "декор", "path": "decor" }
@@ -21,6 +21,7 @@
   },
   "contacts": {
     "adress": "Електростанція Баттерсі, Лондон SW11 8BN, Велика Британія",
+    "call": "+4(477) 000 8282",
     "workingTime": "Пн - Сб: 8:00 - 18:00, Неділя: 9:00 - 16:00"
   },
   "error": {

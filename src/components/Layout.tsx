@@ -4,6 +4,7 @@ import Head from 'next/head'
 
 import { centuryGothic, montserrat, ptSerif } from 'styles/fonts'
 
+import { Footer } from './Footer'
 import { Header } from './Header'
 
 type Props = {
@@ -34,6 +35,7 @@ export const Layout: FC<Props> = ({ children }) => {
       `}</style>
       <Header />
       {children}
+      <Footer />
     </>
   )
 }

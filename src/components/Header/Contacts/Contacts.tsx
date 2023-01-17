@@ -41,7 +41,7 @@ export const Contacts = () => {
           <div className={styles.call}>
             <Image src={callIcon} alt="call" />
             <p className={styles.callText}>
-              +4(477) 000 8282
+              {t('contacts.call')}
             </p>
           </div>
           <div className={styles.time}>

@@ -1,0 +1,115 @@
+@import 'styles/colors';
+@import 'styles/fontMixin';
+@import 'styles/fontFamily';
+
+.wrapperMenu {
+  height: 43px;
+  background: $grey;
+
+  .list {
+    display: flex;
+    justify-content: space-between;
+    margin: 0 auto;
+    max-width: 919px;
+    flex-direction: row;
+    transform: translateY(50%);
+
+    .item {
+      a {
+        @include fontStyle(400, 16px, 20px);
+        color: $black;
+      }
+
+      &:first-letter {
+        text-transform: uppercase;
+      }
+    }
+
+    .activeItem a {
+      font-weight: 700;
+    }
+  }
+}
+
+.wrapperMenuBurger .list {
+  padding: 45px;
+  display: flex;
+  flex-direction: column;
+
+  .item {
+    a {
+      @include fontStyle(400, 28px, 40px);
+      color: $black;
+    }
+
+    &:first-letter {
+      text-transform: uppercase;
+    }
+  }
+
+  .activeItem a {
+    font-weight: 700;
+  }
+}
+
+.wrapperMenuFooter .list {
+  display: flex;
+  flex-direction: column;
+
+  .item {
+    margin-bottom: 4px;
+
+    a {
+      @include fontStyle(400, 18px, 27px);
+      font-family: $gothic;
+      color: $darkBlue;
+    }
+
+    &:first-letter {
+      text-transform: uppercase;
+    }
+  }
+
+  .activeItem a {
+    font-family: $gothic;
+    font-weight: 700;
+  }
+}
+
+@media screen and (max-width: 975px) {
+  .wrapperMenu {
+    padding: 0 15px;
+  }
+
+  .wrapperMenu .list, .wrapperMenuFooter .list {
+    .item a {
+      @include fontStyle(400, 14px, 19px);
+    }
+
+    .activeItem a {
+      font-weight: 700;
+    }
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .wrapperMenu .list, .wrapperMenuFooter .list {
+    .item a {
+      @include fontStyle(400, 12px, 14px);
+    }
+
+    .activeItem a {
+      font-weight: 700;
+    }
+  }
+
+  .wrapperMenuBurger .list {
+    padding: 30px;
+  }
+}
+
+@media screen and (max-width: 680px) {
+  .wrapperMenu {
+    display: none;
+  }
+}
