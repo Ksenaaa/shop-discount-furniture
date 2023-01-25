@@ -1,64 +1,15 @@
 @import 'styles/animation';
 
 .wrapper {
-  max-width: 1440px;
-  height: 400px;
+  width: 100%;
+  height: 100%;
   overflow: hidden;
-  position: relative;
-  margin: 0 auto;
-  
+
   .containerSlider {
     height: 100%;
     display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
+    flex-direction: row;
+    flex-wrap: nowrap;
     transition: $animationSlider;
-  }
-
-  .swipeWrapper {
-    display: flex;
-    justify-content: space-between;
-    position: absolute;
-    top: 50%;
-    left: 0;
-    right: 0;
-    transform: translateY(-50%);
-    padding: 0 24px;
-
-    .swipeLeft, .swipeRight {
-      cursor: pointer;
-      width: 80px;
-      height: 80px;
-    }
-  
-    .swipeLeft:hover, .swipeRight:hover {
-      opacity: 0.6;
-    }
-  }
-}
-
-@media screen and (max-width: 975px) {
-  .wrapper {
-    height: 300px;
-
-    .swipeWrapper .swipeLeft, .swipeWrapper .swipeRight {
-      width: 60px;
-      height: 60px;
-    }
-  }
-}
-
-@media screen and (max-width: 680px) {
-  .wrapper {
-    height: 200px;
-
-    .swipeWrapper {
-      padding: 0 10px;
-
-      .swipeLeft, .swipeRight {
-        height: 30px;
-        width: 30px;
-      }
-    }
   }
 }

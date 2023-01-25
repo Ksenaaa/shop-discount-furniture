@@ -1,0 +1,122 @@
+@import 'styles/fontMixin';
+@import 'styles/textEndMixin';
+@import 'styles/colors';
+@import 'styles/animation';
+
+.wrapper {
+  max-width: 1312px;
+  margin: 0 auto;
+  margin-bottom: 112px;
+
+  .title {
+    @include fontStyle(700, 24px, 29px);
+    color: $black;
+    display: inline-block;
+    margin-bottom: 40px;
+  }
+
+  .cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 32px;
+
+    &:hover a {
+      opacity: 1;
+    }
+
+    .card {
+      grid-column: span 1;
+      max-height: 336px;
+      
+      .picture {
+        height: 280px;
+        max-width: 416px;
+        position: relative;
+        overflow: hidden;
+        transition: $animationTransition;
+        margin-bottom: 8px;
+
+        img {
+          position: absolute;
+          object-fit: cover;
+        }
+      }  
+
+      .cardTitle {
+        @include fontStyle(500, 18px, 24px);
+        @include textEndStyle(2);
+        color: $black;
+      }
+
+      &:hover .cardTitle {
+        text-decoration: underline;
+        @include fontStyle(700, 18px, 24px);
+      }
+
+      &:hover .picture {
+        box-shadow: $lightGreyTransparent2;
+      }
+    }
+  }
+}
+
+
+@media screen and (max-width: 975px) {
+  .wrapper .cards {
+    gap: 15px;
+
+    .card .picture {
+      height: 220px;
+    }
+  }
+}
+
+@media screen and (max-width: 776px) {
+  .wrapper .cards .card .picture {
+    height: 180px;
+  }
+}
+
+@media screen and (max-width: 680px) {
+  .wrapper {
+    margin-bottom: 60px;
+  
+    .title {
+      @include fontStyle(700, 20px, 20px);
+      margin-bottom: 20px;
+    }
+  
+    .cards {  
+      gap: 20px;
+
+      .card {
+        grid-column: span 3;
+        
+        .picture {
+          max-width: 100%;
+          margin-bottom: 3px;
+        }  
+  
+        .cardTitle {
+          @include fontStyle(500, 16px, 20px);
+        }
+  
+        &:hover .cardTitle {
+          @include fontStyle(700, 16px, 20px);
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 427px) {
+  .wrapper .cards .card { 
+    .cardTitle {
+      @include fontStyle(500, 14px, 18px);
+    }
+
+    &:hover .cardTitle {
+      @include fontStyle(700, 14px, 18px);
+    }
+  }
+}

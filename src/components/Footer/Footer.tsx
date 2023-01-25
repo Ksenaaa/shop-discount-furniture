@@ -5,7 +5,7 @@ import Link from 'next/link'
 
 import { useTranslation } from 'next-i18next'
 
-import adressIcon from 'img/svg/adress-icon.svg'
+import addressIcon from 'img/svg/address-icon.svg'
 import callIcon from 'img/svg/call-icon.svg'
 import facebookIcon from 'img/svg/facebook-blue-icon.svg'
 import instagramIcon from 'img/svg/instagram-blue-icon.svg'
@@ -25,7 +25,6 @@ export const Footer = () => {
       <div className={styles.dividingLine} />
 
       <div className={styles.sections}>
-
         <div className={styles.pages}>
           <div className={styles.categorySection}>
             <div className={styles.title}>
@@ -51,10 +50,10 @@ export const Footer = () => {
             </p>
           </div>
 
-          <div className={styles.adress}>
-            <Image src={adressIcon} alt="adress" />
-            <p className={styles.adressText}>
-              {t('contacts.adress')}
+          <div className={styles.address}>
+            <Image src={addressIcon} alt="address" />
+            <p className={styles.addressText}>
+              {t('contacts.address')}
             </p>
           </div>
 

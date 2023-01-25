@@ -20,11 +20,17 @@
     "iSearch": "I search..."
   },
   "contacts": {
-    "adress": "Battersea Power Station, London SW11 8BN, Great Britain",
+    "address": "5 Kirtling St, Nine Elms, London SW11 8BU, Great Britain",
     "call": "+4(477) 000 8282",
     "workingTime": "Mon to sat: 8 am - 6pm, Sunday: 9am -4pm"
   },
   "error": {
     "404": "Oops, something went wrong :("
+  },
+  "benefits": {
+    "home": "Take it Home today",
+    "pig": "0$ Down + no 0%",
+    "card": "NO CREDIT NEEDED",
+    "delivery": "Same day delivery"
   }
 }

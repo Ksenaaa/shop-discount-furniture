@@ -5,7 +5,7 @@ import Head from 'next/head'
 
 import { GetStaticProps } from 'next'
 
-import { Slider } from 'components/Slider'
+import { Main } from 'components/Main'
 
 const Home = () => {
   return (
@@ -14,7 +14,7 @@ const Home = () => {
         <title>Home</title>
       </Head>
       <div>
-        <Slider />
+        <Main />
       </div>
     </>
   )
