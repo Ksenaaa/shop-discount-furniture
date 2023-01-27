@@ -1,10 +1,7 @@
 import React from 'react'
 
-import Image from 'next/image'
-
-import { useSwipe } from 'hooks/swipeHook'
-import swipeLeft from 'img/svg/swipe-left.svg'
-import swipeRight from 'img/svg/swipe-right.svg'
+import swipeLeftImg from 'img/svg/swipe-left.svg'
+import swipeRightImg from 'img/svg/swipe-right.svg'
 import { useGetSliderImgsQuery } from 'store/services/slider'
 import { timeoutTransition } from 'utils/constants/timeoutTransition'
 
@@ -15,28 +12,25 @@ import { SliderItem } from './SliderItem'
 import styles from './MainSlider.module.scss'
 
 export const MainSlider = () => {
-  const { swipe, onSwipeLeft, onSwipeRight } = useSwipe()
-
-  const { data: sliderPictures, isLoading } = useGetSliderImgsQuery()
+  const { data: sliderPictures = [], isLoading } = useGetSliderImgsQuery()
 
   return (
     <div className={styles.wrapper}>
       <Slider
-        picturesLength={sliderPictures?.length}
+        picturesLength={sliderPictures.length}
         speed={timeoutTransition}
         isLoading={isLoading}
         isAutoCarousel={true}
-        swipe={swipe}
+        isSwipe={true}
         column={1}
+        swipeLeftImg={swipeLeftImg}
+        swipeRightImg={swipeRightImg}
+        stylesSwipeWrapper={styles.stylesSwipeWrapper}
       >
         {sliderPictures?.map(pic =>
           <SliderItem key={pic.id} picture={pic} />
         )}
       </Slider>
-      <div className={styles.swipeWrapper}>
-        <Image src={swipeLeft} alt="left" className={styles.swipeLeft} onClick={onSwipeLeft} />
-        <Image src={swipeRight} alt="right" className={styles.swipeRight} onClick={onSwipeRight} />
-      </div>
     </div>
   )
 }

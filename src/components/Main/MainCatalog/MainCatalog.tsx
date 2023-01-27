@@ -7,7 +7,7 @@ import { useTranslation } from 'next-i18next'
 
 import { IMenuName } from 'interface/catalogInterface'
 import { useGetMainCatalogImgsQuery } from 'store/services/mainCatalog'
-import { routes } from 'utils/constants/routes'
+import { Routes } from 'utils/constants/routes'
 import { getBlurImage } from 'utils/helpers/getBlurImage'
 
 import styles from './MainCatalog.module.scss'
@@ -23,7 +23,7 @@ export const MainCatalog = () => {
   return (
     <ul className={styles.cards}>
       {menuName?.map(item =>
-        <Link href={`/${routes.CATALOG}/${item.path}`} key={item.id} className={styles.card}>
+        <Link href={`/${Routes.CATALOG}/${item.path}`} key={item.id} className={styles.card}>
           {catalogPictures?.map(picture =>
             picture.name === item.id &&
               <Image

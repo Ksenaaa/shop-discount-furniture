@@ -5,26 +5,22 @@ import pigImg from 'img/svg/main-pig-icon.svg'
 
 export const benefitsCards = [
   {
-    id: 1,
-    name: 'home',
+    id: 'home',
     text: 'benefits.home',
     img: homeImg
   },
   {
-    id: 2,
-    name: 'pig',
+    id: 'pig',
     text: 'benefits.pig',
     img: pigImg
   },
   {
-    id: 3,
-    name: 'card',
+    id: 'card',
     text: 'benefits.card',
     img: cardImg
   },
   {
-    id: 4,
-    name: 'delivery',
+    id: 'delivery',
     text: 'benefits.delivery',
     img: deliveryImg
   }

@@ -16,7 +16,7 @@ export const Benefits = () => {
       <div className={styles.benefits}>
         {benefitsCards.map(item =>
           <div className={styles.card} key={item.id}>
-            <Image src={item.img} alt={item.name} className={styles.picture} />
+            <Image src={item.img} alt={item.id} className={styles.picture} />
             <h2 className={styles.title}>
               {t(item.text)}
             </h2>

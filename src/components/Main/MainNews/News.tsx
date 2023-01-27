@@ -4,7 +4,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 
 import { useGetMainNewsQuery } from 'store/services/news'
-import { routes } from 'utils/constants/routes'
+import { Routes } from 'utils/constants/routes'
 import { getBlurImage } from 'utils/helpers/getBlurImage'
 
 import styles from './News.module.scss'
@@ -16,7 +16,7 @@ export const News = () => {
 
   return (
     <div className={styles.wrapper}>
-      <Link href={`/${routes.NEWS}`} className={styles.title}>
+      <Link href={`/${Routes.NEWS}`} className={styles.title}>
         News
       </Link>
       <ul className={styles.cards}>

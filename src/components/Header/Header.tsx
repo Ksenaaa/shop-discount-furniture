@@ -1,7 +1,7 @@
 import React from 'react'
 
 import { useToggle } from 'hooks/toggleHook'
-import { catalogStyles } from 'utils/constants/catalogStyles'
+import { CatalogStyles } from 'utils/constants/catalogStyles'
 
 import { Catalog } from 'components/Catalog'
 
@@ -18,13 +18,13 @@ export const Header = () => {
     <div className={styles.wrapper}>
       <Contacts />
       <MiddleHeader />
-      <Catalog styleCatalog={catalogStyles.WRAPPER_MENU} />
+      <Catalog styleCatalog={CatalogStyles.WRAPPER_MENU} />
       <div className={styles.burgerWrapper} onClick={toggleMenuBurgerActive}>
         <Burger isActiveMenu={isMenuBurgerActive} />
       </div>
       {isMenuBurgerActive &&
         <div className={styles.burgerMenu}>
-          <Catalog onClick={toggleMenuBurgerActive} styleCatalog={catalogStyles.WRAPPER_MENU_BURGER} />
+          <Catalog onClick={toggleMenuBurgerActive} styleCatalog={CatalogStyles.WRAPPER_MENU_BURGER} />
         </div>
       }
     </div>

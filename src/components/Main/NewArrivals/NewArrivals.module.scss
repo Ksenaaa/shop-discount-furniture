@@ -14,32 +14,32 @@
     margin-bottom: 40px;
   }
 
-  .swipeWrapper {
-    margin-bottom: 24px;
-    display: flex;
-    justify-content: flex-end;
-
-    .swipeLeft, .swipeRight {
-      width: 32px;
-      height: 32px;
-      margin-right: 16px;
-      cursor: pointer;
-      transition: $animationTransition;
-    }
-
-    .swipeLeft:hover, .swipeRight:hover {
-      opacity: 0.6;
-    }
-  }
-
   .wrapperSlider {
     max-height: 264px;
     overflow: hidden;
+    
+    .stylesSwipeWrapper {
+      margin-bottom: 24px;
+      display: flex;
+      justify-content: flex-end;
+  
+      img:nth-child(1), img:nth-child(2) {
+        width: 32px;
+        height: 32px;
+        margin-right: 16px;
+        cursor: pointer;
+        transition: $animationTransition;
+      }
+  
+      img:nth-child(1):hover, img:nth-child(2):hover {
+        opacity: 0.6;
+      }
+    }
 
     .card {
       flex: 0 0 33.3%;
       width: 33.3%;
-
+      
       img {
         height: 100%;
         width: 100%;
@@ -52,7 +52,7 @@
         transform: scale(1.05);
       }
     }
-
+    
     &:hover a {
       opacity: 1;
     }
@@ -68,11 +68,11 @@
       margin-bottom: 20px;
     }
 
-    .swipeWrapper {
+    .wrapperSlider .stylesSwipeWrapper {
       margin-bottom: 20px;
       justify-content: space-between;
   
-      .swipeLeft, .swipeRight {
+      img:nth-child(1), img:nth-child(2) {
         margin: 0 20px;
       }
     }

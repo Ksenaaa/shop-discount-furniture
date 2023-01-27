@@ -1,19 +1,22 @@
-import React, { FC, ReactNode, useEffect, useState } from 'react'
+import React, { FC, ReactNode, useCallback, useEffect, useState } from 'react'
 
-import { sliderSwipe } from 'utils/constants/sliderSwipe'
+import Image from 'next/image'
 
 import { Loader } from 'components/Loader'
 
 import styles from './Slider.module.scss'
 
 type Props = {
-  picturesLength?: number,
+  picturesLength: number,
   speed?: number,
   column: number,
   isLoading?: boolean,
   isAutoCarousel: boolean,
-  swipe: string,
-  children: ReactNode
+  isSwipe: boolean,
+  children: ReactNode,
+  swipeLeftImg?: string,
+  swipeRightImg?: string,
+  stylesSwipeWrapper?: string
 }
 
 export const Slider: FC<Props> = ({
@@ -22,20 +25,25 @@ export const Slider: FC<Props> = ({
   column,
   isLoading,
   isAutoCarousel,
-  swipe,
-  children
+  isSwipe,
+  children,
+  swipeLeftImg = '',
+  swipeRightImg = '',
+  stylesSwipeWrapper
 }) => {
   const [visibleSlide, setVisibleSlide] = useState<number>(0)
 
-  useEffect(() => {
+  const onSwipeLeft = useCallback(() => {
     if (!picturesLength) return
 
-    if (swipe === sliderSwipe.LEFT) {
-      setVisibleSlide(preState => preState === 0 ? picturesLength - 1 : preState - 1)
-    } else if (swipe === sliderSwipe.RIGHT) {
-      setVisibleSlide(preState => picturesLength - 1 === preState ? 0 : preState + 1)
-    }
-  }, [picturesLength, swipe])
+    setVisibleSlide(preState => preState === 0 ? picturesLength - 1 : preState - 1)
+  }, [picturesLength])
+
+  const onSwipeRight = useCallback(() => {
+    if (!picturesLength) return
+
+    setVisibleSlide(preState => picturesLength - 1 === preState ? 0 : preState + 1)
+  }, [picturesLength])
 
   useEffect(() => {
     if (isAutoCarousel) {
@@ -49,13 +57,21 @@ export const Slider: FC<Props> = ({
   }, [picturesLength, visibleSlide, isAutoCarousel, speed])
 
   return (
-    <div className={styles.wrapper}>
-      {isLoading ?
-        <Loader /> :
-        <div className={styles.containerSlider} style={{ transform: `translateX(${-visibleSlide * 100 / column}%)` }}>
-          {children}
+    <>
+      {isSwipe &&
+        <div className={stylesSwipeWrapper}>
+          <Image src={swipeLeftImg} alt="swipeLeft" onClick={onSwipeLeft} />
+          <Image src={swipeRightImg} alt="swipeRight" onClick={onSwipeRight} />
         </div>
       }
-    </div>
+      <div className={styles.wrapper}>
+        {isLoading ?
+          <Loader /> :
+          <div className={styles.containerSlider} style={{ transform: `translateX(${-visibleSlide * 100 / column}%)` }}>
+            {children}
+          </div>
+        }
+      </div>
+    </>
   )
 }

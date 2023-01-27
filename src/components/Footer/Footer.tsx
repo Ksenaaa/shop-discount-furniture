@@ -11,7 +11,7 @@ import facebookIcon from 'img/svg/facebook-blue-icon.svg'
 import instagramIcon from 'img/svg/instagram-blue-icon.svg'
 import logoName from 'img/svg/logo-name.svg'
 import logoIcon from 'img/svg/logo.svg'
-import { catalogStyles } from 'utils/constants/catalogStyles'
+import { CatalogStyles } from 'utils/constants/catalogStyles'
 
 import { Catalog } from 'components/Catalog'
 
@@ -31,7 +31,7 @@ export const Footer = () => {
               Category
             </div>
             <div className={styles.wrapperCatalog}>
-              <Catalog styleCatalog={catalogStyles.WRAPPER_FOOTER} />
+              <Catalog styleCatalog={CatalogStyles.WRAPPER_FOOTER} />
             </div>
           </div>
           <div className={styles.otherSection}>

@@ -2,20 +2,7 @@ export interface INews {
   id: string,
   name: string,
   text: string,
-  pictures: {
-    img1: {
-      img: string,
-      name: string
-    },
-    img2: {
-      img: string,
-      name: string
-    },
-    img3: {
-      img: string,
-      name: string
-    }
-  }
+  pictures: [string]
 }
 
 export interface IMainNews {

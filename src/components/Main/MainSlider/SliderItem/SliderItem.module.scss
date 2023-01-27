@@ -84,24 +84,28 @@
     margin-top: 20px;
 
     .title {
-      width: 250px;
-      @include fontStyle(600, 30px, 30px);
+      @include fontStyle(600, 28px, 25px);
+      width: 220px;
+      margin-bottom: 16px;
     }
     
     .desk {
-      @include fontStyle(400, 18px, 29px);
+      @include fontStyle(400, 18px, 22px);
     }
   }
 }
 
 @media screen and (max-width: 383px) {
-  .wrapperUa .text {
+  .wrapper .text {
+    margin-top: 40px;
+
     .title {
-      @include fontStyle(600, 26px, 25px);
+      @include fontStyle(600, 20px, 20px);
+      width: 130px;
     }
     
     .desk {
-      @include fontStyle(400, 16px, 24px);
+      @include fontStyle(400, 16px, 20px);
     }
   }
 }
