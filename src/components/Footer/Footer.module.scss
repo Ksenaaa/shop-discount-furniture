@@ -50,7 +50,7 @@
     .contacts {
       width: 360px;
 
-      .call, .adress {
+      .call, .address {
         display: flex;
         flex-direction: row;
         align-items: flex-start;
@@ -60,7 +60,7 @@
           height: 24px;
         }
 
-        .callText, .adressText {
+        .callText, .addressText {
           margin-left: 8px;
           color: $black;
         }
@@ -74,10 +74,10 @@
         }
       }
 
-      .adress {
+      .address {
         margin-bottom: 16px;
 
-        .adressText {
+        .addressText {
           @include fontStyle(400, 16px, 20px);
         }
       }
@@ -144,7 +144,7 @@
       }
 
       .contacts {
-        .call img, .adress img {
+        .call img, .address img {
           width: 15px;
           height: 15px;
         }
@@ -157,10 +157,10 @@
           }
         }
 
-        .adress {
+        .address {
           margin-bottom: 12px;
 
-          .adressText {
+          .addressText {
             @include fontStyle(400, 14px, 16px);
           }
         }
@@ -189,7 +189,7 @@
           @include fontStyle(500, 14px, 12px);
         }
 
-        .adress .adressText {
+        .address .addressText {
           @include fontStyle(400, 10px, 12px);
         }
       }
@@ -253,10 +253,10 @@
           }
         }
 
-        .adress {
+        .address {
           margin-bottom: 8px;
 
-          .adressText {
+          .addressText {
             @include fontStyle(400, 10px, 10px);
           }
         }

@@ -1,54 +1,77 @@
-import React, { useCallback, useEffect, useState } from 'react'
+import React, { FC, ReactNode, useCallback, useEffect, useState } from 'react'
 
 import Image from 'next/image'
 
-import swipeLeft from 'img/svg/swipe-left.svg'
-import swipeRight from 'img/svg/swipe-right.svg'
-import { useGetSliderImgsQuery } from 'store/services/slider'
-import { timeoutTransition } from 'utils/constants/timeoutTransition'
-
 import { Loader } from 'components/Loader'
-
-import { SliderItem } from './SliderItem'
 
 import styles from './Slider.module.scss'
 
-export const Slider = () => {
+type Props = {
+  picturesLength: number,
+  speed?: number,
+  column: number,
+  isLoading?: boolean,
+  isAutoCarousel: boolean,
+  isSwipe: boolean,
+  children: ReactNode,
+  swipeLeftImg?: string,
+  swipeRightImg?: string,
+  stylesSwipeWrapper?: string
+}
+
+export const Slider: FC<Props> = ({
+  picturesLength,
+  speed,
+  column,
+  isLoading,
+  isAutoCarousel,
+  isSwipe,
+  children,
+  swipeLeftImg = '',
+  swipeRightImg = '',
+  stylesSwipeWrapper
+}) => {
   const [visibleSlide, setVisibleSlide] = useState<number>(0)
 
-  const { data: sliderPictures, isLoading } = useGetSliderImgsQuery()
+  const onSwipeLeft = useCallback(() => {
+    if (!picturesLength) return
 
-  const handlerClickNext = useCallback(() =>
-    sliderPictures?.length && setVisibleSlide(preState => sliderPictures.length - 1 === preState ? 0 : preState + 1)
-  , [sliderPictures?.length])
+    setVisibleSlide(preState => preState === 0 ? picturesLength - 1 : preState - 1)
+  }, [picturesLength])
 
-  const handlerClickPrevious = useCallback(() =>
-    sliderPictures?.length && setVisibleSlide(preState => preState === 0 ? sliderPictures.length - 1 : preState - 1)
-  , [sliderPictures?.length])
+  const onSwipeRight = useCallback(() => {
+    if (!picturesLength) return
+
+    setVisibleSlide(preState => picturesLength - 1 === preState ? 0 : preState + 1)
+  }, [picturesLength])
 
   useEffect(() => {
-    if (!sliderPictures?.length) return
+    if (isAutoCarousel) {
+      if (!picturesLength) return
 
-    const timeoutId = setInterval(() => setVisibleSlide(preState =>
-      sliderPictures.length - 1 === preState ? 0 : preState + 1), timeoutTransition)
+      const timeoutId = setInterval(() => setVisibleSlide(preState =>
+        picturesLength - 1 === preState ? 0 : preState + 1), speed)
 
-    return () => clearInterval(timeoutId)
-  }, [sliderPictures?.length, visibleSlide])
+      return () => clearInterval(timeoutId)
+    }
+  }, [picturesLength, visibleSlide, isAutoCarousel, speed])
 
   return (
-    <div className={styles.wrapper}>
-      {isLoading ?
-        <Loader /> :
-        <div className={styles.containerSlider} style={{ transform: `translateX(${-visibleSlide * 100}%)` }}>
-          {sliderPictures?.map(pic =>
-            <SliderItem key={pic.id} picture={pic} />
-          )}
+    <>
+      {isSwipe &&
+        <div className={stylesSwipeWrapper}>
+          <Image src={swipeLeftImg} alt="swipeLeft" onClick={onSwipeLeft} />
+          <Image src={swipeRightImg} alt="swipeRight" onClick={onSwipeRight} />
         </div>
       }
-      <div className={styles.swipeWrapper}>
-        <Image src={swipeLeft} alt="swipeLeft" className={styles.swipeLeft} onClick={handlerClickPrevious} />
-        <Image src={swipeRight} alt="swipeRight" className={styles.swipeRight} onClick={handlerClickNext} />
+      <div className={styles.wrapper}>
+        {isLoading ?
+          <Loader /> :
+          <div className={styles.containerSlider} style={{ transform: `translateX(${-visibleSlide * 100 / column}%)` }}>
+            {children}
+          </div>
+        }
       </div>
-    </div>
+    </>
   )
 }

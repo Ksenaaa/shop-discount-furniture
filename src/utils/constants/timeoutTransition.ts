@@ -1,1 +1,1 @@
-export const timeoutTransition = 3000
+export const timeoutTransition = 4000

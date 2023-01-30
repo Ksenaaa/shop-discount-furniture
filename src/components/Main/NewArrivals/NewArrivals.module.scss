@@ -1,0 +1,87 @@
+@import 'styles/fontMixin';
+@import 'styles/colors';
+@import 'styles/animation';
+
+.wrapper {
+  max-width: 1344px;
+  margin: 0 auto;
+  margin-bottom: 112px;
+
+  .title {
+    @include fontStyle(700, 24px, 29px);
+    color: $black;
+    display: inline-block;
+    margin-bottom: 40px;
+  }
+
+  .wrapperSlider {
+    max-height: 264px;
+    overflow: hidden;
+    
+    .stylesSwipeWrapper {
+      margin-bottom: 24px;
+      display: flex;
+      justify-content: flex-end;
+  
+      img:nth-child(1), img:nth-child(2) {
+        width: 32px;
+        height: 32px;
+        margin-right: 16px;
+        cursor: pointer;
+        transition: $animationTransition;
+      }
+  
+      img:nth-child(1):hover, img:nth-child(2):hover {
+        opacity: 0.6;
+      }
+    }
+
+    .card {
+      flex: 0 0 33.3%;
+      width: 33.3%;
+      
+      img {
+        height: 100%;
+        width: 100%;
+        display: block;
+        object-fit: cover;
+      }
+      
+      &:hover {
+        box-shadow: $lightGreyTransparent4;
+        transform: scale(1.05);
+      }
+    }
+    
+    &:hover a {
+      opacity: 1;
+    }
+  }
+}
+
+@media screen and (max-width: 680px) {
+  .wrapper {
+    margin-bottom: 60px;
+  
+    .title {
+      @include fontStyle(700, 20px, 20px);
+      margin-bottom: 20px;
+    }
+
+    .wrapperSlider .stylesSwipeWrapper {
+      margin-bottom: 20px;
+      justify-content: space-between;
+  
+      img:nth-child(1), img:nth-child(2) {
+        margin: 0 20px;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 450px) {
+  .wrapper .wrapperSlider .card {
+    flex: 0 0 100%;
+    width: 100%;
+  }
+}

@@ -1,0 +1,57 @@
+@import 'styles/animation';
+
+.wrapper {
+  max-width: 1440px;
+  height: 400px;
+  margin: 0 auto;
+  position: relative;
+
+  .stylesSwipeWrapper {
+    display: flex;
+    justify-content: space-between;
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    z-index: 3;
+    transform: translateY(-50%);
+    padding: 0 24px;
+
+    img:nth-child(1), img:nth-child(2) {
+      cursor: pointer;
+      width: 80px;
+      height: 80px;
+      transition: $animationTransition;
+    }
+  
+    img:nth-child(1):hover, img:nth-child(2):hover {
+      opacity: 0.6;
+    }
+  }
+}
+
+@media screen and (max-width: 975px) {
+  .wrapper {
+    height: 300px;
+
+    .stylesSwipeWrapper img:nth-child(1), .stylesSwipeWrapper img:nth-child(2) {
+      width: 60px;
+      height: 60px;
+    }
+  }
+}
+
+@media screen and (max-width: 680px) {
+  .wrapper {
+    height: 200px;
+
+    .stylesSwipeWrapper {
+      padding: 0 10px;
+
+      img:nth-child(1), img:nth-child(2) {
+        height: 30px;
+        width: 30px;
+      }
+    }
+  }
+}

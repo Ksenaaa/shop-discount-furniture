@@ -1,0 +1,101 @@
+@import 'styles/fontMixin';
+@import 'styles/colors';
+@import 'styles/animation';
+
+.cards {
+  max-width: 1312px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 32px;
+  margin-bottom: 112px;
+
+  .card {
+    grid-column: span 1;
+    height: 172px;
+    overflow: hidden;
+    position: relative;
+    box-shadow: $lightGreyTransparent3;
+    display: block;
+    
+    .picture {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    
+    .overlapPicture {
+      background: $lightGreyTransparent;
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      z-index: 2;
+      transition: $animationTransition;
+    }
+
+    .title {
+      @include fontStyle(700, 24px, 29px);
+      width: 100%;
+      padding: 8px 0;
+      color: $black;
+      text-align: center;
+      background: $white;
+      position: absolute;
+      z-index: 3;
+      bottom: 0;
+
+      &:first-letter {
+        text-transform: uppercase;
+      }  
+    }
+
+    &:hover .title {
+      text-decoration: underline;
+    }
+
+    &:hover a {
+      opacity: 1;
+    }
+
+    &:hover .overlapPicture {
+      background: $lightOrangeTransparent;
+    }
+  }
+}
+
+@media screen and (max-width: 975px) {
+  .cards {
+    gap: 15px;
+
+    .card {
+      height: 150px;
+
+      .title {
+        @include fontStyle(700, 20px, 22px);
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 735px) {
+  .cards {
+    margin-bottom: 60px;
+
+    .card {
+      grid-column: span 2;
+    }
+  }
+}
+
+@media screen and (max-width: 435px) {
+  .cards .card {
+    height: 100px;
+
+    .title {
+      @include fontStyle(700, 16px, 20px);
+      padding: 4px 0;
+    }
+  }
+}

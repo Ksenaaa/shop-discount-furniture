@@ -5,13 +5,13 @@ import Link from 'next/link'
 
 import { useTranslation } from 'next-i18next'
 
-import adressIcon from 'img/svg/adress-icon.svg'
+import addressIcon from 'img/svg/address-icon.svg'
 import callIcon from 'img/svg/call-icon.svg'
 import facebookIcon from 'img/svg/facebook-blue-icon.svg'
 import instagramIcon from 'img/svg/instagram-blue-icon.svg'
 import logoName from 'img/svg/logo-name.svg'
 import logoIcon from 'img/svg/logo.svg'
-import { catalogStyles } from 'utils/constants/catalogStyles'
+import { CatalogStyles } from 'utils/constants/catalogStyles'
 
 import { Catalog } from 'components/Catalog'
 
@@ -25,14 +25,13 @@ export const Footer = () => {
       <div className={styles.dividingLine} />
 
       <div className={styles.sections}>
-
         <div className={styles.pages}>
           <div className={styles.categorySection}>
             <div className={styles.title}>
               Category
             </div>
             <div className={styles.wrapperCatalog}>
-              <Catalog styleCatalog={catalogStyles.WRAPPER_FOOTER} />
+              <Catalog styleCatalog={CatalogStyles.WRAPPER_FOOTER} />
             </div>
           </div>
           <div className={styles.otherSection}>
@@ -51,10 +50,10 @@ export const Footer = () => {
             </p>
           </div>
 
-          <div className={styles.adress}>
-            <Image src={adressIcon} alt="adress" />
-            <p className={styles.adressText}>
-              {t('contacts.adress')}
+          <div className={styles.address}>
+            <Image src={addressIcon} alt="address" />
+            <p className={styles.addressText}>
+              {t('contacts.address')}
             </p>
           </div>
 

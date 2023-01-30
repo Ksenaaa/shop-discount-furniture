@@ -6,7 +6,8 @@ import { useRouter } from 'next/router'
 import cn from 'classnames'
 import { useTranslation } from 'next-i18next'
 
-import { routes } from 'utils/constants/routes'
+import { IMenuName } from 'interface/catalogInterface'
+import { Routes } from 'utils/constants/routes'
 
 import styles from './Catalog.module.scss'
 
@@ -15,18 +16,12 @@ type Props = {
   styleCatalog: string
 }
 
-type MenuNameType = {
-  id: string,
-  name: string,
-  path: string
-}
-
 export const Catalog: FC<Props> = ({ onClick, styleCatalog }) => {
   const { t } = useTranslation()
 
   const router = useRouter()
 
-  const menuName = t('menu', { returnObjects: true }) as MenuNameType[]
+  const menuName = t('menu', { returnObjects: true }) as IMenuName[]
 
   return (
     <div className={styles[styleCatalog]}>
@@ -38,7 +33,7 @@ export const Catalog: FC<Props> = ({ onClick, styleCatalog }) => {
               [styles.activeItem]: router.pathname.split('/').includes(item.path)
             })}
           >
-            <Link href={`/${routes.CATALOG}/${item.path}`} onClick={onClick}>{item.name}</Link>
+            <Link href={`/${Routes.CATALOG}/${item.path}`} onClick={onClick}>{item.name}</Link>
           </li>
         )}
       </ul>

@@ -7,7 +7,7 @@ import { useRouter } from 'next/router'
 import { useTranslation } from 'next-i18next'
 
 import { useToggle } from 'hooks/toggleHook'
-import adressIcon from 'img/svg/adress-icon.svg'
+import addressIcon from 'img/svg/address-icon.svg'
 import callIcon from 'img/svg/call-icon.svg'
 import facebookIcon from 'img/svg/facebook-icon.svg'
 import instagramIcon from 'img/svg/instagram-icon.svg'
@@ -32,10 +32,10 @@ export const Contacts = () => {
     <div className={styles.wrapper}>
       <div className={styles.wrapperContant}>
         <div className={styles.info}>
-          <div className={styles.adress}>
-            <Image src={adressIcon} alt="adress" />
-            <p className={styles.adressText}>
-              {t('contacts.adress')}
+          <div className={styles.address}>
+            <Image src={addressIcon} alt="address" />
+            <p className={styles.addressText}>
+              {t('contacts.address')}
             </p>
           </div>
           <div className={styles.call}>

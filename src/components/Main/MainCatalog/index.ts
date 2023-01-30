@@ -1,0 +1,1 @@
+export { MainCatalog } from './MainCatalog'

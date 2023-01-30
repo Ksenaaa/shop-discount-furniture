@@ -8,11 +8,12 @@ import styles from './Button.module.scss'
 
 type Props = {
   name: string,
+  onClick?: () => void
 }
 
-export const Button: FC<Props> = ({ name }) => {
+export const Button: FC<Props> = ({ name, onClick }) => {
   return (
-    <div className={styles.wrapper}>
+    <div className={styles.wrapper} onClick={onClick}>
       {name}
       <Image src={arrow} alt="arrow" />
     </div>
