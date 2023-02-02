@@ -1,0 +1,225 @@
+@import 'styles/fontMixin';
+@import 'styles/fontFamily';
+@import 'styles/textEndMixin';
+@import 'styles/colors';
+@import 'styles/animation';
+
+.wrapper {
+  width: 100%;
+  min-height: 100vh;
+
+  .picture {
+    position: relative;
+    overflow: hidden;
+    margin-bottom: 32px;
+    
+    img {
+      position: absolute;
+      object-fit: cover;
+    }
+  } 
+
+  .pictureTitle {
+    height: 448px;
+    max-width: 1440px;
+
+    .overlapPicture, .descTitle, .toggleItems {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+    }
+    
+    .overlapPicture {
+      background: $darkGreyTransparent;
+      z-index: 2;
+    }
+
+    .descTitle {
+      max-width: 972px;
+      margin: 89px 64px;
+      z-index: 3;
+
+      .nameTitle {
+        @include fontStyle(700, 36px, 44px);
+        @include textEndStyle(2);
+        color: $white;
+        margin-bottom: 8px;
+      }
+  
+      .textTitle {
+        @include fontStyle(500, 24px, 29px);
+        @include textEndStyle(1);
+        color: $white;
+        max-width: 673px;
+        margin-bottom: 18px;
+      }
+    }
+
+    .toggleItems {
+      display: flex;
+      margin: 32px 64px;
+      justify-content: space-between;
+      align-items: flex-end;
+      z-index: 3;
+
+      .toggleItem {
+        transition: $animationTransition;
+        display: flex;
+        align-items: center;
+
+        .toggleItemText {
+          @include fontStyle(400, 16px, 20px);
+          color: $white;
+          margin: 0 16px;
+        }
+
+        & img {
+          height: 7px;
+        }
+
+        &:first-child img {
+          transform: rotateY(200deg);
+        }
+
+        &:last-child img {
+          right: 0;
+        }
+      }
+    }
+  }  
+  
+  .wrapperText {
+    max-width: 1312px;  
+    margin: 0 auto;
+    padding: 0 10px;
+
+    .name {
+      @include fontStyle(700, 24px, 29px);
+      color: $black;
+      margin-bottom: 32px;
+    }
+    
+    .text {
+      @include fontStyle(400, 18px, 27px);
+      font-family: $gothic;
+      margin-bottom: 32px;
+    }
+    
+    .pictureText {
+      height: 692px;
+      max-width: 100%;  
+    }
+  }
+}
+
+@media screen and (max-width: 975px) {
+  .wrapper {
+    .pictureTitle {
+      height: 348px;
+
+      .descTitle {
+        .nameTitle {
+          @include fontStyle(700, 30px, 35px);
+        }
+    
+        .textTitle {
+          @include fontStyle(500, 20px, 22px);
+        }
+      }
+  
+      .toggleItems .toggleItem .toggleItemText {
+        @include fontStyle(400, 16px, 20px);
+      }
+    }  
+    
+    .wrapperText {
+      .name {
+        @include fontStyle(700, 20px, 22px);
+      }
+      
+      .text {
+        @include fontStyle(400, 16px, 25px);
+      }
+      
+      .pictureText {
+        height: 492px;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 680px) {
+  .wrapper {
+    .pictureTitle {
+      height: 248px;
+
+      .descTitle {
+        margin: 40px 30px;
+
+        .nameTitle {
+          @include fontStyle(700, 20px, 20px);
+        }
+    
+        .textTitle {
+          @include fontStyle(500, 16px, 20px);
+        }
+      }
+  
+      .toggleItems {
+        margin: 30px 30px;
+
+        .toggleItem .toggleItemText {
+          @include fontStyle(400, 14px, 20px);
+        }
+      }
+    }
+    
+    .wrapperText .pictureText {
+      height: 292px;
+    }
+  }
+}
+
+@media screen and (max-width: 360px) {
+  .wrapper {
+    .pictureTitle {
+      height: 200px;
+
+      .descTitle {
+        margin: 30px 10px;
+
+        .nameTitle {
+          @include fontStyle(700, 18px, 20px);
+        }
+    
+        .textTitle {
+          @include fontStyle(500, 12px, 20px);
+        }
+      }
+  
+      .toggleItems {
+        margin: 10px 10px;
+
+        .toggleItem .toggleItemText {
+          @include fontStyle(400, 12px, 20px);
+        }
+      }
+    }  
+    
+    .wrapperText {
+      .nameTitle {
+        @include fontStyle(700, 18px, 18px);
+      }
+
+      .text {
+        @include fontStyle(400, 16px, 18px);
+      }
+
+      .pictureText {
+        height: 200px;
+      }
+    }
+  }
+}
