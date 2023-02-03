@@ -18,10 +18,7 @@ export const MainNewsCard: FC<Props> = ({ item }) => {
 
   return (
     <Link
-      href={{
-        pathname: `/${Routes.NEWS}/[id]`,
-        query: { id: item.id }
-      }}
+      href={`/${Routes.NEWS}/${item.id}`}
       className={styles.card}
     >
       <div className={styles.picture}>

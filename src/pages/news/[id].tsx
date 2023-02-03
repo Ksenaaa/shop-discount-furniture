@@ -21,6 +21,8 @@ export default OneNews
 export const getServerSideProps = async (context: GetServerSidePropsContext) => {
   const id = context?.params?.id
 
+  if (!id) return { notFound: true }
+
   return {
     props: {
       ...(await serverSideTranslations(context.locale ?? 'en', ['common'])),

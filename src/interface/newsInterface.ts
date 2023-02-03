@@ -10,3 +10,7 @@ export interface ICardNews {
   name: string,
   img: string
 }
+
+export interface INewsIds {
+  id: string
+}

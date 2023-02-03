@@ -6,7 +6,7 @@ import Link from 'next/link'
 import cn from 'classnames'
 
 import arrow from 'img/svg/arrow-button.svg'
-import { useGetAllNewsQuery, useGetOneNewsQuery } from 'store/services/news'
+import { useGetNewsIdsQuery, useGetOneNewsQuery } from 'store/services/news'
 import { Routes } from 'utils/constants/routes'
 import { getBlurImage } from 'utils/helpers/getBlurImage'
 
@@ -22,21 +22,21 @@ type Props = {
 
 export const NewsInfo: FC<Props> = ({ id }) => {
   const { data: news, isLoading, isSuccess, isError } = useGetOneNewsQuery(id)
-  const { data: allnews } = useGetAllNewsQuery()
+  const { data: newsIds } = useGetNewsIdsQuery()
 
-  const indexItem = allnews?.findIndex(item => item.id === id) as number
+  const indexItem = newsIds?.findIndex(item => item.id === id) || 0
 
   const previousId = useCallback(() => {
-    if (!allnews?.length) return
+    if (!newsIds?.length) return
 
-    return indexItem === 0 ? allnews[allnews.length - 1].id : allnews[indexItem - 1]?.id
-  }, [allnews, indexItem])
+    return indexItem === 0 ? newsIds[newsIds.length - 1].id : newsIds[indexItem - 1]?.id
+  }, [newsIds, indexItem])
 
   const nextId = useCallback(() => {
-    if (!allnews?.length) return
+    if (!newsIds?.length) return
 
-    return indexItem + 1 === allnews.length ? allnews[0].id : allnews[indexItem + 1]?.id
-  }, [allnews, indexItem])
+    return indexItem + 1 === newsIds.length ? newsIds[0].id : newsIds[indexItem + 1]?.id
+  }, [newsIds, indexItem])
 
   const getBlur = useCallback((img: string) => getBlurImage(img), [])
 
@@ -68,10 +68,7 @@ export const NewsInfo: FC<Props> = ({ id }) => {
 
             <div className={styles.toggleItems}>
               <Link
-                href={{
-                  pathname: `/${Routes.NEWS}/[id]`,
-                  query: { id: previousId() }
-                }}
+                href={`/${Routes.NEWS}/${previousId()}`}
                 className={styles.toggleItem}
               >
                 <div className={styles.toggleItemText}>
@@ -80,10 +77,7 @@ export const NewsInfo: FC<Props> = ({ id }) => {
                 <Image src={arrow} alt="arrow" />
               </Link>
               <Link
-                href={{
-                  pathname: `/${Routes.NEWS}/[id]`,
-                  query: { id: nextId() }
-                }}
+                href={`/${Routes.NEWS}/${nextId()}`}
                 className={styles.toggleItem}
               >
                 <div className={styles.toggleItemText}>
