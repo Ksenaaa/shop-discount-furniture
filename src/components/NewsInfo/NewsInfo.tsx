@@ -1,4 +1,4 @@
-import React, { FC, useCallback } from 'react'
+import React, { FC, useCallback, useMemo } from 'react'
 
 import Image from 'next/image'
 import Link from 'next/link'
@@ -26,13 +26,13 @@ export const NewsInfo: FC<Props> = ({ id }) => {
 
   const indexItem = newsIds?.findIndex(item => item.id === id) || 0
 
-  const previousId = useCallback(() => {
+  const previousId = useMemo(() => {
     if (!newsIds?.length) return
 
     return indexItem === 0 ? newsIds[newsIds.length - 1].id : newsIds[indexItem - 1]?.id
   }, [newsIds, indexItem])
 
-  const nextId = useCallback(() => {
+  const nextId = useMemo(() => {
     if (!newsIds?.length) return
 
     return indexItem + 1 === newsIds.length ? newsIds[0].id : newsIds[indexItem + 1]?.id
@@ -68,7 +68,7 @@ export const NewsInfo: FC<Props> = ({ id }) => {
 
             <div className={styles.toggleItems}>
               <Link
-                href={`/${Routes.NEWS}/${previousId()}`}
+                href={`/${Routes.NEWS}/${previousId}`}
                 className={styles.toggleItem}
               >
                 <div className={styles.toggleItemText}>
@@ -77,7 +77,7 @@ export const NewsInfo: FC<Props> = ({ id }) => {
                 <Image src={arrow} alt="arrow" />
               </Link>
               <Link
-                href={`/${Routes.NEWS}/${nextId()}`}
+                href={`/${Routes.NEWS}/${nextId}`}
                 className={styles.toggleItem}
               >
                 <div className={styles.toggleItemText}>
