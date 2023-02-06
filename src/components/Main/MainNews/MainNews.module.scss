@@ -1,13 +1,22 @@
+@import 'styles/fontMixin';
+@import 'styles/colors';
+
 .wrapper {
-  max-width: 1440px;
+  max-width: 1312px;
   margin: 0 auto;
   margin-bottom: 112px;
 
+  .title {
+    @include fontStyle(700, 24px, 29px);
+    color: $black;
+    display: inline-block;
+    margin-bottom: 40px;
+  }
+
   .cards {
-    width: 100%;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 28px;
+    gap: 32px;
   }
 }
 
@@ -20,7 +29,12 @@
 @media screen and (max-width: 680px) {
   .wrapper {
     margin-bottom: 60px;
-    
+  
+    .title {
+      @include fontStyle(700, 20px, 20px);
+      margin-bottom: 20px;
+    }
+  
     .cards {  
       gap: 20px;
     }
