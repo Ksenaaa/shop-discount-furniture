@@ -12,6 +12,7 @@
   .title {
     @include fontStyle(700, 24px, 29px);
     color: $black;
+    display: inline-block;
     margin-bottom: 40px;
   }
 

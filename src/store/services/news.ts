@@ -1,4 +1,5 @@
 import { ICardNews, INews, INewsIds } from 'interface/newsInterface'
+import { IPageData } from 'interface/pageDataInterface'
 
 import { api } from './api'
 
@@ -13,14 +14,11 @@ export const newsApi = api.injectEndpoints({
         { type: 'News' as const, id: 'LIST' }
       ]
     }),
-    getAllNews: builder.query<ICardNews[], void>({
+    getAllNews: builder.query<IPageData<ICardNews[]>, void>({
       query: () => ({
         url: 'news/all-news'
       }),
-      providesTags: (result = []) => [
-        ...result.map(({ id }) => ({ type: 'News', id } as const)),
-        { type: 'News' as const, id: 'LIST' }
-      ]
+      providesTags: () => [{ type: 'News' }]
     }),
     getNewsIds: builder.query<INewsIds[], void>({
       query: () => ({

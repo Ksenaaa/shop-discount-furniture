@@ -7,7 +7,7 @@ import { useSizeListener } from 'hooks/sezeListenerHook'
 import homeImg from 'img/svg/person.svg'
 import swipeLeftImg from 'img/svg/swipe-left-blue.svg'
 import swipeRightImg from 'img/svg/swipe-right-blue.svg'
-import { useGetTestimonialsQuery } from 'store/services/testimonials'
+import { useGetMainTestimonialsQuery } from 'store/services/testimonials'
 import { Routes } from 'utils/constants/routes'
 
 import { Slider } from 'components/Slider'
@@ -19,7 +19,7 @@ import styles from './Testimonials.module.scss'
 export const Testimonials = () => {
   const { windowWidth } = useSizeListener()
 
-  const { data: testimonials = [] } = useGetTestimonialsQuery()
+  const { data: testimonials = [] } = useGetMainTestimonialsQuery()
 
   return (
     <div className={styles.wrapper}>

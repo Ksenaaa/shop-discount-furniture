@@ -11,12 +11,12 @@ import { MainNewsCard } from 'components/Main/MainNews/MainNewsCard'
 import styles from './Index.module.scss'
 
 const NewsPage = () => {
-  const { data: news } = useGetAllNewsQuery()
+  const { data } = useGetAllNewsQuery()
 
   return (
     <div className={styles.wrapper}>
       <ul className={styles.cards}>
-        {news?.map(item =>
+        {data?.pageData?.map(item =>
           <MainNewsCard
             item={item}
             key={item.id}
