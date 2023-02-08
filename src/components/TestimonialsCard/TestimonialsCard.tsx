@@ -8,7 +8,7 @@ import { dateFormat } from 'utils/helpers/dateFormat'
 
 import { Stars } from 'components/Main/Testimonials/Stars'
 
-import { itemsMinHeight } from './constants/itemsMinHeight'
+import { testimonialMinHeight } from './constants/testimonialMinHeight'
 
 import styles from './TestimonialsCard.module.scss'
 
@@ -42,7 +42,7 @@ export const TestimonialsCard: FC<Props> = ({ item }) => {
       <div className={styles.text}>
         {item.text}
       </div>
-      {height > itemsMinHeight &&
+      {height > testimonialMinHeight &&
         <div className={styles.more} onClick={onToggle}>
           <div></div>
           <div></div>
