@@ -1,4 +1,4 @@
-import React, { FC, ReactNode } from 'react'
+import React, { PropsWithChildren } from 'react'
 
 import Head from 'next/head'
 
@@ -7,11 +7,7 @@ import { centuryGothic, montserrat, ptSerif } from 'styles/fonts'
 import { Footer } from './Footer'
 import { Header } from './Header'
 
-type Props = {
-  children: ReactNode
-}
-
-export const Layout: FC<Props> = ({ children }) => {
+export const Layout = ({ children }: PropsWithChildren) => {
   return (
     <>
       <Head>

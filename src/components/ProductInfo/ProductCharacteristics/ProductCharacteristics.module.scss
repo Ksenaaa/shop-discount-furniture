@@ -1,0 +1,234 @@
+@import 'styles/fontMixin';
+@import 'styles/fontFamily';
+@import 'styles/colors';
+@import 'styles/animation';
+
+.wrapper {
+  max-width: 560px;
+  background: $grey;
+  padding: 16px;
+
+  .name {
+    font-family: $ptSerif;
+    @include fontStyle(400, 32px, 42px);
+    text-transform: uppercase;
+    color: $black;
+    margin-bottom: 8px;
+  }
+
+  .code {
+    @include fontStyle(400, 16px, 20px);
+    color: $black;
+    margin-bottom: 12px;
+  }
+
+  .sectionPriceCountButtonLike {
+    margin-bottom: 33px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    flex-wrap: wrap;
+
+    .price {
+      @include fontStyle(700, 42px, 51px);
+      color: $seaGrey;
+    }
+
+    .count {
+      @include fontStyle(500, 18px, 24px);
+      color: $black;  
+      padding: 14px 8px;
+      border: 1px solid $lightBlueTransparent;
+      display: flex;
+      align-items: center;
+      flex-direction: row;
+      margin-left: auto;
+      margin-right: 24px;
+
+      .amount {
+        min-width: 24px;
+        text-align: center;
+      }
+
+      .amountSubtract, .amountAdd {
+        cursor: pointer;
+        padding: 0 8px;
+        transition: $animationTransition;
+
+        &:hover {
+          opacity: 0.6;
+        }
+      }
+    }
+
+    .like {
+      width: 24px;
+      height: 24px;
+      margin-left: 24px;
+      position: relative;
+      cursor: pointer;
+      transition: $animationTransition;
+
+      &:hover {
+        opacity: 0.6;
+      }
+
+      img {
+        width: 100%;
+        height: 100%;
+      }
+    }
+  }
+
+  .colorsSection .colorsTitle, .characteristicsSection .characteristicsTitle {
+    @include fontStyle(500, 18px, 24px);
+    color: $black;  
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+
+  .colorsSection .dividingLine, .characteristicsSection .dividingLine {
+    width: 100%;
+    height: 1px;
+    background: $lightBlueTransparent;
+    margin-bottom: 12px;
+  }
+
+  .colorsSection {
+    margin-bottom: 24px;
+
+    .colors {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      gap: 16px;
+
+      .color {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 50px;
+
+        .colorCard {
+          width: 40px;
+          height: 40px;
+          margin-bottom: 4px
+        }
+  
+        .colorName {
+          @include fontStyle(400, 12px, 15px);
+          color: $black;  
+          text-align: center;
+          width: 100%;
+        }
+      }
+    }
+  }
+
+  .characteristicsSection {
+    .size .sizeTitle,
+    .material .materialTitle,
+    .other .otherTitle {
+      @include fontStyle(700, 12px, 15px);
+      color: $black;
+      margin-bottom: 8px;
+    }
+    
+    .size, .material {
+      margin-bottom: 12px;
+    }
+    
+    .size .sizeCategories .sizeValue, 
+    .material .materialList .materialItem, 
+    .other .otherDesc {
+      @include fontStyle(400, 16px, 20px);
+      color: $black;
+      opacity: 0.6;
+      margin-bottom: 4px;
+
+      &::first-letter {
+        text-transform: uppercase;
+      }
+    }
+
+    .size .sizeCategories {
+      display: flex;
+      flex-direction: row;
+
+      .sizeCategory {
+        display: flex;
+        flex-direction: column;
+
+        .sizeCategoryTitle {
+          @include fontStyle(400, 12px, 15px);
+          color: $seaGrey;  
+          margin-bottom: 4px  
+        }
+      }
+
+      .sizeDividing {
+        @include fontStyle(400, 12px, 15px);
+        color: $black;    
+        padding: 24px 12px 0px;
+      }
+    }
+  }
+}
+
+
+@media screen and (max-width: 975px) {
+  .wrapper {
+    .name {
+      @include fontStyle(400, 26px, 28px);
+    }
+  
+    .code {
+      @include fontStyle(400, 12px, 16px);
+    }
+  
+    .sectionPriceCountButtonLike {
+      gap:10px;
+
+      .price {
+        @include fontStyle(700, 30px, 28px);
+      }
+    }
+
+    .colorsSection .colorsTitle, .characteristicsSection .characteristicsTitle {
+      @include fontStyle(500, 12px, 16px);
+    }
+    
+    .characteristicsSection {
+      .size .sizeTitle,
+      .material .materialTitle,
+      .other .otherTitle {
+        @include fontStyle(700, 12px, 15px);
+      }
+      
+      .size .sizeCategories .sizeValue, 
+      .material .materialList .materialItem, 
+      .other .otherDesc,
+      .size .sizeCategories .sizeCategory .sizeCategoryTitle
+      .size .sizeCategories .sizeDividing {
+        @include fontStyle(400, 12px, 16px);
+      }
+  
+      .size .sizeCategories .sizeDividing {
+        padding: 20px 12px 0px;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 875px) {
+  .wrapper {
+    max-width: 100%;
+  }
+}
+  
+@media screen and (max-width: 680px) {
+  .wrapper .sectionPriceCountButtonLike .count {
+    padding: 7px 8px;
+    margin: 0 auto;
+  }
+}

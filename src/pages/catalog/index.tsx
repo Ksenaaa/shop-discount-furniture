@@ -4,16 +4,11 @@ import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 
 import { GetStaticProps } from 'next'
 
-import styles from './Index.module.scss'
+import { MainCatalog } from 'components/Main/MainCatalog'
 
 export const Catalog = () => {
   return (
-    <div className={styles.wrapper}>
-      <h1>Catalog</h1>
-      <div>Kids</div>
-      <div>Living</div>
-      <div>Badroom</div>
-    </div>
+    <MainCatalog />
   )
 }
 

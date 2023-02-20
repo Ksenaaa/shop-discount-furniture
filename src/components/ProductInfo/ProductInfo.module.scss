@@ -1,0 +1,77 @@
+@import 'styles/fontMixin';
+@import 'styles/fontFamily';
+@import 'styles/textEndMixin';
+@import 'styles/colors';
+
+.wrapper {
+  .wrapperProduct {
+    max-width: 1344px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 112px;
+
+    .picturesWithDesc {
+      display: flex;
+      flex-direction: column;
+      flex: 0 0 58%;
+      flex-shrink: 2;
+      padding: 0 16px;
+  
+      .description {
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+
+        .descriptionTitle {
+          @include fontStyle(700, 24px, 29px);
+          color: $black;
+          margin-bottom: 16px
+        }
+    
+        .descriptionText {
+          @include fontStyle(400, 18px, 27px);
+          @include textEndStyle(5);
+          font-family: $gothic;
+        }
+
+        .descriptionTextReadMore {
+          @include textEndStyle(100);
+        }
+      }
+    }
+  
+    .characteristics {
+      flex-shrink: 1;
+    }
+  }
+}
+
+@media screen and (max-width: 1040px) {
+  .wrapper .wrapperProduct .picturesWithDesc .description .descriptionText {
+    @include fontStyle(400, 16px, 22px);
+  }
+}
+
+@media screen and (max-width: 975px) {
+  .wrapper .wrapperProduct .characteristics {
+    flex-shrink: 2;
+  }
+}
+
+@media screen and (max-width: 875px) {
+  .wrapper .wrapperProduct {
+    flex-direction: column;
+    gap: 16px;
+  }
+}
+
+@media screen and (max-width: 680px) {
+  .wrapper .wrapperProduct {
+    margin-bottom: 60px;
+
+    .picturesWithDesc .description .descriptionTitle {
+      @include fontStyle(700, 20px, 20px);
+    }
+  }
+}

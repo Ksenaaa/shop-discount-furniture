@@ -1,0 +1,41 @@
+@import 'styles/fontMixin';
+@import 'styles/colors';
+@import 'styles/animation';
+
+.wrapper {
+  @include fontStyle(400, 16px, 20px);
+  width: 100%;
+  display: block;
+  position: relative;
+  padding-left: 28px;
+  color: $black; 
+  cursor: pointer;
+  
+  &::first-letter {
+    text-transform: uppercase;
+  }
+
+  input {
+    position: absolute;
+    opacity: 0;
+  }
+  
+  .checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 20px;
+    width: 20px;
+    border: 1px solid $lightBlueTransparent;
+    transition: $animationTransition;
+  }
+
+  & input:hover ~ .checkmark {
+    background: $lightBlueTransparent;
+  }
+
+  & input:checked ~ .checkmark {
+    background: url(./../../img/svg/checkbox.svg) center;
+    border: none
+  }
+}
