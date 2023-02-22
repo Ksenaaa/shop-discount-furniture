@@ -1,4 +1,4 @@
-import React, { FC, MouseEvent, useState } from 'react'
+import React, { FC, useEffect, useState } from 'react'
 
 import Image from 'next/image'
 
@@ -19,8 +19,13 @@ type Props = {
 }
 
 export const ProductCharacteristics: FC<Props> = ({ product }) => {
-  const [price, setPrice] = useState<number>(product.quality.king)
+  const [price, setPrice] = useState<number>(0)
   const [amountProduct, setAmountProduct] = useState<number>(1)
+
+  useEffect(() => {
+    setPrice(product.quality.king)
+    setAmountProduct(1)
+  }, [product])
 
   const onSubtractProduct = () => {
     setAmountProduct(preState => preState === 1 ? 1 : preState - 1)
@@ -33,17 +38,7 @@ export const ProductCharacteristics: FC<Props> = ({ product }) => {
   const { data: dataColors, isSuccess } = useGetColorsQuery()
   const colors = isSuccess ? productColors(product.colors, dataColors) : []
 
-  const productMaterials = [...new Set(colors.map(i => i.material))]
-
-  const onChangePrice = (price: number) => {
-    setPrice(price)
-  }
-
-  const handlerClickLike = (e: MouseEvent) => {
-    e.preventDefault()
-
-    return null
-  }
+  const productMaterials = [...new Set(colors.map(color => color.material))]
 
   return (
     <div className={styles.wrapper}>
@@ -60,22 +55,23 @@ export const ProductCharacteristics: FC<Props> = ({ product }) => {
         <div className={styles.button}>
           <Button name="Add to cart" />
         </div>
-        <div className={styles.like} onClick={handlerClickLike}>
+        <div className={styles.like}>
           <Image src={likeIcon} alt="like" fill />
         </div>
       </div>
 
       <PriceSelection
         product={product}
-        onChangePrice={onChangePrice}
+        onChangePrice={setPrice}
+        selectedPrice={price}
       />
 
       <div className={styles.colorsSection}>
         <div className={styles.colorsTitle}>colors:</div>
         <div className={styles.dividingLine}></div>
         <div className={styles.colors}>
-          {colors?.map(color =>
-            <div className={styles.color} key={color.id}>
+          {colors?.map((color, index) =>
+            <div className={styles.color} key={index}>
               <div className={styles.colorCard} >
                 <ColorCard img={color.img} />
               </div>

@@ -6,16 +6,16 @@
   "button": {
     "sliderItem": "Купити зараз"
   },
-  "menu": [
-    { "id": "livingRooms", "name": "вітальні", "path": "living-rooms" },
-    { "id": "diningRooms", "name": "їдальні", "path": "dining-rooms" },
-    { "id": "bedrooms", "name": "спальні", "path": "bedrooms" },
-    { "id": "mattresses", "name": "матраци", "path": "mattresses" },
-    { "id": "decorMore", "name": "декор і багато іншого", "path": "decor-more" },
-    { "id": "kids", "name": "дитячі", "path": "kids" },
-    { "id": "specials", "name": "спеціальні пропозиції", "path": "specials" },
-    { "id": "decor", "name": "декор", "path": "decor" }
-  ],
+  "menu": {
+    "livingRooms": "вітальні",
+    "diningRooms": "їдальні",
+    "bedrooms": "спальні",
+    "mattresses": "матраци",
+    "decorMore": "декор і багато іншого",
+    "kids": "дитячі",
+    "specials": "спеціальні пропозиції",
+    "decor": "декор"
+  },
   "search": {
     "iSearch": "Я шукаю..."
   },

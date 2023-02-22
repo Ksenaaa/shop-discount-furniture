@@ -1,4 +1,4 @@
-import React, { FC, MouseEvent, useCallback } from 'react'
+import React, { FC, useCallback } from 'react'
 import { useTranslation } from 'react-i18next'
 
 import Image from 'next/image'
@@ -6,9 +6,9 @@ import Link from 'next/link'
 
 import likeIcon from 'img/svg/heart-icon-orange.svg'
 import basketIcon from 'img/svg/to-basket.svg'
-import { IMenuName } from 'interface/catalogInterface'
 import { ICardProduct } from 'interface/productInterface'
 import { useGetColorsQuery } from 'store/services/colors'
+import { menuCategories } from 'utils/constants/menuCategories'
 import { Routes } from 'utils/constants/routes'
 import { getBlurImage } from 'utils/helpers/getBlurImage'
 import { productColors } from 'utils/helpers/productColors'
@@ -28,22 +28,10 @@ export const ProductCard: FC<Props> = ({ product }) => {
   const getBlur = useCallback((img: string) => getBlurImage(img), [])
 
   const { t } = useTranslation()
-  const categories = t('menu', { returnObjects: true }) as IMenuName[]
-
-  const handlerClickLike = (e: MouseEvent) => {
-    e.preventDefault()
-
-    return null
-  }
-
-  const handlerClickBasket = (e: MouseEvent) => {
-    e.preventDefault()
-
-    return null
-  }
+  const categoryData = menuCategories?.find(categoryData => categoryData.id === product.category)
 
   return (
-    <Link href={`/${Routes.CATALOG}/${product.category}/${product.id}`} className={styles.wrapper}>
+    <Link href={`/${Routes.CATALOG}/${categoryData?.path}/${product.id}`} className={styles.wrapper}>
       <div className={styles.picture}>
         <Image
           src={`${process.env.NEXT_PUBLIC_API_URL}/${product.img}`}
@@ -56,7 +44,7 @@ export const ProductCard: FC<Props> = ({ product }) => {
       </div>
       <div className={styles.categoryWithCode}>
         <div className={styles.category}>
-          {categories?.find(item => item.id === product.category)?.name}
+          {t(categoryData?.name || '')}
         </div>
         <div className={styles.code}>
           {product.code}
@@ -70,18 +58,18 @@ export const ProductCard: FC<Props> = ({ product }) => {
           from ${product.price}
         </div>
         <div className={styles.colors}>
-          {colors?.slice(-4).map(color =>
-            <div className={styles.color} key={color.id}>
+          {colors?.slice(-4).map((color, index) =>
+            <div className={styles.color} key={index}>
               <ColorCard img={color.img} />
             </div>
           )}
         </div>
       </div>
       <div className={styles.activeElements}>
-        <div className={styles.like} onClick={handlerClickLike}>
+        <div className={styles.like}>
           <Image src={likeIcon} alt="like" />
         </div>
-        <div className={styles.basket} onClick={handlerClickBasket}>
+        <div className={styles.basket}>
           <Image src={basketIcon} alt="basket" />
         </div>
       </div>

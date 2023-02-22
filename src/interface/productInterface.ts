@@ -5,12 +5,7 @@ export interface IProduct {
   category: string,
   type: string,
   popularity: number,
-  quality: {
-    king: number,
-    queen: number,
-    twin: number,
-    standart: number
-  },
+  quality: IPriceCategory,
   colors: string[],
   characteristics: {
     size: {

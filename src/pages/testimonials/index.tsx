@@ -4,14 +4,17 @@ import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 
 import { GetStaticProps } from 'next'
 
-import { useGetAllTestimonialsQuery } from 'store/services/testimonials'
+import { useGetTestimonialsQuery } from 'store/services/testimonials'
 
 import { TestimonialsCard } from 'components/TestimonialsCard'
 
 import styles from './Index.module.scss'
 
 export const Testimonials = () => {
-  const { data } = useGetAllTestimonialsQuery()
+  const { data } = useGetTestimonialsQuery({
+    page: 1,
+    limit: 0
+  })
 
   return (
     <div className={styles.wrapper}>

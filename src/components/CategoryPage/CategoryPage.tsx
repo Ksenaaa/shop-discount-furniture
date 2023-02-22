@@ -1,7 +1,7 @@
-import React, { FC } from 'react'
+import React, { FC, useEffect, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 
-import { IMenuName } from 'interface/catalogInterface'
+import { menuCategories } from 'utils/constants/menuCategories'
 
 import styles from './CategoryPage.module.scss'
 
@@ -10,14 +10,24 @@ type Props = {
 }
 
 export const CategoryPage: FC<Props> = ({ category }) => {
+  const [hydrated, setHydrated] = useState(false)
+
   const { t } = useTranslation()
 
-  const categories = t('menu', { returnObjects: true }) as IMenuName[]
+  useEffect(() => {
+    setHydrated(true)
+  }, [])
+
+  if (!hydrated) {
+    return null
+  }
+
+  const categoryName = menuCategories.find(categoryData => categoryData.path === category)?.name || ''
 
   return (
     <div className={styles.wrapper}>
       <div className={styles.title}>
-        {categories?.find(item => item.path === category)?.name}
+        {t(categoryName)}
       </div>
     </div>
   )

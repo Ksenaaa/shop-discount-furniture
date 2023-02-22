@@ -1,0 +1,38 @@
+@import 'styles/fontMixin';
+@import 'styles/fontFamily';
+@import 'styles/textEndMixin';
+@import 'styles/colors';
+
+.description {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+
+  .descriptionTitle {
+    @include fontStyle(700, 24px, 29px);
+    color: $black;
+    margin-bottom: 16px
+  }
+
+  .descriptionText {
+    @include fontStyle(400, 18px, 27px);
+    @include textEndStyle(5);
+    font-family: $gothic;
+  }
+
+  .descriptionTextReadMore {
+    @include textEndStyle(100);
+  }
+}
+
+@media screen and (max-width: 1040px) {
+  .description .descriptionText {
+    @include fontStyle(400, 16px, 22px);
+  }
+}
+
+@media screen and (max-width: 680px) {
+  .description .descriptionTitle {
+    @include fontStyle(700, 20px, 20px);
+  }
+}

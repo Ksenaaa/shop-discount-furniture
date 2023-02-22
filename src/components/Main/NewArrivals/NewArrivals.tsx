@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { useGetSomeNewProductsQuery } from 'store/services/product'
+import { useGetNewProductsQuery } from 'store/services/product'
 import { Routes } from 'utils/constants/routes'
 
 import { CommonSlider } from 'components/CommonSlider'
@@ -8,7 +8,7 @@ import { CommonSliderItem } from 'components/CommonSlider/CommonSliderItem'
 import { ProductCard } from 'components/ProductCard'
 
 export const NewArrivals = () => {
-  const { data, isSuccess } = useGetSomeNewProductsQuery()
+  const { data, isSuccess } = useGetNewProductsQuery()
 
   const newArrivals = isSuccess ? data : []
 

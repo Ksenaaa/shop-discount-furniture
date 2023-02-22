@@ -9,6 +9,8 @@ import { AxisScroll } from 'utils/constants/axisScroll'
 
 import { Slider } from 'components/Slider'
 
+import { picturesCommonSlider } from './constants/picturesCommonSlider'
+
 import styles from './CommonSlider.module.scss'
 
 type Props = {
@@ -35,7 +37,11 @@ export const CommonSlider = ({ titleName, pathTitle, sliderLength, children }: P
         isAutoCarousel={false}
         isSwipe={true}
         axisScroll={AxisScroll.X}
-        column={windowWidth > 450 ? 3 : 1}
+        column={
+          windowWidth > picturesCommonSlider.minWindowWidth ?
+            picturesCommonSlider.maxColumnSlider :
+            picturesCommonSlider.minColumnSlider
+        }
         swipeLeftImg={swipeLeft}
         swipeRightImg={swipeRight}
         stylesSwipeWrapper={styles.swipeWrapper}

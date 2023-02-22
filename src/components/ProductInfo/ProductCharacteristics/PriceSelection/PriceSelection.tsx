@@ -5,14 +5,17 @@ import { parsePriceCategory } from 'utils/helpers/parsePriceCategory'
 
 import { Checkbox } from 'components/Checkbox'
 
+import { defaultPriceCategory } from './constants/defaultPriceCategory'
+
 import styles from './PriceSelection.module.scss'
 
 type Props = {
   product: IProduct,
-  onChangePrice: (price: number) => void
+  onChangePrice: (price: number) => void,
+  selectedPrice: number
 }
 
-export const PriceSelection: FC<Props> = ({ product, onChangePrice }) => {
+export const PriceSelection: FC<Props> = ({ product, onChangePrice, selectedPrice }) => {
   const parsePrices = parsePriceCategory(product.quality)
 
   const handlerChangePrice = (e: MouseEvent<HTMLInputElement>) => {
@@ -30,7 +33,8 @@ export const PriceSelection: FC<Props> = ({ product, onChangePrice }) => {
             labelName={category.name}
             radioName="price"
             value={category.value}
-            defaultChecked={category.name === parsePrices[0].name && true}
+            checked={selectedPrice === category.value}
+            defaultChecked={category.name === defaultPriceCategory}
           />
           <div className={styles.priceValue}>
             ${category.value}

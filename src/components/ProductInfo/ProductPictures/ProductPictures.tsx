@@ -10,6 +10,7 @@ import { getBlurImage } from 'utils/helpers/getBlurImage'
 
 import { Slider } from 'components/Slider'
 
+import { productPicturesSlider } from './constants/productPicturesSlider'
 import { OtherPicturesCard } from './OtherPicturesCard'
 
 import styles from './ProductPictures.module.scss'
@@ -36,8 +37,14 @@ export const ProductPictures: FC<Props> = ({ pictures }) => {
           picturesLength={pictures.length}
           isAutoCarousel={false}
           isSwipe={true}
-          axisScroll={windowWidth <= 680 ? AxisScroll.X : AxisScroll.Y}
-          column={windowWidth <= 680 ? 3 : 6}
+          axisScroll={windowWidth <= productPicturesSlider.minWindowWidth ? AxisScroll.X : AxisScroll.Y}
+          column={
+            windowWidth <= productPicturesSlider.minWindowWidth ?
+              productPicturesSlider.minColumnSlider :
+              windowWidth <= productPicturesSlider.midlWindowWidth ?
+                productPicturesSlider.midlColumnSlider :
+                productPicturesSlider.maxColumnSlider
+          }
           swipeLeftImg={swipeLeft}
           swipeRightImg={swipeRight}
           stylesSwipeWrapper={styles.swipeWrapper}
@@ -59,6 +66,7 @@ export const ProductPictures: FC<Props> = ({ pictures }) => {
           alt="img"
           fill
           sizes="33vw"
+          priority
           placeholder="blur"
           blurDataURL={getBlur(pictures[indexMainPicture])}
         />

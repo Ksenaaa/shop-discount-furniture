@@ -20,22 +20,25 @@
     opacity: 0;
   }
   
-  .checkmark {
+  .checkmark, .checkmarkActive {
     position: absolute;
     top: 0;
     left: 0;
     height: 20px;
     width: 20px;
+  }
+
+  .checkmark {
     border: 1px solid $lightBlueTransparent;
     transition: $animationTransition;
+  }
+  
+  .checkmarkActive {
+    display: block;
+    z-index: 1;
   }
 
   & input:hover ~ .checkmark {
     background: $lightBlueTransparent;
-  }
-
-  & input:checked ~ .checkmark {
-    background: url(./../../img/svg/checkbox.svg) center;
-    border: none
   }
 }

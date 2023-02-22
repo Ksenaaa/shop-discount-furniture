@@ -1,4 +1,4 @@
-import React, { FC } from 'react'
+import React, { FC, useEffect } from 'react'
 
 import cn from 'classnames'
 
@@ -19,6 +19,10 @@ type Props = {
 
 export const TestimonialsCard: FC<Props> = ({ item }) => {
   const { isOpen, onToggle } = useToggle(true)
+
+  useEffect(() => {
+    onToggle()
+  }, [item, onToggle])
 
   return (
     <div className={styles.wrapper}>

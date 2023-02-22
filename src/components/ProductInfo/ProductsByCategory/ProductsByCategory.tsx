@@ -1,6 +1,6 @@
 import React, { FC } from 'react'
 
-import { useGetSomeProductsByCategoryQuery } from 'store/services/product'
+import { useGetProductsByCategoryQuery } from 'store/services/product'
 
 import { CommonSlider } from 'components/CommonSlider'
 import { CommonSliderItem } from 'components/CommonSlider/CommonSliderItem'
@@ -11,16 +11,18 @@ type Props = {
 }
 
 export const ProductsByCategory: FC<Props> = ({ category }) => {
-  const { data, isSuccess } = useGetSomeProductsByCategoryQuery(category)
-
-  const productsByCategory = isSuccess ? data : []
+  const { data, isSuccess } = useGetProductsByCategoryQuery({
+    key: category,
+    page: 1,
+    limit: 6
+  })
 
   return (
     <CommonSlider
       titleName="Related products"
-      sliderLength={productsByCategory.length}
+      sliderLength={isSuccess ? data?.pageData?.length : 0}
     >
-      {productsByCategory?.map(product =>
+      {data?.pageData?.map(product =>
         <CommonSliderItem key={product.id}>
           <ProductCard product={product} />
         </CommonSliderItem>

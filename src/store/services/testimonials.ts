@@ -1,4 +1,5 @@
 import { IPageData } from 'interface/pageDataInterface'
+import { IParamsGetQuery } from 'interface/paramsGetQueryInterface'
 import { ITestimonials } from 'interface/testimonialsInterface'
 
 import { api } from './api'
@@ -6,17 +7,16 @@ import { api } from './api'
 export const testimonialsApi = api.injectEndpoints({
   endpoints: (builder) => ({
     getMainTestimonials: builder.query<ITestimonials[], void>({
-      query: () => ({
-        url: 'testimonials/main-testimonials'
-      }),
-      providesTags: (result = []) => [
-        ...result.map(({ id }) => ({ type: 'Testimonials', id } as const)),
-        { type: 'Testimonials' as const, id: 'LIST' }
-      ]
+      query: () => 'testimonials/main-testimonials',
+      providesTags: () => [{ type: 'Testimonials' }]
     }),
-    getAllTestimonials: builder.query<IPageData<ITestimonials[]>, void>({
-      query: () => ({
-        url: 'testimonials/testimonials'
+    getTestimonials: builder.query<IPageData<ITestimonials[]>, Pick<IParamsGetQuery, 'page' | 'limit'>>({
+      query: ({ page, limit }) => ({
+        url: 'testimonials/testimonials',
+        params: {
+          page,
+          limit
+        }
       }),
       providesTags: () => [{ type: 'Testimonials' }]
     })
@@ -26,5 +26,5 @@ export const testimonialsApi = api.injectEndpoints({
 
 export const {
   useGetMainTestimonialsQuery,
-  useGetAllTestimonialsQuery
+  useGetTestimonialsQuery
 } = testimonialsApi

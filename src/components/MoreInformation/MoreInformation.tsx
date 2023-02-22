@@ -1,21 +1,16 @@
-import React, { MutableRefObject, PropsWithChildren, useEffect, useRef, useState } from 'react'
+import React, { MutableRefObject, PropsWithChildren, useRef } from 'react'
 
 import styles from './MoreInformation.module.scss'
 
 type Props = {
   minHeight: number,
-  onToggle: () => void
+  onToggle: () => void,
 }
 
 export const MoreInformation = ({ minHeight, onToggle, children }: PropsWithChildren<Props>) => {
-  const [height, setHeight] = useState(0)
-
   const ref = useRef<HTMLDivElement | null>(null) as MutableRefObject<HTMLDivElement>
 
-  useEffect(() => {
-    setHeight(ref.current.clientHeight)
-    onToggle()
-  }, [onToggle])
+  const height = ref?.current?.clientHeight || 0
 
   return (
     <div className={styles.wrapperMore} ref={ref}>

@@ -27,7 +27,7 @@ export const Testimonials = () => {
     >
       {testimonials?.map(item =>
         <CommonSliderItem key={item.id}>
-          <Link href="/" className={styles.wrapper}>
+          <Link href={`/${Routes.TESTIMONIALS}`} className={styles.wrapper}>
             <Image src={homeImg} alt="img" className={styles.picture}/>
             <div className={styles.stars} >
               <Stars quantityFull={item.stars} />
