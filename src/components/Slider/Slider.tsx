@@ -1,10 +1,10 @@
-import React, { FC, ReactNode, useCallback, useEffect, useState } from 'react'
+import React, { PropsWithChildren, useCallback, useEffect, useState } from 'react'
 
 import Image from 'next/image'
 
-import { Loader } from 'components/Loader'
+import { AxisScroll } from 'utils/constants/axisScroll'
 
-import styles from './Slider.module.scss'
+import { Loader } from 'components/Loader'
 
 type Props = {
   picturesLength: number,
@@ -13,24 +13,27 @@ type Props = {
   isLoading?: boolean,
   isAutoCarousel: boolean,
   isSwipe: boolean,
-  children: ReactNode,
+  axisScroll: AxisScroll,
   swipeLeftImg?: string,
   swipeRightImg?: string,
   stylesSwipeWrapper?: string
+  stylesContainerSlider?: string
 }
 
-export const Slider: FC<Props> = ({
+export const Slider = ({
   picturesLength,
   speed,
   column,
   isLoading,
   isAutoCarousel,
   isSwipe,
+  axisScroll,
   children,
   swipeLeftImg = '',
   swipeRightImg = '',
-  stylesSwipeWrapper
-}) => {
+  stylesSwipeWrapper,
+  stylesContainerSlider
+}: PropsWithChildren<Props>) => {
   const [visibleSlide, setVisibleSlide] = useState<number>(0)
 
   const onSwipeLeft = useCallback(() => {
@@ -60,18 +63,23 @@ export const Slider: FC<Props> = ({
     <>
       {isSwipe &&
         <div className={stylesSwipeWrapper}>
-          <Image src={swipeLeftImg} alt="swipeLeft" onClick={onSwipeLeft} />
-          <Image src={swipeRightImg} alt="swipeRight" onClick={onSwipeRight} />
+          <div>
+            <Image src={swipeLeftImg} alt="swipeLeft" onClick={onSwipeLeft} />
+          </div>
+          <div>
+            <Image src={swipeRightImg} alt="swipeRight" onClick={onSwipeRight} />
+          </div>
         </div>
       }
-      <div className={styles.wrapper}>
-        {isLoading ?
-          <Loader /> :
-          <div className={styles.containerSlider} style={{ transform: `translateX(${-visibleSlide * 100 / column}%)` }}>
-            {children}
-          </div>
-        }
-      </div>
+      {isLoading ?
+        <Loader /> :
+        <div
+          className={stylesContainerSlider}
+          style={{ transform: `translate${axisScroll}(${-visibleSlide * 100 / column}%)` }}
+        >
+          {children}
+        </div>
+      }
     </>
   )
 }

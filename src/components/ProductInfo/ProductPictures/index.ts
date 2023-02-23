@@ -1,0 +1,1 @@
+export { ProductPictures } from './ProductPictures'

@@ -6,16 +6,16 @@
   "button": {
     "sliderItem": "Purchase now"
   },
-  "menu": [
-    { "id": "livingRooms", "name": "living rooms", "path": "living-rooms" },
-    { "id": "diningRooms", "name": "dining rooms", "path": "dining-rooms" },
-    { "id": "bedrooms", "name": "bedrooms", "path": "bedrooms" },
-    { "id": "mattresses", "name": "mattresses", "path": "mattresses" },
-    { "id": "decorMore", "name": "decor & more", "path": "decor-more" },
-    { "id": "kids", "name": "kids", "path": "kids" },
-    { "id": "specials", "name": "specials", "path": "specials" },
-    { "id": "decor", "name": "decor", "path": "decor" }
-  ],
+  "menu": {
+    "livingRooms": "living rooms",
+    "diningRooms": "dining rooms",
+    "bedrooms": "bedrooms",
+    "mattresses": "mattresses",
+    "decorMore": "decor & more",
+    "kids": "kids",
+    "specials": "specials",
+    "decor": "decor"
+  },
   "search": {
     "iSearch": "I search..."
   },

@@ -1,0 +1,34 @@
+@import 'styles/fontMixin';
+@import 'styles/colors';
+
+.priceSelection {
+  margin-bottom: 49px;
+  
+  .priceCategory {
+    width: 112px;
+    margin-bottom: 16px;
+    position: relative;
+
+    .priceValue {
+      @include fontStyle(400, 16px, 20px);
+      color: $seaGrey;  
+      position: absolute;
+      top: 0;
+      left: 112px;
+    }
+  }
+}
+
+@media screen and (max-width: 975px) {
+  .priceSelection {
+    margin-bottom: 24px;
+    
+    .priceCategory {
+      margin-bottom: 12px;
+  
+      .priceValue {
+        @include fontStyle(400, 14px, 15px);
+      }
+    }
+  }
+}

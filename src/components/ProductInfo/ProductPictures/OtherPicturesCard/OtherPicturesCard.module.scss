@@ -1,0 +1,33 @@
+@import 'styles/colors';
+
+.otherPicturesCard {
+  width: 100%;
+  flex: 0 0 64px;
+  height: 64px;
+  padding: 4px 0;
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  
+  &:hover {
+    border: 2px solid $orange;
+  }
+
+  img {
+    position: absolute;
+    object-fit: contain;
+  }
+}
+
+.cardActive {
+  border: 2px solid $lightBlueTransparent;
+}
+
+@media screen and (max-width: 680px) {
+  .otherPicturesCard {
+    width: 33.3%;
+    flex: 0 0 33.3%;
+    height: 100%;
+    padding: 0 4px;
+  }
+}

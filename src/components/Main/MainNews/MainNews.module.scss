@@ -20,6 +20,12 @@
   }
 }
 
+@media screen and (max-width: 1339px) {
+  .wrapper {
+    margin: 0 16px 112px;
+  }
+}
+
 @media screen and (max-width: 975px) {
   .wrapper .cards {
     gap: 15px;

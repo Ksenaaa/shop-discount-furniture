@@ -5,8 +5,18 @@
   height: 400px;
   margin: 0 auto;
   position: relative;
+  overflow: hidden;
+  
+  .containerSlider {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    transition: $animationTransition;
+  }
 
-  .stylesSwipeWrapper {
+  .swipeWrapper {
     display: flex;
     justify-content: space-between;
     position: absolute;
@@ -34,7 +44,7 @@
   .wrapper {
     height: 300px;
 
-    .stylesSwipeWrapper img:nth-child(1), .stylesSwipeWrapper img:nth-child(2) {
+    .swipeWrapper img:nth-child(1), .swipeWrapper img:nth-child(2) {
       width: 60px;
       height: 60px;
     }
@@ -45,7 +55,7 @@
   .wrapper {
     height: 200px;
 
-    .stylesSwipeWrapper {
+    .swipeWrapper {
       padding: 0 10px;
 
       img:nth-child(1), img:nth-child(2) {
