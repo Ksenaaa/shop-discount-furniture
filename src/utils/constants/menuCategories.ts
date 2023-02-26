@@ -15,28 +15,18 @@ export const menuCategories = [
     path: 'bedrooms'
   },
   {
-    id: 'mattresses',
-    name: 'menu.mattresses',
-    path: 'mattresses'
-  },
-  {
-    id: 'decorMore',
-    name: 'menu.decorMore',
-    path: 'decor-more'
-  },
-  {
     id: 'kids',
     name: 'menu.kids',
     path: 'kids'
   },
   {
-    id: 'specials',
-    name: 'menu.specials',
-    path: 'specials'
-  },
-  {
     id: 'decor',
     name: 'menu.decor',
     path: 'decor'
+  },
+  {
+    id: 'bathrooms',
+    name: 'menu.bathrooms',
+    path: 'bathrooms'
   }
 ]

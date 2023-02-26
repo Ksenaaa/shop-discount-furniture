@@ -2,19 +2,32 @@
 @import 'styles/textEndMixin';
 @import 'styles/colors';
 @import 'styles/animation';
+@import 'styles/mediaBreakpoint';
 
 .card {
   grid-column: span 1;
   max-height: 336px;
   width: 100%;
-
+  @include mediaBreakpoint(md) {
+    grid-column: span 3;
+  }
+  
   .picture {
-    height: 280px;
+    height: 270px;
     width: 100%;
     position: relative;
     overflow: hidden;
     transition: $animationTransition;
+    box-shadow: $lightGreyTransparent2;
     margin-bottom: 8px;
+    @include mediaBreakpoint(lg) {
+      height: 220px;
+    }  
+    @include mediaBreakpoint(md) {
+      max-width: 100%;
+      margin-bottom: 3px;
+      height: 180px;
+    }  
 
     img {
       position: absolute;
@@ -24,18 +37,29 @@
   }  
 
   .cardTitle {
-    @include fontStyle(500, 18px, 24px);
+    @include fontStyle(500, 19px, 24px);
     @include textEndStyle(2);
     color: $black;
+    @include mediaBreakpoint(md) {
+      @include fontStyle(500, 16px, 20px);
+    }  
+    @include mediaBreakpoint(sm) {
+      @include fontStyle(500, 14px, 18px);
+    }  
   }
 
   &:hover .cardTitle {
-    text-decoration: underline;
-    @include fontStyle(700, 18px, 24px);
+    @include fontStyle(700, 19px, 24px);
+    @include mediaBreakpoint(md) {
+      @include fontStyle(700, 16px, 20px);
+    }  
+    @include mediaBreakpoint(sm) {
+      @include fontStyle(700, 14px, 18px);
+    }  
   }
 
-  &:hover .picture {
-    box-shadow: $lightGreyTransparent2;
+  &:hover .picture img {
+    transform: scale(1.2);
   }
 
   &:hover .picture img {
@@ -44,48 +68,5 @@
 
   &:hover {
     opacity: 1;
-  }
-}
-
-@media screen and (max-width: 975px) {
-  .card .picture {
-    height: 220px;
-  }
-}
-
-@media screen and (max-width: 776px) {
-  .card .picture {
-    height: 180px;
-  }
-}
-
-@media screen and (max-width: 680px) {
-  .card {
-    grid-column: span 3;
-    
-    .picture {
-      max-width: 100%;
-      margin-bottom: 3px;
-    }  
-
-    .cardTitle {
-      @include fontStyle(500, 16px, 20px);
-    }
-
-    &:hover .cardTitle {
-      @include fontStyle(700, 16px, 20px);
-    }
-  }
-}
-
-@media screen and (max-width: 427px) {
-  .card { 
-    .cardTitle {
-      @include fontStyle(500, 14px, 18px);
-    }
-
-    &:hover .cardTitle {
-      @include fontStyle(700, 14px, 18px);
-    }
   }
 }

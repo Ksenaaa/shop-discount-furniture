@@ -3,22 +3,20 @@ import React from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 
-import cn from 'classnames'
+import { useTranslation } from 'next-i18next'
 
-import { useToggle } from 'hooks/toggleHook'
-import orangeBasketIcon from 'img/svg/basket-icon-orange.svg'
-import basketIcon from 'img/svg/basket-icon.svg'
-import orangeHeartIcon from 'img/svg/heart-icon-orange.svg'
-import heartIcon from 'img/svg/heart-icon.svg'
+import addressIcon from 'img/svg/address-icon.svg'
+import basketIcon from 'img/svg/basket.svg'
+import callIcon from 'img/svg/call-icon.svg'
+import likeIcon from 'img/svg/like-empty.svg'
 import logoName from 'img/svg/logo-name.svg'
 import logoIcon from 'img/svg/logo.svg'
-
-import { Search } from '../Search'
+import timeIcon from 'img/svg/time-icon.svg'
 
 import styles from './MiddleHeader.module.scss'
 
 export const MiddleHeader = () => {
-  const { isOpen: isSearchActive, onToggle: toggleSearchActive } = useToggle()
+  const { t } = useTranslation()
 
   return (
     <div className={styles.wrapper}>
@@ -28,18 +26,35 @@ export const MiddleHeader = () => {
           <Image src={logoName} alt="furniture f" priority />
         </Link>
       </div>
-      <div className={cn(styles.search, isSearchActive && styles.searchActive)}>
-        <Search onClick={toggleSearchActive}/>
+
+      <div className={styles.info}>
+        <div className={styles.address}>
+          <Image src={addressIcon} alt="address" />
+          <p className={styles.addressText}>
+            {t('contacts.address')}
+          </p>
+        </div>
+        <div className={styles.call}>
+          <Image src={callIcon} alt="call" />
+          <p className={styles.callText}>
+            {t('contacts.call')}
+          </p>
+        </div>
+        <div className={styles.time}>
+          <Image src={timeIcon} alt="time" />
+          <p className={styles.timeText}>
+            {t('contacts.workingTime')}
+          </p>
+        </div>
       </div>
+
       <div className={styles.selectedUser}>
-        <div className={styles.heart}>
-          <Image src={heartIcon} alt="heart" className={styles.blueHeart}/>
-          <Image src={orangeHeartIcon} alt="heart" className={styles.orangeHeart}/>
-        </div>
-        <div className={styles.basket}>
-          <Image src={basketIcon} alt="basket" className={styles.blueBasket}/>
-          <Image src={orangeBasketIcon} alt="basket" className={styles.orangeBasket}/>
-        </div>
+        <Link href="/" className={styles.like}>
+          <Image src={likeIcon} alt="like" />
+        </Link>
+        <Link href="/" className={styles.basket}>
+          <Image src={basketIcon} alt="basket" />
+        </Link>
       </div>
     </div>
   )

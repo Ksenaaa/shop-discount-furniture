@@ -19,7 +19,7 @@ export const ProductsByCategory: FC<Props> = ({ category }) => {
 
   return (
     <CommonSlider
-      titleName="Related products"
+      titleName="Products by this category"
       sliderLength={isSuccess ? data?.pageData?.length : 0}
     >
       {data?.pageData?.map(product =>

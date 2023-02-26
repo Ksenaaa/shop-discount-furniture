@@ -7,7 +7,7 @@ import cn from 'classnames'
 import { useTranslation } from 'next-i18next'
 
 import { menuCategories } from 'utils/constants/menuCategories'
-import { Routes } from 'utils/constants/routes'
+import { titleName } from 'utils/constants/titleName'
 
 import styles from './Catalog.module.scss'
 
@@ -31,7 +31,7 @@ export const Catalog: FC<Props> = ({ onClick, styleCatalog }) => {
               [styles.activeItem]: router.asPath.split('/').includes(item.path)
             })}
           >
-            <Link href={`/${Routes.CATALOG}/${item.path}`} onClick={onClick}>{t(item.name)}</Link>
+            <Link href={`/${titleName.mainCatalog.path}/${item.path}`} onClick={onClick}>{t(item.name)}</Link>
           </li>
         )}
       </ul>

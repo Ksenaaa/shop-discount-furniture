@@ -1,5 +1,6 @@
-import React, { FC, useEffect, useState } from 'react'
-import { useTranslation } from 'react-i18next'
+import React, { FC } from 'react'
+
+import { useTranslation } from 'next-i18next'
 
 import { menuCategories } from 'utils/constants/menuCategories'
 
@@ -10,17 +11,7 @@ type Props = {
 }
 
 export const CategoryPage: FC<Props> = ({ category }) => {
-  const [hydrated, setHydrated] = useState(false)
-
   const { t } = useTranslation()
-
-  useEffect(() => {
-    setHydrated(true)
-  }, [])
-
-  if (!hydrated) {
-    return null
-  }
 
   const categoryName = menuCategories.find(categoryData => categoryData.path === category)?.name || ''
 

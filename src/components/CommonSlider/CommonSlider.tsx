@@ -1,13 +1,11 @@
 import React, { PropsWithChildren } from 'react'
 
-import Link from 'next/link'
-
 import { useSizeListener } from 'hooks/sezeListenerHook'
-import swipeLeft from 'img/svg/swipe-left-blue.svg'
-import swipeRight from 'img/svg/swipe-right-blue.svg'
+import swipe from 'img/svg/swipe-arrow.svg'
 import { AxisScroll } from 'utils/constants/axisScroll'
 
 import { Slider } from 'components/Slider'
+import { Title } from 'components/Title'
 
 import { picturesCommonSlider } from './constants/picturesCommonSlider'
 
@@ -24,14 +22,7 @@ export const CommonSlider = ({ titleName, pathTitle, sliderLength, children }: P
 
   return (
     <div className={styles.wrapper}>
-      {pathTitle ?
-        <Link href={pathTitle} className={styles.title}>
-          {titleName}
-        </Link> :
-        <div className={styles.title}>
-          {titleName}
-        </div>
-      }
+      <Title name={titleName} pathTitle={pathTitle} />
       <Slider
         picturesLength={sliderLength}
         isAutoCarousel={false}
@@ -42,10 +33,11 @@ export const CommonSlider = ({ titleName, pathTitle, sliderLength, children }: P
             picturesCommonSlider.maxColumnSlider :
             picturesCommonSlider.minColumnSlider
         }
-        swipeLeftImg={swipeLeft}
-        swipeRightImg={swipeRight}
+        swipeLeftImg={swipe}
+        swipeRightImg={swipe}
         stylesSwipeWrapper={styles.swipeWrapper}
         stylesContainerSlider={styles.containerSlider}
+        stylesWrapperSlider={styles.wrapperSlider}
       >
         {children}
       </Slider>

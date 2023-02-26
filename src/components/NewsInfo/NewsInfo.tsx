@@ -5,9 +5,9 @@ import Link from 'next/link'
 
 import cn from 'classnames'
 
-import arrow from 'img/svg/arrow-button.svg'
+import arrow from 'img/svg/swipe-arrow.svg'
 import { useGetNewsIdsQuery, useGetOneNewsQuery } from 'store/services/news'
-import { Routes } from 'utils/constants/routes'
+import { titleName } from 'utils/constants/titleName'
 import { getBlurImage } from 'utils/helpers/getBlurImage'
 
 import { Loader } from 'components/Loader'
@@ -68,22 +68,26 @@ export const NewsInfo: FC<Props> = ({ id }) => {
 
             <div className={styles.toggleItems}>
               <Link
-                href={`/${Routes.NEWS}/${previousId}`}
+                href={`/${titleName.news.path}/${previousId}`}
                 className={styles.toggleItem}
               >
                 <div className={styles.toggleItemText}>
-                  Previous page
+                  Previous news
                 </div>
-                <Image src={arrow} alt="arrow" />
+                <div className={styles.toggleItemPicture}>
+                  <Image src={arrow} alt="arrow" />
+                </div>
               </Link>
               <Link
-                href={`/${Routes.NEWS}/${nextId}`}
+                href={`/${titleName.news.path}/${nextId}`}
                 className={styles.toggleItem}
               >
                 <div className={styles.toggleItemText}>
-                  Next page
+                  Next news
                 </div>
-                <Image src={arrow} alt="arrow" />
+                <div className={styles.toggleItemPicture}>
+                  <Image src={arrow} alt="arrow" />
+                </div>
               </Link>
             </div>
           </div>

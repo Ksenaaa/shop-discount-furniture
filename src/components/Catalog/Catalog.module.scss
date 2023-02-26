@@ -1,14 +1,21 @@
 @import 'styles/colors';
 @import 'styles/fontMixin';
 @import 'styles/fontFamily';
+@import 'styles/mediaBreakpoint';
 
 .wrapperMenu {
   height: 43px;
-  background: $grey;
+  background: $lightTurquoise;
+  @include mediaBreakpoint(lg) {
+    padding: 0 15px;
+  }
+  @include mediaBreakpoint(md) {
+    display: none;
+  }
 
   .list {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-evenly;
     margin: 0 auto;
     max-width: 919px;
     flex-direction: row;
@@ -35,6 +42,9 @@
   padding: 45px;
   display: flex;
   flex-direction: column;
+  @include mediaBreakpoint(md) {
+    padding: 35px;
+  }
 
   .item {
     a {
@@ -76,40 +86,19 @@
   }
 }
 
-@media screen and (max-width: 975px) {
-  .wrapperMenu {
-    padding: 0 15px;
-  }
-
-  .wrapperMenu .list, .wrapperMenuFooter .list {
-    .item a {
+.wrapperMenu .list, .wrapperMenuFooter .list {
+  .item a {
+    @include mediaBreakpoint(lg) {
       @include fontStyle(400, 14px, 19px);
     }
-
-    .activeItem a {
-      font-weight: 700;
-    }
-  }
-}
-
-@media screen and (max-width: 800px) {
-  .wrapperMenu .list, .wrapperMenuFooter .list {
-    .item a {
+    @include mediaBreakpoint(md) {
       @include fontStyle(400, 12px, 14px);
     }
+  }
 
-    .activeItem a {
+  .activeItem a {
+    @include mediaBreakpoint(lg) {
       font-weight: 700;
     }
-  }
-
-  .wrapperMenuBurger .list {
-    padding: 30px;
-  }
-}
-
-@media screen and (max-width: 680px) {
-  .wrapperMenu {
-    display: none;
   }
 }

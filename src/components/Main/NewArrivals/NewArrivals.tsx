@@ -1,7 +1,7 @@
 import React from 'react'
 
 import { useGetNewProductsQuery } from 'store/services/product'
-import { Routes } from 'utils/constants/routes'
+import { titleName } from 'utils/constants/titleName'
 
 import { CommonSlider } from 'components/CommonSlider'
 import { CommonSliderItem } from 'components/CommonSlider/CommonSliderItem'
@@ -14,8 +14,8 @@ export const NewArrivals = () => {
 
   return (
     <CommonSlider
-      titleName="New Arrivals"
-      pathTitle={`/${Routes.NEW_ARRIVALS}`}
+      titleName={titleName.newArrivals.name}
+      pathTitle={`/${titleName.newArrivals.path}`}
       sliderLength={newArrivals.length}
     >
       {newArrivals?.map(product =>

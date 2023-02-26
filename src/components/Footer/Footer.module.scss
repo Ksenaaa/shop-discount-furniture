@@ -1,280 +1,195 @@
 @import 'styles/colors';
 @import 'styles/fontMixin';
+@import 'styles/mediaBreakpoint';
 
 .wrapper {
-  margin: 0 auto;
+  width: 100%;
+  background: $lightTurquoise;
+  box-shadow: $lightGreyTransparent2;
   margin-top: 112px;
-  max-height: 560px;
-  max-width: 1312px;
-
-  .dividingLine {
-    margin: 0 72px;
-    height: 1px;
-    background: $black;
-    opacity: 0.2;
-    margin-bottom: 100px;
+  @include mediaBreakpoint(lg) {
+    margin-top: 80px;
+  }
+  @include mediaBreakpoint(md) {
+    margin-top: 30px;
   }
 
-  .sections {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    padding: 0 5px;
-    margin-bottom: 56px;
-
-    .pages {
+  .footer {
+    margin: 0 auto;
+    max-width: 1344px;
+    padding: 60px 16px 16px;
+    @include mediaBreakpoint(sm) {
+      padding-top: 30px;
+    }
+  
+    .sections {
       display: flex;
       flex-direction: row;
-
-      .categorySection {
-        margin-right: 62px;
-
-        .title {
-          @include fontStyle(500, 24px, 29px);
-          color: $black;
-          margin-bottom: 16px;
-        }
-      }
-
-      .otherSection .item {
-        @include fontStyle(400, 18px, 27px);
-        color: $black;
-        margin-bottom: 16px;
-
-        &:first-letter {
-          text-transform: uppercase;
-        }
-      }
-    }
-
-    .contacts {
-      width: 360px;
-
-      .call, .address {
-        display: flex;
-        flex-direction: row;
-        align-items: flex-start;
-
-        img {
-          width: 24px;
-          height: 24px;
-        }
-
-        .callText, .addressText {
-          margin-left: 8px;
-          color: $black;
-        }
-      }
-
-      .call {
-        margin-bottom: 24px;
-
-        .callText {
-          @include fontStyle(500, 24px, 29px);
-        }
-      }
-
-      .address {
-        margin-bottom: 16px;
-
-        .addressText {
-          @include fontStyle(400, 16px, 20px);
-        }
-      }
-
-      .social {
-        display: flex;
-        flex-direction: row;
-
-        .facebookLogo, .instagramLogo {
-          margin-right: 4px;
-
-          img {
-            width: 32px;
-            height: 32px;
-          }
-        }
-      }
-    }
-  }
-
-  .bottom {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-
-    .logo {
-      margin-bottom: 16px;
-
-      img{
-        width: 60px;
-        height: 60px;
-      }
-    }
-
-    .nameSite, .yearWork {
-      @include fontStyle(400, 14px, 17px);
-      color: $black;
-      margin-bottom: 8px;
-    }
-  }
-}
-
-@media screen and (max-width: 975px) {
-  .wrapper {
-    margin-top: 80px;
-
-    .dividingLine {
+      justify-content: space-between;
+      gap: 20px;
+      padding: 0 5px;
       margin-bottom: 50px;
-    }
-
-    .sections {
-      .pages {
-        .categorySection {
-          margin-right: 32px;
-
-          .title {
-            @include fontStyle(500, 18px, 20px);
-          }
-        }
-
-        .otherSection .item {
-          @include fontStyle(400, 14px, 16px);
-        }
-      }
-
-      .contacts {
-        .call img, .address img {
-          width: 15px;
-          height: 15px;
-        }
-
-        .call {
-          margin-bottom: 16px;
-
-          .callText {
-            @include fontStyle(500, 18px, 20px);
-          }
-        }
-
-        .address {
-          margin-bottom: 12px;
-
-          .addressText {
-            @include fontStyle(400, 14px, 16px);
-          }
-        }
-      }
-    }
-  }
-}
-
-@media screen and (max-width: 800px) {
-  .wrapper {
-    .sections {
-      margin-bottom: 26px;
-
-      .pages {
-        .categorySection .title {
-          @include fontStyle(500, 14px, 12px);
-        }
-
-        .otherSection .item {
-          @include fontStyle(400, 10px, 12px);
-        }
-      }
-
-      .contacts {
-        .call .callText {
-          @include fontStyle(500, 14px, 12px);
-        }
-
-        .address .addressText {
-          @include fontStyle(400, 10px, 12px);
-        }
-      }
-    }
-
-    .bottom {
-      .logo {
-        margin-bottom: 5px;
-
-        img{
-          width: 30px;
-          height: 30px;
-        }
-      }
-
-      .nameSite, .yearWork {
-        @include fontStyle(400, 7px, 10px);
-        margin-bottom: 2px;
-      }
-    }
-  }
-}
-
-@media screen and (max-width: 680px) {
-  .wrapper {
-    margin-top: 30px;
-
-    .dividingLine {
-      margin-bottom: 20px;
-    }
-
-    .sections {
-      margin-bottom: 10px;
-
-      .pages {
+      @include mediaBreakpoint(lg) {
+        margin-bottom: 26px;
+      }  
+      @include mediaBreakpoint(md) {
+        margin-bottom: 10px;
+      }  
+      @include mediaBreakpoint(sm) {
         flex-direction: column;
+      }  
 
+      .contacts {  
+        .call, .address {
+          display: flex;
+          flex-direction: row;
+          align-items: center;
+  
+          img {
+            width: 25px;
+            height: 25px;
+            @include mediaBreakpoint(lg) {
+              width: 15px;
+              height: 15px;
+            }    
+          }
+  
+          .callText, .addressText {
+            margin-left: 10px;
+            color: $black;
+            @include mediaBreakpoint(sm) {
+              margin-left: 5px;
+            }    
+          }
+        }
+  
+        .call, .address {
+          margin-bottom: 30px;
+          @include mediaBreakpoint(lg) {
+            margin-bottom: 20px;
+          }
+          @include mediaBreakpoint(md) {
+            margin-bottom: 10px;
+          }
+    
+          .callText, .addressText {
+            @include fontStyle(500, 20px, 26px);
+            @include mediaBreakpoint(lg) {
+              @include fontStyle(500, 16px, 22px);
+            }    
+            @include mediaBreakpoint(md) {
+              @include fontStyle(500, 14px, 18px);
+            }    
+            @include mediaBreakpoint(sm) {
+              @include fontStyle(500, 12px, 18px);
+            }    
+          }
+        }
+    
+        .social {
+          display: flex;
+          flex-direction: row;
+  
+          .facebookLogo, .instagramLogo {
+            margin-right: 10px;
+  
+            img {
+              width: 35px;
+              height: 35px;
+            }
+          }
+        }
+      }
+
+      .pages {
+        display: flex;
+        flex-direction: row;
+        @include mediaBreakpoint(md) {
+          flex-direction: column;
+          align-items: center;
+        }
+  
         .categorySection {
+          margin-right: 62px;
+          @include mediaBreakpoint(lg) {
+            margin-right: 32px;
+          }  
+      
           .title {
-            @include fontStyle(400, 14px, 16px);
+            @include fontStyle(500, 24px, 29px);
+            color: $black;
+            margin-bottom: 16px;
+            @include mediaBreakpoint(lg) {
+              @include fontStyle(500, 16px, 18px);
+            }    
+            @include mediaBreakpoint(md) {
+              @include fontStyle(400, 16px, 18px);
+            }
+            @include mediaBreakpoint(sm) {
+              margin-bottom: 20px;
+            }  
           }
-
+  
           .wrapperCatalog {
-            display: none
+            @include mediaBreakpoint(md) {
+              display: none
+            }
           }
         }
-
+  
         .otherSection .item {
-          @include fontStyle(400, 14px, 16px);
-        }
-      }
-
-      .contacts {
-        width: 260px;
-
-        .call {
-          margin-bottom: 10px;
-
-          .callText {
-            @include fontStyle(500, 14px, 16px);
+          @include fontStyle(400, 18px, 27px);
+          color: $black;
+          margin-bottom: 16px;
+          @include mediaBreakpoint(lg) {
+            @include fontStyle(400, 16px, 18px);
           }
-        }
-
-        .address {
-          margin-bottom: 8px;
-
-          .addressText {
-            @include fontStyle(400, 10px, 10px);
+          @include mediaBreakpoint(sm) {
+            margin-bottom: 20px;
+          }
+  
+          &:first-letter {
+            text-transform: uppercase;
           }
         }
       }
-
-      .bottom {
-        .logo {
-          margin-bottom: 2px;
-
-          img{
+    }
+  
+    .bottom {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+  
+      .logo {
+        margin-right: 16px;
+        @include mediaBreakpoint(lg) {
+          margin-right: 5px;
+        }
+        @include mediaBreakpoint(md) {
+          margin-right: 2px;
+        }
+  
+        img{
+          width: 40px;
+          height: 40px;
+          @include mediaBreakpoint(lg) {
+            width: 20px;
+            height: 20px;
+          }  
+          @include mediaBreakpoint(md) {
             width: 15px;
             height: 15px;
-          }
+          }  
         }
-
-        .nameSite, .yearWork {
-          @include fontStyle(400, 4px, 10px);
-          margin-bottom: 1px;
+      }
+  
+      .nameSite, .yearWork {
+        @include fontStyle(400, 14px, 17px);
+        color: $black;
+        margin-right: 8px;
+        @include mediaBreakpoint(lg) {
+          @include fontStyle(400, 10px, 10px);
+          margin-right: 2px;
         }
       }
     }

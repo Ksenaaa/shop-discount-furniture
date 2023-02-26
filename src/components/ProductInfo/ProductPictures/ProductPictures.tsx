@@ -3,8 +3,7 @@ import React, { FC, useCallback, useState } from 'react'
 import Image from 'next/image'
 
 import { useSizeListener } from 'hooks/sezeListenerHook'
-import swipeLeft from 'img/svg/swipe-product-pictures-left.svg'
-import swipeRight from 'img/svg/swipe-product-pictures-right.svg'
+import swipe from 'img/svg/arrow-down-icon.svg'
 import { AxisScroll } from 'utils/constants/axisScroll'
 import { getBlurImage } from 'utils/helpers/getBlurImage'
 
@@ -37,18 +36,21 @@ export const ProductPictures: FC<Props> = ({ pictures }) => {
           picturesLength={pictures.length}
           isAutoCarousel={false}
           isSwipe={true}
-          axisScroll={windowWidth <= productPicturesSlider.minWindowWidth ? AxisScroll.X : AxisScroll.Y}
+          axisScroll={windowWidth >= productPicturesSlider.lg.minWidth ? AxisScroll.Y : AxisScroll.X}
           column={
-            windowWidth <= productPicturesSlider.minWindowWidth ?
-              productPicturesSlider.minColumnSlider :
-              windowWidth <= productPicturesSlider.midlWindowWidth ?
-                productPicturesSlider.midlColumnSlider :
-                productPicturesSlider.maxColumnSlider
+            windowWidth >= productPicturesSlider.xlg.minWidth
+              ? productPicturesSlider.xlg.column :
+              windowWidth >= productPicturesSlider.lg.minWidth
+                ? productPicturesSlider.lg.column :
+                windowWidth >= productPicturesSlider.md.minWidth
+                  ? productPicturesSlider.md.column :
+                  productPicturesSlider.sm.column
           }
-          swipeLeftImg={swipeLeft}
-          swipeRightImg={swipeRight}
+          swipeLeftImg={swipe}
+          swipeRightImg={swipe}
           stylesSwipeWrapper={styles.swipeWrapper}
           stylesContainerSlider={styles.containerSlider}
+          stylesWrapperSlider={styles.wrapperSlider}
         >
           {pictures.map((id, index) =>
             <OtherPicturesCard

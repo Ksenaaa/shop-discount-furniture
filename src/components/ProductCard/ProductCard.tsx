@@ -1,15 +1,16 @@
 import React, { FC, useCallback } from 'react'
-import { useTranslation } from 'react-i18next'
 
 import Image from 'next/image'
 import Link from 'next/link'
 
-import likeIcon from 'img/svg/heart-icon-orange.svg'
-import basketIcon from 'img/svg/to-basket.svg'
+import { useTranslation } from 'next-i18next'
+
+import basketIcon from 'img/svg/basket.svg'
+import likeIcon from 'img/svg/like-empty.svg'
 import { ICardProduct } from 'interface/productInterface'
 import { useGetColorsQuery } from 'store/services/colors'
 import { menuCategories } from 'utils/constants/menuCategories'
-import { Routes } from 'utils/constants/routes'
+import { titleName } from 'utils/constants/titleName'
 import { getBlurImage } from 'utils/helpers/getBlurImage'
 import { productColors } from 'utils/helpers/productColors'
 
@@ -31,7 +32,7 @@ export const ProductCard: FC<Props> = ({ product }) => {
   const categoryData = menuCategories?.find(categoryData => categoryData.id === product.category)
 
   return (
-    <Link href={`/${Routes.CATALOG}/${categoryData?.path}/${product.id}`} className={styles.wrapper}>
+    <Link href={`/${titleName.mainCatalog.path}/${categoryData?.path}/${product.id}`} className={styles.wrapper}>
       <div className={styles.picture}>
         <Image
           src={`${process.env.NEXT_PUBLIC_API_URL}/${product.img}`}
@@ -42,20 +43,12 @@ export const ProductCard: FC<Props> = ({ product }) => {
           blurDataURL={getBlur(product.img)}
         />
       </div>
-      <div className={styles.categoryWithCode}>
-        <div className={styles.category}>
-          {t(categoryData?.name || '')}
-        </div>
-        <div className={styles.code}>
-          {product.code}
-        </div>
-      </div>
       <div className={styles.name}>
         {product.name}
       </div>
-      <div className={styles.cardBottom}>
-        <div className={styles.price}>
-          from ${product.price}
+      <div className={styles.sectionMidl}>
+        <div className={styles.categoryWithCode}>
+          {t(categoryData?.name || '')}: {product.code}
         </div>
         <div className={styles.colors}>
           {colors?.slice(-4).map((color, index) =>
@@ -64,6 +57,9 @@ export const ProductCard: FC<Props> = ({ product }) => {
             </div>
           )}
         </div>
+      </div>
+      <div className={styles.price}>
+        from ${product.price}
       </div>
       <div className={styles.activeElements}>
         <div className={styles.like}>

@@ -4,7 +4,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 
 import { ICardNews } from 'interface/newsInterface'
-import { Routes } from 'utils/constants/routes'
+import { titleName } from 'utils/constants/titleName'
 import { getBlurImage } from 'utils/helpers/getBlurImage'
 
 import styles from './MainNewsCard.module.scss'
@@ -18,7 +18,7 @@ export const MainNewsCard: FC<Props> = ({ item }) => {
 
   return (
     <Link
-      href={`/${Routes.NEWS}/${item.id}`}
+      href={`/${titleName.news.path}/${item.id}`}
       className={styles.card}
     >
       <div className={styles.picture}>

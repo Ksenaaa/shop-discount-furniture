@@ -8,10 +8,10 @@
   position: relative;
 
   input {
-    padding: 0 40px 0 10px;
-    border: 2px solid $orange;
+    padding: 0 42px 0 10px;
+    border: 2px solid $darkTurquoise;
     opacity: 0.5;
-    border-radius: 2px;
+    border-radius: 5px;
     position: absolute;
     left: 0;
     right: 0;
@@ -24,9 +24,11 @@
   }
 
   & img {
+    width: 20px;
+    height: 20px;
     position: absolute;
-    right: 4px;
-    top: 4px;
+    right: 6px;
+    top: 6px;
     cursor: pointer;
     transition: $animationTransition;
 

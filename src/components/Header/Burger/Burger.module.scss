@@ -1,5 +1,6 @@
 @import 'styles/colors';
 @import 'styles/animation';
+@import 'styles/mediaBreakpoint';
 
 .burger {
   display: none;
@@ -9,15 +10,25 @@
   margin: 5px 15px;
   cursor: pointer;
   transition: $animationTransition;
+  @include mediaBreakpoint(lg) {
+    display: block;
+  }
 
-  & div {
+  div {
     position: absolute;
-    background: $orange;
     height: 2.5px;
     width: 100%;
     transition: $animationTransition;
   }
-  
+
+  &FirstLine, &SecondLine, &ThirdLine {
+    background: $white;
+  }
+
+  &FirstLineCross, &SecondLineCross, &ThirdLineCross {
+    background: $darkTurquoise;
+  }
+
   &FirstLine {
     top: 0;
   }
@@ -44,11 +55,4 @@
   &:hover {
     opacity: 0.6;
   }
-}
-
-
-@media screen and (max-width: 975px) {
-  .burger {
-    display: block;
-  }    
 }

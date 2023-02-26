@@ -23,7 +23,7 @@ export const ProductsByType: FC<Props> = ({ type }) => {
       {!isSuccess
         ? <Loader /> :
         <CommonSlider
-          titleName="Items in this set"
+          titleName="Products by this type"
           sliderLength={isSuccess ? data?.pageData?.length : 0}
         >
           {data?.pageData?.map(product =>

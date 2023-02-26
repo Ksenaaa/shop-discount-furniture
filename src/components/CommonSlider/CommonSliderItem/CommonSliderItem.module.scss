@@ -1,20 +1,16 @@
 @import 'styles/colors';
 @import 'styles/animation';
+@import 'styles/mediaBreakpoint';
 
 .card {
   flex: 0 0 33.3%;
-  width: 33.3%;
   transition: $animationTransition;
+  @include mediaBreakpoint(sm) {
+    flex: 0 0 100%;
+  }
 
   &:hover {
     box-shadow: $lightGreyTransparent4;
     transform: scale(1.02);
-  }
-}
-
-@media screen and (max-width: 450px) {
-  .card {
-    flex: 0 0 100%;
-    width: 100%;
   }
 }

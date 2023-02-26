@@ -1,15 +1,15 @@
-import { Montserrat, PT_Serif as pTSerif } from '@next/font/google'
+import { EB_Garamond as EBGaramond, Raleway } from '@next/font/google'
 import localFont from '@next/font/local'
 
-export const montserrat = Montserrat({
+export const raleway = Raleway({
   weight: ['400', '500', '600', '700'],
   subsets: ['latin', 'cyrillic'],
   style: 'normal',
   display: 'swap'
 })
 
-export const ptSerif = pTSerif({
-  weight: ['400', '700'],
+export const garamond = EBGaramond({
+  weight: ['400', '600', '700'],
   subsets: ['latin', 'cyrillic'],
   style: 'normal',
   display: 'swap'

@@ -6,8 +6,8 @@ import { CatalogStyles } from 'utils/constants/catalogStyles'
 import { Catalog } from 'components/Catalog'
 
 import { Burger } from './Burger'
-import { Contacts } from './Contacts'
 import { MiddleHeader } from './MiddleHeader'
+import { TopHeader } from './TopHeader'
 
 import styles from './Header.module.scss'
 
@@ -16,12 +16,12 @@ export const Header = () => {
 
   return (
     <div className={styles.wrapper}>
-      <Contacts />
-      <MiddleHeader />
+      <TopHeader />
       <Catalog styleCatalog={CatalogStyles.WRAPPER_MENU} />
       <div className={styles.burgerWrapper} onClick={toggleMenuBurgerActive}>
         <Burger isActiveMenu={isMenuBurgerActive} />
       </div>
+      <MiddleHeader />
       {isMenuBurgerActive &&
         <div className={styles.burgerMenu}>
           <Catalog onClick={toggleMenuBurgerActive} styleCatalog={CatalogStyles.WRAPPER_MENU_BURGER} />

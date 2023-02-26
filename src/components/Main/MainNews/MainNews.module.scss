@@ -1,48 +1,39 @@
 @import 'styles/fontMixin';
 @import 'styles/colors';
+@import 'styles/mediaBreakpoint';
 
 .wrapper {
-  max-width: 1312px;
+  max-width: 1344px;
   margin: 0 auto;
-  margin-bottom: 112px;
+  padding: 0 16px;
+  margin-bottom: 100px;
+  @include mediaBreakpoint(md) {
+    margin-bottom: 60px;
+  }
+  @include mediaBreakpoint(sm) {
+    margin-bottom: 30px;
+  }
 
   .title {
-    @include fontStyle(700, 24px, 29px);
+    @include fontStyle(700, 26px, 30px);
     color: $black;
     display: inline-block;
-    margin-bottom: 40px;
+    margin-bottom: 50px;
+    @include mediaBreakpoint(md) {
+      @include fontStyle(700, 20px, 20px);
+      margin-bottom: 20px;
+    }  
   }
 
   .cards {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 32px;
-  }
-}
-
-@media screen and (max-width: 1339px) {
-  .wrapper {
-    margin: 0 16px 112px;
-  }
-}
-
-@media screen and (max-width: 975px) {
-  .wrapper .cards {
-    gap: 15px;
-  }
-}
-
-@media screen and (max-width: 680px) {
-  .wrapper {
-    margin-bottom: 60px;
-  
-    .title {
-      @include fontStyle(700, 20px, 20px);
-      margin-bottom: 20px;
-    }
-  
-    .cards {  
+    gap: 28px;
+    @include mediaBreakpoint(lg) {
+      gap: 15px;
+    }  
+    @include mediaBreakpoint(md) {
       gap: 20px;
-    }
+    }  
   }
 }

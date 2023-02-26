@@ -1,101 +1,156 @@
 @import 'styles/fontMixin';
 @import 'styles/colors';
 @import 'styles/animation';
+@import 'styles/mediaBreakpoint';
 
 .cards {
-  max-width: 1312px;
+  max-width: 1344px;
+  height: 260px;
+  padding: 0 16px;
   margin: 0 auto;
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 32px;
-  margin-bottom: 112px;
-
-  .card {
-    grid-column: span 1;
-    height: 172px;
-    overflow: hidden;
-    position: relative;
-    box-shadow: $lightGreyTransparent3;
-    display: block;
-    
-    .picture {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-    
-    .overlapPicture {
-      background: $lightGreyTransparent;
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      z-index: 2;
-      transition: $animationTransition;
-    }
-
-    .title {
-      @include fontStyle(700, 24px, 29px);
-      width: 100%;
-      padding: 8px 0;
-      color: $black;
-      text-align: center;
-      background: $white;
-      position: absolute;
-      z-index: 3;
-      bottom: 0;
-
-      &:first-letter {
-        text-transform: uppercase;
-      }  
-    }
-
-    &:hover .title {
-      text-decoration: underline;
-    }
-
-    &:hover a {
-      opacity: 1;
-    }
-
-    &:hover .overlapPicture {
-      background: $lightOrangeTransparent;
-    }
+  position: relative;
+  overflow: hidden;
+  margin-bottom: 100px;
+  @include mediaBreakpoint(md) {
+    height: 180px;
+    margin-bottom: 60px;
   }
-}
+  @include mediaBreakpoint(sm) {
+    height: 200px;
+    margin-bottom: 30px;
+  }
 
-@media screen and (max-width: 975px) {
-  .cards {
-    gap: 15px;
+  .wrapperSlider {
+    height: 100%;
+    width: 90%;
+    position: absolute;
+    left: 5%;
+    right: 5%;
+    overflow: hidden;
+    @include mediaBreakpoint(sm) {
+      width: 70%;
+      left: 15%;
+      right: 15%;
+    }
 
-    .card {
-      height: 150px;
-
-      .title {
-        @include fontStyle(700, 20px, 22px);
+    .containerSlider {
+      height: 100%;
+      width: 100%;
+      display: flex;
+      flex-direction: row;
+      flex-wrap: nowrap;
+      transition: $animationTransition;
+    
+      .wrapperCard {
+        height: 100%;
+        flex: 0 0 33.3%;
+        padding: 12px;
+        @include mediaBreakpoint(sm) {
+          flex: 0 0 100%;
+        }
+      
+        .card {
+          height: 100%;
+          border-radius: 15px;
+          overflow: hidden;
+          position: relative;
+          box-shadow: $lightGreyTransparent2;
+        
+          .picture {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: $animationTransition;
+          }
+              
+          .title {
+            @include fontStyle(700, 26px, 29px);
+            width: 100%;
+            padding: 8px 0;
+            color: $white;
+            text-align: center;
+            background: $bronze;
+            position: absolute;
+            z-index: 3;
+            bottom: 0;
+            transition: $animationTransition;
+            @include mediaBreakpoint(lg) {
+              @include fontStyle(700, 18px, 18px);
+            }
+            @include mediaBreakpoint(md) {
+              @include fontStyle(700, 16px, 16px);
+            }
+          
+            &:first-letter {
+              text-transform: uppercase;
+            }  
+          }
+          
+          &:hover .title{
+            background: $darkBlue2;
+          }  
+          
+          &:hover .picture {
+            transform: scale(1.1);
+          }
+        }
+  
+        &:hover {
+          opacity: 1;
+        }
       }
     }
   }
-}
 
-@media screen and (max-width: 735px) {
-  .cards {
-    margin-bottom: 60px;
+  .swipeWrapper {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+  
+    div {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100%;
+      width: 5%;
+      background: $white;
+      cursor: pointer;
+      position: absolute;
+      z-index: 10;
+      @include mediaBreakpoint(sm) {
+        width: 15%;
+      }
 
-    .card {
-      grid-column: span 2;
-    }
-  }
-}
+      img {
+        width: 30px;
+        height: 30px;
+        display: block;
+        transition: $animationTransition;
+      }
 
-@media screen and (max-width: 435px) {
-  .cards .card {
-    height: 100px;
+      &:hover img {
+        opacity: 0.6;
+      }
 
-    .title {
-      @include fontStyle(700, 16px, 20px);
-      padding: 4px 0;
+      &:first-child {
+        left: 0;
+      }
+
+      &:last-child {
+        right: 0;
+      }
+
+      &:first-child img {
+        transform: rotate(90deg);
+        align-items: center;
+      }
+
+      &:last-child img {
+        transform: rotate(-90deg);
+        align-items: center;
+      }
     }
   }
 }
