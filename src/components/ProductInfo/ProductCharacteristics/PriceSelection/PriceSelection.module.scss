@@ -1,34 +1,27 @@
 @import 'styles/fontMixin';
 @import 'styles/colors';
+@import 'styles/mediaBreakpoint';
 
 .priceSelection {
-  margin-bottom: 49px;
-  
+  margin-bottom: 22px;
+
   .priceCategory {
     width: 112px;
     margin-bottom: 16px;
     position: relative;
-
+    @include mediaBreakpoint(lg) {
+      margin-bottom: 12px;
+    }
+  
     .priceValue {
       @include fontStyle(400, 16px, 20px);
-      color: $seaGrey;  
+      color: $turquoise;  
       position: absolute;
       top: 0;
       left: 112px;
-    }
-  }
-}
-
-@media screen and (max-width: 975px) {
-  .priceSelection {
-    margin-bottom: 24px;
-    
-    .priceCategory {
-      margin-bottom: 12px;
-  
-      .priceValue {
+      @include mediaBreakpoint(lg) {
         @include fontStyle(400, 14px, 15px);
-      }
+      }    
     }
   }
 }

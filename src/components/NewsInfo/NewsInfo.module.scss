@@ -3,6 +3,7 @@
 @import 'styles/textEndMixin';
 @import 'styles/colors';
 @import 'styles/animation';
+@import 'styles/mediaBreakpoint';
 
 .wrapper {
   width: 100%;
@@ -11,7 +12,7 @@
   .picture {
     position: relative;
     overflow: hidden;
-    margin-bottom: 32px;
+    margin-bottom: 30px;
     
     img {
       position: absolute;
@@ -20,8 +21,17 @@
   } 
 
   .pictureTitle {
-    height: 448px;
+    height: 460px;
     max-width: 1440px;
+    @include mediaBreakpoint(lg) {
+      height: 348px;
+    }  
+    @include mediaBreakpoint(md) {
+      height: 248px;
+    }  
+    @include mediaBreakpoint(sm) {
+      height: 200px;
+    }  
 
     .overlapPicture, .descTitle, .toggleItems {
       position: absolute;
@@ -32,58 +42,103 @@
     }
     
     .overlapPicture {
-      background: $darkGreyTransparent;
+      background: $lightBlueTransparent;
       z-index: 2;
     }
 
     .descTitle {
       max-width: 972px;
-      margin: 89px 64px;
+      margin: 90px 70px;
       z-index: 3;
-
+      @include mediaBreakpoint(md) {
+        margin: 40px 30px;
+      }
+      @include mediaBreakpoint(sm) {
+        margin: 30px 10px;
+      }    
+    
       .nameTitle {
-        @include fontStyle(700, 36px, 44px);
+        @include fontStyle(700, 38px, 44px);
         @include textEndStyle(2);
         color: $white;
-        margin-bottom: 8px;
+        margin-bottom: 10px;
+        @include mediaBreakpoint(lg) {
+          @include fontStyle(700, 30px, 35px);
+        }      
+        @include mediaBreakpoint(md) {
+          @include fontStyle(700, 20px, 20px);
+        }   
+        @include mediaBreakpoint(sm) {
+          @include fontStyle(700, 18px, 20px);
+        }         
       }
   
       .textTitle {
-        @include fontStyle(500, 24px, 29px);
+        @include fontStyle(500, 22px, 29px);
         @include textEndStyle(1);
         color: $white;
         max-width: 673px;
-        margin-bottom: 18px;
+        margin-bottom: 16px;
+        @include mediaBreakpoint(lg) {
+          @include fontStyle(500, 20px, 22px);
+        }      
+        @include mediaBreakpoint(md) {
+          @include fontStyle(500, 16px, 20px);
+        }      
+        @include mediaBreakpoint(sm) {
+          @include fontStyle(500, 12px, 20px);
+        }      
       }
     }
 
     .toggleItems {
       display: flex;
-      margin: 32px 64px;
+      margin: 30px 70px;
+      margin-top: auto;
       justify-content: space-between;
-      align-items: flex-end;
+      align-items: center;
       z-index: 3;
-
+      height: 30px;
+      @include mediaBreakpoint(md) {
+        margin-left: 30px;
+        margin-right: 30px;
+      }  
+      @include mediaBreakpoint(sm) {
+        margin-left: 10px;
+        margin-right: 10px;
+      }  
+  
       .toggleItem {
         transition: $animationTransition;
         display: flex;
         align-items: center;
+        flex-direction: row;
 
         .toggleItemText {
-          @include fontStyle(400, 16px, 20px);
+          @include fontStyle(400, 20px, 20px);
           color: $white;
-          margin: 0 16px;
+          margin: 0 38px;
+          @include mediaBreakpoint(md) {
+            @include fontStyle(400, 14px, 20px);
+          }      
+          @include mediaBreakpoint(sm) {
+            @include fontStyle(400, 12px, 20px);
+          }      
         }
 
-        & img {
-          height: 7px;
+        .toggleItemPicture img {
+          width: 30px;
+          height: 30px;
+        }
+        
+        &:first-child .toggleItemPicture img {
+          top: 0;
+          left: 0;
         }
 
-        &:first-child img {
-          transform: rotateY(200deg);
-        }
-
-        &:last-child img {
+        &:last-child .toggleItemPicture img {
+          transform: rotate(180deg);
+          top: 0;
           right: 0;
         }
       }
@@ -91,133 +146,44 @@
   }  
   
   .wrapperText {
-    max-width: 1312px;  
+    max-width: 1344px;  
     margin: 0 auto;
-    padding: 0 10px;
+    padding: 0 16px;
 
     .name {
-      @include fontStyle(700, 24px, 29px);
+      @include fontStyle(700, 26px, 30px);
       color: $black;
       margin-bottom: 32px;
+      @include mediaBreakpoint(lg) {
+        @include fontStyle(700, 20px, 22px);
+      }      
+      @include mediaBreakpoint(sm) {
+        @include fontStyle(700, 18px, 18px);
+      }      
     }
     
     .text {
-      @include fontStyle(400, 18px, 27px);
+      @include fontStyle(400, 18px, 30px);
       font-family: $gothic;
-      margin-bottom: 32px;
+      margin-bottom: 30px;
+      @include mediaBreakpoint(lg) {
+        @include fontStyle(400, 16px, 25px);
+      }      
+      @include mediaBreakpoint(sm) {
+        @include fontStyle(400, 14px, 18px);
+      }      
     }
     
     .pictureText {
-      height: 692px;
+      height: 600px;
       max-width: 100%;  
-    }
-  }
-}
-
-@media screen and (max-width: 975px) {
-  .wrapper {
-    .pictureTitle {
-      height: 348px;
-
-      .descTitle {
-        .nameTitle {
-          @include fontStyle(700, 30px, 35px);
-        }
-    
-        .textTitle {
-          @include fontStyle(500, 20px, 22px);
-        }
-      }
-  
-      .toggleItems .toggleItem .toggleItemText {
-        @include fontStyle(400, 16px, 20px);
-      }
-    }  
-    
-    .wrapperText {
-      .name {
-        @include fontStyle(700, 20px, 22px);
-      }
-      
-      .text {
-        @include fontStyle(400, 16px, 25px);
-      }
-      
-      .pictureText {
+      @include mediaBreakpoint(lg) {
         height: 492px;
       }
-    }
-  }
-}
-
-@media screen and (max-width: 680px) {
-  .wrapper {
-    .pictureTitle {
-      height: 248px;
-
-      .descTitle {
-        margin: 40px 30px;
-
-        .nameTitle {
-          @include fontStyle(700, 20px, 20px);
-        }
-    
-        .textTitle {
-          @include fontStyle(500, 16px, 20px);
-        }
+      @include mediaBreakpoint(md) {
+        height: 292px;
       }
-  
-      .toggleItems {
-        margin: 30px 30px;
-
-        .toggleItem .toggleItemText {
-          @include fontStyle(400, 14px, 20px);
-        }
-      }
-    }
-    
-    .wrapperText .pictureText {
-      height: 292px;
-    }
-  }
-}
-
-@media screen and (max-width: 360px) {
-  .wrapper {
-    .pictureTitle {
-      height: 200px;
-
-      .descTitle {
-        margin: 30px 10px;
-
-        .nameTitle {
-          @include fontStyle(700, 18px, 20px);
-        }
-    
-        .textTitle {
-          @include fontStyle(500, 12px, 20px);
-        }
-      }
-  
-      .toggleItems {
-        margin: 10px 10px;
-
-        .toggleItem .toggleItemText {
-          @include fontStyle(400, 12px, 20px);
-        }
-      }
-    }  
-    
-    .wrapperText {
-      .nameTitle {
-        @include fontStyle(700, 18px, 18px);
-      }
-
-      .text {
-        @include fontStyle(400, 16px, 18px);
-      }
-
-      .pictureText {
+      @include mediaBreakpoint(sm) {
         height: 200px;
       }
     }

@@ -1,5 +1,6 @@
 @import 'styles/fontMixin';
 @import 'styles/colors';
+@import 'styles/mediaBreakpoint';
 
 .wrapper {
   width: 100%;
@@ -21,91 +22,73 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    
+    @include mediaBreakpoint(lg) {
+      margin-top: 60px;
+    }
+    @include mediaBreakpoint(md) {
+      margin-top: 50px;
+    }
+    @include mediaBreakpoint(sm) {
+      padding: 0 45px;
+    }
+  
     .title, .desk {
       text-align: center;
       color: $white;
-      text-shadow: $lightGreyTransparent5;
+      text-shadow: $lightGreyTransparent3;
     }
 
     .title {
       @include fontStyle(600, 64px, 78px);
-      margin-bottom: 24px;
+      margin-bottom: 14px;
+      @include mediaBreakpoint(lg) {
+        @include fontStyle(600, 44px, 78px);
+        margin-bottom: 6px;
+      }  
+      @include mediaBreakpoint(md) {
+        @include fontStyle(600, 28px, 25px);
+        width: 220px;
+        margin-bottom: 12px;
+      }  
+      @include mediaBreakpoint(sm) {
+        @include fontStyle(600, 22px, 20px);
+        width: 130px;
+      }  
     }
     
     .desk {
       @include fontStyle(400, 24px, 29px);
-      margin-bottom: 4px;
+      margin-bottom: 18px;
+      @include mediaBreakpoint(lg) {
+        @include fontStyle(400, 20px, 29px);
+      }  
+      @include mediaBreakpoint(md) {
+        @include fontStyle(400, 18px, 22px);
+      }  
+      @include mediaBreakpoint(sm) {
+        @include fontStyle(400, 16px, 20px);
+      }  
     }
   }
 }
 
-@media screen and (max-width: 1000px) {
-  .wrapperUa .text {
-    .title {
+.wrapperUa .text {
+  .title {
+    @include mediaBreakpoint(lg) {
       @include fontStyle(600, 44px, 78px);
     }
-    
-    .desk {
-      @include fontStyle(400, 20px, 29px);
-    }
-  }
-}
-
-@media screen and (max-width: 975px) {
-  .wrapper .text {
-    margin-top: 60px;
-
-    .title {
-      @include fontStyle(600, 44px, 78px);
-    }
-    
-    .desk {
-      @include fontStyle(400, 20px, 29px);
-    }
-  }
-}
-
-@media screen and (max-width: 735px) {
-  .wrapperUa .text {
-    .title {
+    @include mediaBreakpoint(md) {
       width: 250px;
       @include fontStyle(600, 30px, 30px);
     }
-    
-    .desk {
+  }
+  
+  .desk {
+    @include mediaBreakpoint(lg) {
+      @include fontStyle(400, 20px, 29px);
+    }  
+    @include mediaBreakpoint(md) {
       @include fontStyle(400, 18px, 29px);
-    }
-  }
-}
-
-@media screen and (max-width: 680px) {
-  .wrapper .text {
-    margin-top: 20px;
-
-    .title {
-      @include fontStyle(600, 28px, 25px);
-      width: 220px;
-      margin-bottom: 16px;
-    }
-    
-    .desk {
-      @include fontStyle(400, 18px, 22px);
-    }
-  }
-}
-
-@media screen and (max-width: 383px) {
-  .wrapper .text {
-    margin-top: 40px;
-
-    .title {
-      @include fontStyle(600, 20px, 20px);
-      width: 130px;
-    }
-    
-    .desk {
-      @include fontStyle(400, 16px, 20px);
-    }
+    }  
   }
 }

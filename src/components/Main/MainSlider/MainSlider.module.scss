@@ -1,4 +1,5 @@
 @import 'styles/animation';
+@import 'styles/mediaBreakpoint';
 
 .wrapper {
   max-width: 1440px;
@@ -6,16 +7,27 @@
   margin: 0 auto;
   position: relative;
   overflow: hidden;
-  
-  .containerSlider {
-    height: 100%;
-    width: 100%;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: nowrap;
-    transition: $animationTransition;
+  margin-bottom: 30px;
+  @include mediaBreakpoint(lg) {
+    height: 300px;
+  }  
+  @include mediaBreakpoint(md) {
+    height: 200px;
   }
 
+  .wrapperSlider {
+    height: 100%;
+
+    .containerSlider {
+      height: 100%;
+      width: 100%;
+      display: flex;
+      flex-direction: row;
+      flex-wrap: nowrap;
+      transition: $animationTransition;
+    }
+  }
+  
   .swipeWrapper {
     display: flex;
     justify-content: space-between;
@@ -26,42 +38,31 @@
     z-index: 3;
     transform: translateY(-50%);
     padding: 0 24px;
+    @include mediaBreakpoint(md) {
+      padding: 0 10px;
+    }
+  
+    div:last-child {
+      transform: rotate(180deg);
+    }
 
     img:nth-child(1), img:nth-child(2) {
       cursor: pointer;
       width: 80px;
       height: 80px;
       transition: $animationTransition;
+      @include mediaBreakpoint(lg) {
+        width: 60px;
+        height: 60px;
+      }  
+      @include mediaBreakpoint(md) {
+        height: 30px;
+        width: 30px;
+      }  
     }
   
     img:nth-child(1):hover, img:nth-child(2):hover {
       opacity: 0.6;
-    }
-  }
-}
-
-@media screen and (max-width: 975px) {
-  .wrapper {
-    height: 300px;
-
-    .swipeWrapper img:nth-child(1), .swipeWrapper img:nth-child(2) {
-      width: 60px;
-      height: 60px;
-    }
-  }
-}
-
-@media screen and (max-width: 680px) {
-  .wrapper {
-    height: 200px;
-
-    .swipeWrapper {
-      padding: 0 10px;
-
-      img:nth-child(1), img:nth-child(2) {
-        height: 30px;
-        width: 30px;
-      }
     }
   }
 }

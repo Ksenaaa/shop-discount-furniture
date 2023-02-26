@@ -3,11 +3,12 @@
 @import 'styles/textEndMixin';
 @import 'styles/colors';
 @import 'styles/animation';
+@import 'styles/mediaBreakpoint';
 
 .wrapper {
   height: 100%;
   width: 100%;
-  padding: 0 16px 16px;
+  padding: 12px;
   display: block;
   position: relative;
 
@@ -21,8 +22,11 @@
     margin: 0 auto;
     position: relative;
     overflow: hidden;
-    margin-bottom: 8px;
+    margin-bottom: 6px;
     z-index: -2;
+    @include mediaBreakpoint(lg) {
+      height: 130px;
+    }  
 
     img {
       position: absolute;
@@ -30,53 +34,59 @@
     }
   }
 
-  .categoryWithCode {
-    @include fontStyle(400, 12px, 15px);
-    margin-bottom: 4px;
+  .sectionMidl {
     display: flex;
     justify-content: space-between;
-    color: $black;
+    gap: 10px;
 
-    .category:first-letter {
-      text-transform: uppercase;
-    }
-  }
-
-  .name {
-    font-family: $ptSerif;
-    @include fontStyle(400, 16px, 21px);
-    @include textEndStyle(1);
-    text-transform: uppercase;
-    color: $black;
-    margin-bottom: 4px;
-  }
-
-  .cardBottom {
-    display: flex;
-    align-items: center;
-    flex-wrap: wrap;
-
-    .price {
-      @include fontStyle(700, 16px, 20px);
-      color: $seaGrey;
-      margin-right: 24px;
+    .categoryWithCode {
+      @include fontStyle(400, 12px, 15px);
       margin-bottom: 4px;
+      display: flex;
+      justify-content: space-between;
+      color: $black;
+      @include mediaBreakpoint(lg) {
+        @include fontStyle(400, 10px, 15px);
+      }  
     }
-  
+
     .colors {
       display: flex;
       flex-direction: row;
+      justify-content: center;
+      margin-bottom: 4px;
   
       .color {
         width: 20px;
         height: 20px;
-        margin-right: 8px;
-
-        &:last-child {
-          margin-right: 20px;
-        }
+        margin-right: 6px;
+        @include mediaBreakpoint(lg) {
+          width: 15px;
+          height: 15px;
+        }      
       }
     }
+  }
+
+  .name {
+    font-family: $garamond;
+    @include fontStyle(600, 20px, 30px);
+    @include textEndStyle(1);
+    color: $black;
+    margin-bottom: 4px;
+    @include mediaBreakpoint(lg) {
+      @include fontStyle(600, 16px, 25px);
+    }  
+    @include mediaBreakpoint(md) {
+      @include fontStyle(600, 13px, 25px);
+    }  
+  }
+
+
+  .price {
+    @include fontStyle(700, 18px, 20px);
+    color: $turquoise;
+    margin-bottom: 4px;
   }
 
   .activeElements {
@@ -93,14 +103,14 @@
       cursor: pointer;
       transition: $animationTransition;
       
+      img {
+        width: 16px;
+        height: 16px;
+      }
+
       &:hover {
         opacity: 0.6;
       }
-    }
-
-    .like img {
-      width: 16px;
-      height: 16px;
     }
 
     .basket {
@@ -110,27 +120,5 @@
 
   &:hover .activeElements {
     display: flex;
-  }
-}
-
-@media screen and (max-width: 830px) {
-  .wrapper {
-    .picture {
-      height: 130px;
-    }
-
-    .categoryWithCode {
-      @include fontStyle(400, 10px, 15px);
-    }
-
-    .name {
-      @include fontStyle(400, 13px, 18px);
-    }
-
-    .cardBottom .colors .color {
-      width: 15px;
-      height: 15px;
-      margin-right: 6px;
-    }
   }
 }

@@ -2,6 +2,7 @@
 @import 'styles/fontFamily';
 @import 'styles/textEndMixin';
 @import 'styles/colors';
+@import 'styles/mediaBreakpoint';
 
 .description {
   display: flex;
@@ -11,28 +12,22 @@
   .descriptionTitle {
     @include fontStyle(700, 24px, 29px);
     color: $black;
-    margin-bottom: 16px
+    margin-bottom: 16px;
+    @include mediaBreakpoint(md) {
+      @include fontStyle(700, 20px, 20px);
+    }  
   }
 
   .descriptionText {
     @include fontStyle(400, 18px, 27px);
     @include textEndStyle(5);
     font-family: $gothic;
+    @include mediaBreakpoint(lg) {
+      @include fontStyle(400, 16px, 22px);
+    }  
   }
 
   .descriptionTextReadMore {
     @include textEndStyle(100);
-  }
-}
-
-@media screen and (max-width: 1040px) {
-  .description .descriptionText {
-    @include fontStyle(400, 16px, 22px);
-  }
-}
-
-@media screen and (max-width: 680px) {
-  .description .descriptionTitle {
-    @include fontStyle(700, 20px, 20px);
   }
 }

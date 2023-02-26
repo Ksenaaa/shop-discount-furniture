@@ -1,23 +1,18 @@
 {
   "slider": {
-    "desk": "2 PC sectionals from only $298",
-    "title": "Save big save now"
-  },
-  "button": {
-    "sliderItem": "Purchase now"
+    "desk": "Products with a discount of 10%",
+    "title": "Low prices, big updates!"
   },
   "menu": {
     "livingRooms": "living rooms",
     "diningRooms": "dining rooms",
     "bedrooms": "bedrooms",
-    "mattresses": "mattresses",
-    "decorMore": "decor & more",
     "kids": "kids",
-    "specials": "specials",
-    "decor": "decor"
+    "decor": "decor",
+    "bathrooms": "bathrooms"
   },
   "search": {
-    "iSearch": "I search..."
+    "iSearch": "Looking for..."
   },
   "contacts": {
     "address": "5 Kirtling St, Nine Elms, London SW11 8BU, Great Britain",
@@ -27,10 +22,25 @@
   "error": {
     "404": "Oops, something went wrong :("
   },
-  "benefits": {
-    "home": "Take it Home today",
-    "pig": "0$ Down + no 0%",
-    "card": "NO CREDIT NEEDED",
-    "delivery": "Same day delivery"
+  "title": {
+    "sale": "Sale",
+    "mainCatalog": "Goods by category",
+    "news": "News",
+    "newArrivals": "New arrivals",
+    "testimonials": "Testimonials"
+  },
+  "sale": {
+    "text": "Large selection of upholstered furniture! Discounts up to 20%. It is also possible to urgently manufacture furniture in an individual size and fabrics",
+    "button": "Quick to buy!"
+  },
+  "dailySalesSignup": {
+    "name": "Sales registration form",
+    "text": "Be the first to know about our best deals!",
+    "button": "Submit",
+    "placeholder": {
+      "name": "Name",
+      "phone": "Phone",
+      "email": "Email"
+    }
   }
 }

@@ -1,16 +1,26 @@
 @import 'styles/colors';
+@import 'styles/mediaBreakpoint';
 
 .otherPicturesCard {
   width: 100%;
-  flex: 0 0 64px;
-  height: 64px;
-  padding: 4px 0;
+  height: 100%;
+  padding: 4px;
+  flex: 0 0 16.6666%;
   position: relative;
   overflow: hidden;
   cursor: pointer;
+  @include mediaBreakpoint(lg) {
+    flex: 0 0 25%;
+  }
+  @include mediaBreakpoint(md) {
+    flex: 0 0 20%;
+  }
+  @include mediaBreakpoint(sm) {
+    flex: 0 0 33.3333%;
+  }
   
   &:hover {
-    border: 2px solid $orange;
+    border: 2px solid $bronze;
   }
 
   img {
@@ -21,13 +31,4 @@
 
 .cardActive {
   border: 2px solid $lightBlueTransparent;
-}
-
-@media screen and (max-width: 680px) {
-  .otherPicturesCard {
-    width: 33.3%;
-    flex: 0 0 33.3%;
-    height: 100%;
-    padding: 0 4px;
-  }
 }

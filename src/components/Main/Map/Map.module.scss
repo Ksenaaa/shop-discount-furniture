@@ -1,0 +1,20 @@
+@import 'styles/mediaBreakpoint';
+
+.wrapper {
+  max-width: 1440px;
+  margin: 0 auto;
+  height: 500px;
+  margin-bottom: 100px;
+  @include mediaBreakpoint(xLg) {
+    height: 450px;
+  }  
+  @include mediaBreakpoint(lg) {
+    height: 400px;
+  }      
+  @include mediaBreakpoint(md) {
+    margin-bottom: 60px;
+  }  
+  @include mediaBreakpoint(sm) {
+    margin-bottom: 30px;
+  }  
+}

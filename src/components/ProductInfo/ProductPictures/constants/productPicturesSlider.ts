@@ -1,7 +1,17 @@
 export const productPicturesSlider = {
-  midlWindowWidth: 1040,
-  minWindowWidth: 680,
-  minColumnSlider: 3,
-  midlColumnSlider: 4,
-  maxColumnSlider: 6
+  xlg: {
+    minWidth: 993,
+    column: 6
+  },
+  lg: {
+    minWidth: 769,
+    column: 4
+  },
+  md: {
+    minWidth: 577,
+    column: 5
+  },
+  sm: {
+    column: 3
+  }
 }

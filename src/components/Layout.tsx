@@ -2,7 +2,7 @@ import React, { PropsWithChildren } from 'react'
 
 import Head from 'next/head'
 
-import { centuryGothic, montserrat, ptSerif } from 'styles/fonts'
+import { centuryGothic, garamond, raleway } from 'styles/fonts'
 
 import { Footer } from './Footer'
 import { Header } from './Header'
@@ -24,8 +24,8 @@ export const Layout = ({ children }: PropsWithChildren) => {
       </Head>
       <style jsx global>{`
         :root {
-          --montserrat-font: ${montserrat.style.fontFamily};
-          --ptSerif-font: ${ptSerif.style.fontFamily};
+          --raleway-font: ${raleway.style.fontFamily};
+          --garamond-font: ${garamond.style.fontFamily};
           --gothic-font: ${centuryGothic.style.fontFamily};
         }
       `}</style>

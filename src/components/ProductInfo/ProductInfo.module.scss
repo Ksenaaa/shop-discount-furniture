@@ -1,40 +1,36 @@
+@import 'styles/mediaBreakpoint';
+
 .wrapper {
   .wrapperProduct {
     max-width: 1344px;
     margin: 0 auto;
     display: flex;
     flex-direction: row;
-    margin-bottom: 112px;
-
+    margin-bottom: 100px;
+    @include mediaBreakpoint(lg) {
+      flex-direction: column;
+      gap: 16px;
+    }
+    @include mediaBreakpoint(md) {
+      margin-bottom: 60px;
+    }
+    @include mediaBreakpoint(sm) {
+      margin-bottom: 30px;
+    }  
+  
     .picturesWithDesc {
       display: flex;
       flex-direction: column;
-      flex: 0 0 58%;
+      flex: 0 0 77%;
       flex-shrink: 2;
       padding: 0 16px;
     }
   
     .characteristics {
       flex-shrink: 1;
+      @include mediaBreakpoint(lg) {
+        flex-shrink: 2;
+      }  
     }
-  }
-}
-
-@media screen and (max-width: 975px) {
-  .wrapper .wrapperProduct .characteristics {
-    flex-shrink: 2;
-  }
-}
-
-@media screen and (max-width: 875px) {
-  .wrapper .wrapperProduct {
-    flex-direction: column;
-    gap: 16px;
-  }
-}
-
-@media screen and (max-width: 680px) {
-  .wrapper .wrapperProduct {
-    margin-bottom: 60px;
   }
 }

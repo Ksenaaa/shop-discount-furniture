@@ -1,17 +1,22 @@
 @import 'styles/colors';
 @import 'styles/fontMixin';
 @import 'styles/textEndMixin';
+@import 'styles/mediaBreakpoint';
 
 .wrapper {
   min-height: 80px;
   max-width: 700px;
-  border: 1px solid $grey;
+  border: 1px solid $lightTurquoise;
   border-radius: 5px;
   margin: 5px auto;
   padding: 8px 12px 0;
 
   .name {
     @include fontStyle(500, 17px, 16px);
+    @include mediaBreakpoint(md) {
+      @include fontStyle(500, 14px, 12px);
+      margin-bottom: 5px
+    }  
   }
 
   .date {
@@ -31,19 +36,9 @@
     display: flex;
     height: 12px;
     margin-bottom: 3px;
-  }
-}
-
-@media screen and (max-width: 800px) {
-  .wrapper {
-    .name {
-      @include fontStyle(500, 14px, 12px);
-      margin-bottom: 5px
-    }
-    
-    .stars {
+    @include mediaBreakpoint(md) {
       height: 10px;
       margin-bottom: 8px;
-    }
+    }  
   }
 }

@@ -1,28 +1,26 @@
+@import 'styles/mediaBreakpoint';
+
 .wrapper {
   max-width: 1440px;
   margin: 0 auto;
-  margin-bottom: 112px;
+  margin-bottom: 100px;
+  @include mediaBreakpoint(md) {
+    margin-bottom: 60px;
+  }
+  @include mediaBreakpoint(sm) {
+    margin-bottom: 30px;
+  }
 
   .cards {
     width: 100%;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 28px;
-  }
-}
-
-@media screen and (max-width: 975px) {
-  .wrapper .cards {
-    gap: 15px;
-  }
-}
-
-@media screen and (max-width: 680px) {
-  .wrapper {
-    margin-bottom: 60px;
-    
-    .cards {  
+    @include mediaBreakpoint(lg) {
+      gap: 15px;
+    }  
+    @include mediaBreakpoint(md) {
       gap: 20px;
-    }
+    }  
   }
 }

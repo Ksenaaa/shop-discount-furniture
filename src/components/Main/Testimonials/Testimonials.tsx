@@ -5,7 +5,7 @@ import Link from 'next/link'
 
 import homeImg from 'img/svg/person.svg'
 import { useGetMainTestimonialsQuery } from 'store/services/testimonials'
-import { Routes } from 'utils/constants/routes'
+import { titleName } from 'utils/constants/titleName'
 
 import { CommonSlider } from 'components/CommonSlider'
 import { CommonSliderItem } from 'components/CommonSlider/CommonSliderItem'
@@ -21,13 +21,13 @@ export const Testimonials = () => {
 
   return (
     <CommonSlider
-      titleName="Testimonials"
-      pathTitle={`/${Routes.TESTIMONIALS}`}
+      titleName={titleName.testimonials.name}
+      pathTitle={`/${titleName.testimonials.path}`}
       sliderLength={testimonials.length}
     >
       {testimonials?.map(item =>
         <CommonSliderItem key={item.id}>
-          <Link href={`/${Routes.TESTIMONIALS}`} className={styles.wrapper}>
+          <Link href={`/${titleName.testimonials.path}`} className={styles.wrapper}>
             <Image src={homeImg} alt="img" className={styles.picture}/>
             <div className={styles.stars} >
               <Stars quantityFull={item.stars} />

@@ -1,9 +1,9 @@
 import React from 'react'
 
-import Link from 'next/link'
-
 import { useGetMainNewsQuery } from 'store/services/news'
-import { Routes } from 'utils/constants/routes'
+import { titleName } from 'utils/constants/titleName'
+
+import { Title } from 'components/Title'
 
 import { MainNewsCard } from './MainNewsCard'
 
@@ -14,9 +14,7 @@ export const MainNews = () => {
 
   return (
     <div className={styles.wrapper}>
-      <Link href={`/${Routes.NEWS}`} className={styles.title}>
-        News
-      </Link>
+      <Title name={titleName.news.name} pathTitle={`/${titleName.news.path}`} />
       <ul className={styles.cards}>
         {news?.map(item =>
           <MainNewsCard

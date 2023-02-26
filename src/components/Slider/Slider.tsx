@@ -16,8 +16,9 @@ type Props = {
   axisScroll: AxisScroll,
   swipeLeftImg?: string,
   swipeRightImg?: string,
-  stylesSwipeWrapper?: string
-  stylesContainerSlider?: string
+  stylesSwipeWrapper?: string,
+  stylesContainerSlider?: string,
+  stylesWrapperSlider?: string
 }
 
 export const Slider = ({
@@ -32,7 +33,8 @@ export const Slider = ({
   swipeLeftImg = '',
   swipeRightImg = '',
   stylesSwipeWrapper,
-  stylesContainerSlider
+  stylesContainerSlider,
+  stylesWrapperSlider
 }: PropsWithChildren<Props>) => {
   const [visibleSlide, setVisibleSlide] = useState<number>(0)
 
@@ -63,21 +65,23 @@ export const Slider = ({
     <>
       {isSwipe &&
         <div className={stylesSwipeWrapper}>
-          <div>
-            <Image src={swipeLeftImg} alt="swipeLeft" onClick={onSwipeLeft} />
+          <div onClick={onSwipeLeft}>
+            <Image src={swipeLeftImg} alt="swipeLeft" />
           </div>
-          <div>
-            <Image src={swipeRightImg} alt="swipeRight" onClick={onSwipeRight} />
+          <div onClick={onSwipeRight}>
+            <Image src={swipeRightImg} alt="swipeRight" />
           </div>
         </div>
       }
       {isLoading ?
         <Loader /> :
-        <div
-          className={stylesContainerSlider}
-          style={{ transform: `translate${axisScroll}(${-visibleSlide * 100 / column}%)` }}
-        >
-          {children}
+        <div className={stylesWrapperSlider}>
+          <div
+            className={stylesContainerSlider}
+            style={{ transform: `translate${axisScroll}(${-visibleSlide * 100 / column}%)` }}
+          >
+            {children}
+          </div>
         </div>
       }
     </>

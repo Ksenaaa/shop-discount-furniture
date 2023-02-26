@@ -1,15 +1,19 @@
-@import 'styles/positionMixin';
-@import 'styles/animation';
+@import 'styles/mediaBreakpoint';
+@import 'styles/fontMixin';
 
 .wrapper {
   width: 100%;
-  max-width: 1312px;
+  height: 100px;
+  max-width: 1344px;
+  padding: 0 16px;
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin: 0 auto;
-  position: relative;
-    
+  @include mediaBreakpoint(md) {
+    display: none;
+  }
+
   .logo a {
     display: flex;
 
@@ -19,97 +23,47 @@
     }
   }
 
-  .search {
-    height: 40px;
-    width: 100%;
-    max-width: 640px;
-  }
+  .info {
+    display: flex;
+    flex-direction: column;
+
+    .address, .call, .time {
+      margin: 0 auto;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      @include mediaBreakpoint(lg) {
+        margin-right: 0;
+      }
+  
+      img {
+        width: 25px;
+        height: 25px;
+        margin: 0 7px;
+      }
+    }
     
+    .addressText, .timeText, .callText {
+      @include fontStyle(400, 14px, 15px);
+    }
+  }
+
   .selectedUser {
     display: flex;
-    flex-direction: row;
-    
-    & div {
-      width: 32px;
-      height: 32px;
-      
-      img {
-        margin: auto;
-      }
+    flex-direction: column;
+    @include mediaBreakpoint(lg) {
+      display: none;
     }
-
-    .heart {
-      margin-right: 12px;
-    }
-
-    .heart, .basket {
+  
+    .like, .basket {
       justify-content: center;
       display: flex;
-      cursor: pointer;
-      transition: $animationTransition;
-    }
+      margin: 5px;
 
-    .heart:hover, .basket:hover {
-      opacity: 0.6;
-    }
-    
-    .orangeHeart, .orangeBasket {
-      display: none;
-    }
-  }
-}
-
-@media screen and (min-width: 976px) {
-  .search {
-    @include centerPosition;
-  }
-}
-
-@media screen and (max-width: 975px) {
-  .wrapper {
-    padding: 0 15px;
-
-    .selectedUser {
-      position: absolute;
-      top: -40px;
-      right: 15px;
-      z-index: 1000;
-
-      .blueHeart, .blueBasket {
-        display: none;
+      img {
+        width: 32px;
+        height: 32px;  
       }
-
-      .orangeHeart, .orangeBasket {
-        display: block;
-      }    
-    }
-  }
-}
-
-@media screen and (max-width: 680px) {
-  .wrapper {
-    padding-bottom: 3px;
-    
-    .logo a img {
-      height: 55px;
-      width: 55px;
-    }
-
-    .search input {
-      display: none;
-    }
-
-    .searchActive input {
-      display: block;
-      animation: active $animationDurationTime;
-      @keyframes active {
-        from {left: 90%}
-        to {left: 0}
-      }
-    }
-
-    .selectedUser {
-      top: -36px;
     }
   }
 }

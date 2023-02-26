@@ -1,0 +1,59 @@
+@import 'styles/fontMixin';
+@import 'styles/colors';
+@import 'styles/mediaBreakpoint';
+@import 'styles/animation';
+
+.wrapper {
+  max-width: 1344px;
+  padding: 0 18px;
+  margin: 0 auto;
+  margin-bottom: 100px;
+  @include mediaBreakpoint(sm) {
+    margin-bottom: 30px;
+  }  
+
+  .card {
+    width: 100%;
+    min-height: 200px;
+    padding: 20px;
+    background: $pink;
+    box-shadow: $lightGreyTransparent2;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    transition: $animationTransition;
+    @include mediaBreakpoint(lg) {
+      padding: 30px;
+    }  
+
+    .text {
+      @include fontStyle(600, 30px, 36px);
+      color: $white;
+      text-align: center;
+      margin-bottom: 10px;
+      transition: $animationTransition;
+      @include mediaBreakpoint(lg) {
+        @include fontStyle(600, 22px, 27px);
+      }  
+      @include mediaBreakpoint(md) {
+        @include fontStyle(600, 18px, 23px);
+      }  
+      @include mediaBreakpoint(sm) {
+        @include fontStyle(600, 14px, 20px);
+      }  
+    }
+
+    .button {
+      margin: 0 auto;
+    }
+  }
+
+  &:hover .card {
+    background: $darkTurquoise;
+
+    .text {
+      text-shadow: $lightGreyTransparent5;
+    }
+  }
+}
