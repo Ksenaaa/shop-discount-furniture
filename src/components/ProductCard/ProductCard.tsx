@@ -7,6 +7,7 @@ import { useTranslation } from 'next-i18next'
 
 import basketIcon from 'img/svg/basket.svg'
 import likeIcon from 'img/svg/like-empty.svg'
+import { ICardColor } from 'interface/colorInterface'
 import { ICardProduct } from 'interface/productInterface'
 import { useGetColorsQuery } from 'store/services/colors'
 import { menuCategories } from 'utils/constants/menuCategories'
@@ -24,7 +25,7 @@ type Props = {
 
 export const ProductCard: FC<Props> = ({ product }) => {
   const { data, isSuccess } = useGetColorsQuery()
-  const colors = isSuccess ? productColors(product.colors, data) : []
+  const colors = isSuccess ? productColors(product.colors, data as ICardColor[]) : []
 
   const getBlur = useCallback((img: string) => getBlurImage(img), [])
 

@@ -1,5 +1,8 @@
 export interface IParamsGetQuery {
-  key: string,
   page: number,
   limit: number,
+  filter?: string,
+  sort?: string,
+  element?: string,
+  elementName?: string
 }

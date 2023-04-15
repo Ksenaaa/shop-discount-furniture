@@ -13,7 +13,7 @@ import instagramIcon from 'img/svg/instagram.svg'
 import likeIcon from 'img/svg/like-empty.svg'
 import logoIcon from 'img/svg/logo.svg'
 
-import { Modal } from 'components/Modal'
+import { ModalSelect } from 'components/ModalSelect'
 
 import { Search } from '../Search'
 
@@ -65,7 +65,7 @@ export const TopHeader = () => {
             {locale}
           </div>
           {isOpenModalLanguage && locales && locale &&
-            <Modal
+            <ModalSelect
               modalList={locales}
               activeItem={locale}
               onChangeItem={changeLanguage}

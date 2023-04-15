@@ -1,0 +1,19 @@
+@import 'styles/colors';
+@import 'styles/fontMixin';
+
+.wrapper {
+  border: 1px solid $gold;
+  border-radius: 8px;
+  padding: 2px 5px;
+  @include fontStyle(400, 16px, 20px);
+  color: $black;
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  cursor: pointer;
+
+  > img {
+    width: 16px;
+    height: 16px;
+  }
+}

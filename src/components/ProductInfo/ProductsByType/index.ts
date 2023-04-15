@@ -1,1 +1,0 @@
-export { ProductsByType } from './ProductsByType'

@@ -1,0 +1,25 @@
+@import 'styles/fontMixin';
+@import 'styles/colors';
+@import 'styles/mediaBreakpoint';
+
+.wrapper {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+
+  > input {
+    width: 70px;
+    height: 30px;
+    border: 1px solid $lightBlueTransparent;
+    padding: 3px 6px;
+    @include fontStyle(400, 14px, 16px);
+    color: $black; 
+    @include mediaBreakpoint(lg) {
+      width: 50px;
+    }
+
+    &::placeholder {
+      color: $lightBlueTransparent; 
+    }
+  }
+}

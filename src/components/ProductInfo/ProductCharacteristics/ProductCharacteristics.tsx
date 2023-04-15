@@ -1,8 +1,10 @@
-import React, { FC, useEffect, useState } from 'react'
+import React, { FC, useCallback, useEffect, useState } from 'react'
 
 import Image from 'next/image'
+import { useRouter } from 'next/router'
 
 import likeIcon from 'img/svg/like-empty.svg'
+import { ICardColor } from 'interface/colorInterface'
 import { IProduct } from 'interface/productInterface'
 import { useGetColorsQuery } from 'store/services/colors'
 import { productColors } from 'utils/helpers/productColors'
@@ -22,6 +24,8 @@ export const ProductCharacteristics: FC<Props> = ({ product }) => {
   const [price, setPrice] = useState<number>(0)
   const [amountProduct, setAmountProduct] = useState<number>(1)
 
+  const router = useRouter()
+
   useEffect(() => {
     setPrice(product.quality.king)
     setAmountProduct(1)
@@ -36,9 +40,13 @@ export const ProductCharacteristics: FC<Props> = ({ product }) => {
   }
 
   const { data: dataColors, isSuccess } = useGetColorsQuery()
-  const colors = isSuccess ? productColors(product.colors, dataColors) : []
+  const colors = isSuccess ? productColors(product.colors, dataColors as ICardColor[]) : []
 
   const productMaterials = [...new Set(colors.map(color => color.material))].join(', ')
+
+  const handleAddToCart = useCallback(() => {
+    router.push('/')
+  }, [router])
 
   return (
     <div className={styles.wrapper}>
@@ -60,7 +68,7 @@ export const ProductCharacteristics: FC<Props> = ({ product }) => {
           <div className={styles.amountAdd} onClick={onAddProduct}>+</div>
         </div>
         <div className={styles.button}>
-          <Button name="Add to cart" />
+          <Button name="Add to cart" onClick={handleAddToCart} />
         </div>
       </div>
 

@@ -1,26 +1,29 @@
 import React, { FC } from 'react'
 
-import { useGetProductsByCategoryQuery } from 'store/services/product'
+import { useGetProductsByElementQuery } from 'store/services/product'
 
 import { CommonSlider } from 'components/CommonSlider'
 import { CommonSliderItem } from 'components/CommonSlider/CommonSliderItem'
 import { ProductCard } from 'components/ProductCard'
 
 type Props = {
-  category: string
+  element: string,
+  elementName: string,
+  titleName: string,
 }
 
-export const ProductsByCategory: FC<Props> = ({ category }) => {
-  const { data, isSuccess } = useGetProductsByCategoryQuery({
-    key: category,
+export const ProductsByElement: FC<Props> = ({ element, elementName, titleName }) => {
+  const { data } = useGetProductsByElementQuery({
+    element,
+    elementName,
     page: 1,
     limit: 6
   })
 
   return (
     <CommonSlider
-      titleName="Products by this category"
-      sliderLength={isSuccess ? data?.pageData?.length : 0}
+      titleName={titleName}
+      sliderLength={data?.pageData?.length || 0}
     >
       {data?.pageData?.map(product =>
         <CommonSliderItem key={product.id}>

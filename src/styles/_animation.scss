@@ -1,4 +1,6 @@
 $animationTransition: .4s all;
+$animationTransitionBackground: .4s background-color;
 $animationDurationTime: .3s;
 $animationLoader: .6s infinite;
-$animationSlider: cubic-bezier(0.06, 0.22, 0, 0.6) all 0.8s
+$animationSlider: cubic-bezier(0.06, 0.22, 0, 0.6) all 0.8s;
+$animationModal: opacity 300ms ease-in-out

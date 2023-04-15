@@ -1,0 +1,53 @@
+@import 'styles/colors';
+@import 'styles/fontMixin';
+@import 'styles/mediaBreakpoint';
+
+.filterElement {
+  margin-bottom: 26px;
+  width: 100%;
+
+  .title {
+    @include fontStyle(700, 16px, 20px);
+    color: $black;
+    margin-bottom: 10px;
+
+    &::first-letter {
+      text-transform: uppercase;
+    }
+  }
+
+  .items {
+    max-height: 185px;
+    overflow-y: scroll;
+    padding-right: 14px;
+    @include mediaBreakpoint(md) {
+      max-height: 110px;
+      padding-right: 10px;
+    }
+
+    .item {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      border-bottom: 1px solid $lightBlueTransparent;
+      margin-bottom: 5px;
+      padding-bottom: 3px;
+
+      > label {
+        @include fontStyle(400, 14px, 20px);
+        @include mediaBreakpoint(md) {
+          @include fontStyle(400, 12px, 16px);
+        }
+      }
+
+      .count {
+        @include fontStyle(400, 14px, 20px);
+        color: $gold;
+        margin-left: 10px;
+        @include mediaBreakpoint(md) {
+          @include fontStyle(400, 12px, 16px);
+        }
+      }
+    }
+  }
+}
