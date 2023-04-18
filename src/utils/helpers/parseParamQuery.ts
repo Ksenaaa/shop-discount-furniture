@@ -1,7 +1,7 @@
 import { IFilterApply, IRangeFilter } from 'interface/filterInterface'
 import { ISortApply } from 'interface/sortInterface'
 
-export const parseParamSortQuery = (param: string | string[] | undefined) => {
+export const parseParamSortQuery = (param: string | undefined) => {
   if (!param) return null
 
   let parseParam = {} as ISortApply
@@ -15,7 +15,7 @@ export const parseParamSortQuery = (param: string | string[] | undefined) => {
   return parseParam
 }
 
-export const parseParamFilterQuery = (param: string | string[] | undefined) => {
+export const parseParamFilterQuery = (param: string | undefined) => {
   if (!param) return null
 
   let parseParam = {} as IFilterApply

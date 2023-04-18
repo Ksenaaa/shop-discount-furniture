@@ -16,7 +16,8 @@ import { Button } from 'components/Button'
 import { Loader } from 'components/Loader'
 import { ProductCard } from 'components/ProductCard'
 
-import { firstNumberPage } from './constants/firstNumberPage'
+import { firstNumberPage } from '../../utils/constants/firstNumberPage'
+
 import { productsLimit } from './constants/productsLimit'
 import { Filter } from './Filter'
 import { FilterElementChecked } from './FilterElementChecked'
@@ -36,12 +37,14 @@ export const CategoryPage: FC<Props> = ({ category }) => {
   const [page, setPage] = useState(Number(router.query.page) || firstNumberPage)
   const [products, setProducts] = useState<ICardProduct[]>([])
   const [filterShow, setFilterShow] = useState<IFilterShow>()
-  const [filter, setFilter] = useState<IFilterApply | null>(parseParamFilterQuery(router.query.filter))
-  const [sort, setSort] = useState<ISortApply | null>(parseParamSortQuery(router.query.sort))
+  const [filter, setFilter] = useState<IFilterApply | null>(parseParamFilterQuery(
+    router.query.filter as string | undefined)
+  )
+  const [sort, setSort] = useState<ISortApply | null>(parseParamSortQuery(
+    router.query.sort as string | undefined)
+  )
 
   useEffect(() => {
-    if (page === firstNumberPage && !filter && !sort) return
-
     router.push(
       {
         pathname: router.pathname,
@@ -59,8 +62,10 @@ export const CategoryPage: FC<Props> = ({ category }) => {
     // eslint-disable-next-line
   }, [page, filter, sort])
 
-  const categoryId = menuCategories.find(categoryElement => categoryElement.path === pageCategory)?.id as string
-  const categoryName = menuCategories.find(categoryElement => categoryElement.path === pageCategory)?.name || ''
+  const categoryElement = menuCategories.find(element => element.path === pageCategory)
+
+  const categoryId = categoryElement?.id
+  const categoryName = categoryElement?.name as string
 
   const { data, isLoading, isSuccess, isFetching } = useGetProductsListQuery({
     elementName: categoryId,
@@ -74,15 +79,15 @@ export const CategoryPage: FC<Props> = ({ category }) => {
     setPageCategory(category)
     setProducts([])
     setPage(Number(router.query.page) || firstNumberPage)
-    setFilter(parseParamFilterQuery(router.query.filter))
-    setSort(parseParamSortQuery(router.query.sort))
+    setFilter(parseParamFilterQuery(router.query.filter as string | undefined))
+    setSort(parseParamSortQuery(router.query.sort as string | undefined))
     // eslint-disable-next-line
   }, [category])
 
   useEffect(() => {
     if (data) {
       setFilterShow(data.filterData)
-      setProducts(preState => [...preState, ...data.pageData])
+      setProducts(prevState => [...prevState, ...data.pageData])
     }
   }, [data])
 
@@ -92,7 +97,7 @@ export const CategoryPage: FC<Props> = ({ category }) => {
   }, [])
 
   const handleMorePage = useCallback(() => {
-    setPage(preState => preState + 1)
+    setPage(prevState => prevState + 1)
   }, [])
 
   const handleRemoveFilter = useCallback(() => {
@@ -101,20 +106,24 @@ export const CategoryPage: FC<Props> = ({ category }) => {
     setProducts([])
   }, [])
 
-  const handleRemoveElementFilter = useCallback((element: string) => {
-    setFilter(preState => {
-      const removeElement = Object.fromEntries(Object.entries(preState as IFilterApply)
-        .filter(elementFilter => elementFilter[0] !== element))
+  const handleRemoveElementFilter = useCallback((name: string) => {
+    setFilter(prevState => {
+      if (!prevState) return prevState
 
-      if (Object.keys(removeElement).length === 0) return null
+      const newPrevState = JSON.parse(JSON.stringify(prevState))
 
-      return { ...removeElement }
+      if (newPrevState[name]) delete newPrevState[name]
+
+      if (Object.keys(newPrevState).length === 0) return null
+
+      return newPrevState
     })
     setPage(firstNumberPage)
     setProducts([])
   }, [])
 
   const { t } = useTranslation()
+  const pageDataLength = data?.pageData.length
 
   return (
     <div className={styles.wrapper}>
@@ -125,7 +134,7 @@ export const CategoryPage: FC<Props> = ({ category }) => {
       </div>
 
       <div className={styles.filter}>
-        {isSuccess && data?.pageData.length !== 0 &&
+        {isSuccess && pageDataLength !== 0 &&
           <Filter
             filterShow={filterShow as IFilterShow}
             selectedFilter={filter}
@@ -135,7 +144,7 @@ export const CategoryPage: FC<Props> = ({ category }) => {
         }
       </div>
 
-      {data?.pageData.length === 0 && <div className={styles.notFound}>Product not found...</div>}
+      {pageDataLength === 0 && <div className={styles.notFound}>Product not found...</div>}
 
       <div className={styles.products}>
         {isSuccess &&
@@ -156,10 +165,10 @@ export const CategoryPage: FC<Props> = ({ category }) => {
                 onClick={handleRemoveFilter}
                 isDisabled={!filter}
               />
-              {filter && Object.entries(filter).map(element =>
+              {filter && Object.keys(filter).map(name =>
                 <FilterElementChecked
-                  key={element[0]}
-                  elementChecked={element[0]}
+                  key={name}
+                  elementName={name}
                   onClick={handleRemoveElementFilter}
                 />
               )}

@@ -1,10 +1,13 @@
 import React, { FC } from 'react'
 
 import { useGetProductsByElementQuery } from 'store/services/product'
+import { firstNumberPage } from 'utils/constants/firstNumberPage'
 
 import { CommonSlider } from 'components/CommonSlider'
 import { CommonSliderItem } from 'components/CommonSlider/CommonSliderItem'
 import { ProductCard } from 'components/ProductCard'
+
+import { limitProductsToDisplay } from '../constants/limitProductsToDisplay'
 
 type Props = {
   element: string,
@@ -16,8 +19,8 @@ export const ProductsByElement: FC<Props> = ({ element, elementName, titleName }
   const { data } = useGetProductsByElementQuery({
     element,
     elementName,
-    page: 1,
-    limit: 6
+    page: firstNumberPage,
+    limit: limitProductsToDisplay
   })
 
   return (

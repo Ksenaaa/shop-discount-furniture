@@ -29,12 +29,12 @@ export const Sort: FC<Props> = ({ selectedOptions, onApplySort, handleFilterSort
   }, [handleFilterSortChange, onApplySort])
 
   const changeSortOrder = () => {
-    onApplySort(preState => {
-      if (!preState) return null
+    onApplySort(prevState => {
+      if (!prevState) return null
 
-      const methodValue = preState.method === SORT_ORDER.asc ? SORT_ORDER.desc : SORT_ORDER.asc
+      const methodValue = prevState.method === SORT_ORDER.asc ? SORT_ORDER.desc : SORT_ORDER.asc
 
-      return { ...preState, method: methodValue }
+      return { ...prevState, method: methodValue }
     })
     handleFilterSortChange()
   }

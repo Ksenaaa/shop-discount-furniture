@@ -41,21 +41,21 @@ export const Slider = ({
   const onSwipeLeft = useCallback(() => {
     if (!picturesLength) return
 
-    setVisibleSlide(preState => preState === 0 ? picturesLength - 1 : preState - 1)
+    setVisibleSlide(prevState => prevState === 0 ? picturesLength - 1 : prevState - 1)
   }, [picturesLength])
 
   const onSwipeRight = useCallback(() => {
     if (!picturesLength) return
 
-    setVisibleSlide(preState => picturesLength - 1 === preState ? 0 : preState + 1)
+    setVisibleSlide(prevState => picturesLength - 1 === prevState ? 0 : prevState + 1)
   }, [picturesLength])
 
   useEffect(() => {
     if (isAutoCarousel) {
       if (!picturesLength) return
 
-      const timeoutId = setInterval(() => setVisibleSlide(preState =>
-        picturesLength - 1 === preState ? 0 : preState + 1), speed)
+      const timeoutId = setInterval(() => setVisibleSlide(prevState =>
+        picturesLength - 1 === prevState ? 0 : prevState + 1), speed)
 
       return () => clearInterval(timeoutId)
     }

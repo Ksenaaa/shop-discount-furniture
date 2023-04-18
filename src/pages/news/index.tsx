@@ -5,6 +5,7 @@ import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import { GetStaticProps } from 'next'
 
 import { useGetAllNewsQuery } from 'store/services/news'
+import { firstNumberPage } from 'utils/constants/firstNumberPage'
 
 import { MainNewsCard } from 'components/Main/MainNews/MainNewsCard'
 
@@ -12,7 +13,7 @@ import styles from './Index.module.scss'
 
 const NewsPage = () => {
   const { data } = useGetAllNewsQuery({
-    page: 1,
+    page: firstNumberPage,
     limit: 0
   })
 

@@ -7,18 +7,18 @@ import removeElement from 'img/svg/close-icon.svg'
 import styles from './FilterElementChecked.module.scss'
 
 type Props = {
-  elementChecked: string,
-  onClick: (element: string) => void
+  elementName: string,
+  onClick: (name: string) => void
 }
 
-export const FilterElementChecked: FC<Props> = ({ elementChecked, onClick }) => {
+export const FilterElementChecked: FC<Props> = ({ elementName, onClick }) => {
   const handleRemoveElement = () => {
-    onClick(elementChecked)
+    onClick(elementName)
   }
 
   return (
     <div className={styles.wrapper} onClick={handleRemoveElement}>
-      {elementChecked}
+      {elementName}
       <Image src={removeElement} alt="delete" />
     </div>
   )

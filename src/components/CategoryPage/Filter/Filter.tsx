@@ -25,11 +25,11 @@ export const Filter: FC<Props> = ({ filterShow, selectedFilter, onApplyFilter, h
   }, [selectedFilter])
 
   const handleCheckbox = useCallback((title: string, value: string) => {
-    setCheckedFilter(preState => addFilterCheckbox(preState, title, value))
+    setCheckedFilter(prevState => addFilterCheckbox(prevState, title, value))
   }, [])
 
   const handleRange = useCallback((title: string, value: IRangeFilter) => {
-    setCheckedFilter(preState => addFilterRange(preState, title, value))
+    setCheckedFilter(prevState => addFilterRange(prevState, title, value))
   }, [])
 
   const handleApplyFilter = useCallback(() => {

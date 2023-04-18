@@ -32,11 +32,11 @@ export const ProductCharacteristics: FC<Props> = ({ product }) => {
   }, [product])
 
   const onSubtractProduct = () => {
-    setAmountProduct(preState => preState === 1 ? 1 : preState - 1)
+    setAmountProduct(prevState => prevState === 1 ? 1 : prevState - 1)
   }
 
   const onAddProduct = () => {
-    setAmountProduct(preState => preState + 1)
+    setAmountProduct(prevState => prevState + 1)
   }
 
   const { data: dataColors, isSuccess } = useGetColorsQuery()

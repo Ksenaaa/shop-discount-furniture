@@ -19,13 +19,7 @@ export const FilterElementCheckbox: FC<Props> = ({ element, onCheck, selectedFil
     input.value && onCheck(element.title, input.value)
   }
 
-  let selectedValue = [] as string[]
-
-  for (const key in selectedFilter) {
-    if (key === element.title) {
-      selectedValue = selectedFilter[key as keyof IFilterApply] as string[] || []
-    }
-  }
+  const selectedValue = selectedFilter && selectedFilter[element.title as keyof IFilterApply] as string[] || []
 
   return (
     <div className={styles.filterElement} onClick={handleCheck}>
