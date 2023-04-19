@@ -38,10 +38,10 @@ export const CategoryPage: FC<Props> = ({ category }) => {
   const [products, setProducts] = useState<ICardProduct[]>([])
   const [filterShow, setFilterShow] = useState<IFilterShow>()
   const [filter, setFilter] = useState<IFilterApply | null>(parseParamFilterQuery(
-    router.query.filter as string | undefined)
+    router.query.filter as string)
   )
   const [sort, setSort] = useState<ISortApply | null>(parseParamSortQuery(
-    router.query.sort as string | undefined)
+    router.query.sort as string)
   )
 
   useEffect(() => {
