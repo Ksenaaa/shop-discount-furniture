@@ -20,7 +20,7 @@ export const FormSignup = () => {
   const { t } = useTranslation()
 
   const onChange = (e: ChangeEvent<HTMLInputElement>) => {
-    setInput(preState => ({ ...preState, [e.target.name]: e.target.value }))
+    setInput(prevState => ({ ...prevState, [e.target.name]: e.target.value }))
   }
 
   const sendForm = useCallback(() => {

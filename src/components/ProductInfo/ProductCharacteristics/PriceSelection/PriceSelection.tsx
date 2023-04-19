@@ -18,14 +18,14 @@ type Props = {
 export const PriceSelection: FC<Props> = ({ product, onChangePrice, selectedPrice }) => {
   const parsePrices = parsePriceCategory(product.quality)
 
-  const handlerChangePrice = (e: MouseEvent<HTMLInputElement>) => {
+  const handleChangePrice = (e: MouseEvent<HTMLInputElement>) => {
     const input = e.target as HTMLInputElement
 
     input.value && onChangePrice(Number(input.value))
   }
 
   return (
-    <div className={styles.priceSelection} onClick={handlerChangePrice}>
+    <div className={styles.priceSelection} onClick={handleChangePrice}>
       {parsePrices?.map(category =>
         <div className={styles.priceCategory} key={category.name}>
           <Checkbox

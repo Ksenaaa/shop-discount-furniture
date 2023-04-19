@@ -25,7 +25,7 @@ export const ProductPictures: FC<Props> = ({ pictures }) => {
 
   const { windowWidth } = useSizeListener()
 
-  const handlerChangePicture = useCallback((index: number) => {
+  const handleChangePicture = useCallback((index: number) => {
     setMainPicture(index)
   }, [])
 
@@ -57,7 +57,7 @@ export const ProductPictures: FC<Props> = ({ pictures }) => {
               key={index}
               id={id}
               index={index}
-              onClickItem={handlerChangePicture}
+              onClickItem={handleChangePicture}
               indexMainPicture={indexMainPicture} />
           )}
         </Slider>

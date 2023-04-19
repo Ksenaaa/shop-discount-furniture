@@ -23,7 +23,7 @@ export const Testimonials = () => {
     <CommonSlider
       titleName={titleName.testimonials.name}
       pathTitle={`/${titleName.testimonials.path}`}
-      sliderLength={testimonials.length}
+      sliderLength={testimonials?.length || 0}
     >
       {testimonials?.map(item =>
         <CommonSliderItem key={item.id}>

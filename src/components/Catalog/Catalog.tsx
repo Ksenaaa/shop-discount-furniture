@@ -28,7 +28,7 @@ export const Catalog: FC<Props> = ({ onClick, styleCatalog }) => {
           <li
             key={item.id}
             className={cn(styles.item, {
-              [styles.activeItem]: router.asPath.split('/').includes(item.path)
+              [styles.activeItem]: router.query.category === item.path
             })}
           >
             <Link href={`/${titleName.mainCatalog.path}/${item.path}`} onClick={onClick}>{t(item.name)}</Link>

@@ -8,17 +8,15 @@ import { CommonSliderItem } from 'components/CommonSlider/CommonSliderItem'
 import { ProductCard } from 'components/ProductCard'
 
 export const NewArrivals = () => {
-  const { data, isSuccess } = useGetNewProductsQuery()
-
-  const newArrivals = isSuccess ? data : []
+  const { data } = useGetNewProductsQuery()
 
   return (
     <CommonSlider
       titleName={titleName.newArrivals.name}
       pathTitle={`/${titleName.newArrivals.path}`}
-      sliderLength={newArrivals.length}
+      sliderLength={data?.length || 0}
     >
-      {newArrivals?.map(product =>
+      {data?.map(product =>
         <CommonSliderItem key={product.id}>
           <ProductCard product={product} />
         </CommonSliderItem>

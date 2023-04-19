@@ -4,6 +4,7 @@ import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 
 import { GetServerSidePropsContext } from 'next'
 
+import { IProduct } from 'interface/productInterface'
 import { useGetProductQuery } from 'store/services/product'
 
 import { Loader } from 'components/Loader'
@@ -18,7 +19,7 @@ const Product = ({ id }: { id: string }) => {
     <>
       {!isSuccess ?
         <Loader /> :
-        <ProductInfo product={data} />
+        <ProductInfo product={data as IProduct} />
       }
       {isError && <Error />}
     </>

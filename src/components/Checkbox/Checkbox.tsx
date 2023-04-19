@@ -9,8 +9,8 @@ import styles from './Checkbox.module.scss'
 type Props = {
   type: string,
   labelName: string,
-  radioName: string,
-  value: number,
+  radioName?: string,
+  value: number | string,
   defaultChecked?: boolean,
   checked: boolean
 }

@@ -1,63 +1,56 @@
 @import 'styles/colors';
-@import 'styles/fontMixin';
 @import 'styles/animation';
+@import 'styles/mediaBreakpoint';
 
-.modalList {
-  padding: 8px 16px 16px;
-  background: $lightTurquoise;
-  border-radius: 0px 0px 7px 7px;
-  position: absolute;
-  right: 0;
-  z-index: 999;
-  animation: active $animationDurationTime;
-  box-shadow: $lightGreyTransparent4;
-  transform-origin: 50% 0%;
-  @keyframes active {
-    0% { transform: scaleY(0) }
-    100% { transform: scaleY(1) }
-  }
-    
-  .modalItem {
-    @include fontStyle(400, 16px, 20px);
-    width: 100%;
-    margin-bottom: 8px;
-    color: $black;
-    cursor: pointer;
-    
-    &:last-child {
-      margin-bottom: 0;
-    }
-
-    &:hover {
-      text-decoration: underline;
-    }
-  }
-
-  .activeItem {
-    @include fontStyle(700, 16px, 20px);
-  }
-}
-
-.modalListWithIcon {
-  width: 192px;
-
-  .modalItem {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-
-    & img {
-      margin-top: 2px;
-      margin-left: 4px;
-    }
-  }
-}
-
-.substrate {
+.overlay {
   position: fixed;
-  top: 0;
+  top: 183px;
+  left: 0;
   right: 0;
-  z-index: 998;
-  width: 100vw;
-  height: 100vh;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  background: $lightBlueTransparent2;
+  @include mediaBreakpoint(md) {
+    top: 40px;
+  }
+
+  .modalWrapper {
+    width: 500px;
+    max-height: 600px;
+    padding: 40px 18px 20px;
+    position: relative;
+    background: $white;
+    border-radius: 15px;
+    opacity: 0;
+    transition: $animationModal;
+    @include mediaBreakpoint(sm) {
+      width: 100%;
+      height: 100%;
+      padding: 40px 12px 12px;
+    }
+    
+    .close {
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      cursor: pointer;
+      display: inline;
+
+      > img {
+        width: 22px;
+        height: 22px;
+      }
+    }
+
+    .modal {
+      height: 100%;
+      width: 100%;
+      overflow-y: scroll;
+    }
+  }
+
+  .active {
+    opacity: 1;
+  }
 }

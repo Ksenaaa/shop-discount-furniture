@@ -16,14 +16,14 @@ type Props = {
 }
 
 export const OtherPicturesCard: FC<Props> = ({ id, index, onClickItem, indexMainPicture }) => {
-  const handlerClick = () => onClickItem(index)
+  const handleClick = () => onClickItem(index)
 
   const getBlur = useCallback((img: string) => getBlurImage(img), [])
 
   return (
     <div
       className={cn(styles.otherPicturesCard, { [styles.cardActive]: indexMainPicture === index })}
-      onClick={handlerClick}
+      onClick={handleClick}
     >
       <Image
         src={`${process.env.NEXT_PUBLIC_API_URL}/${id}`}

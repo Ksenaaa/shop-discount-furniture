@@ -1,18 +1,130 @@
 @import 'styles/fontMixin';
 @import 'styles/colors';
+@import 'styles/mediaBreakpoint';
 
 .wrapper {
-  min-height: 100vh;
-  max-width: 1312px;
+  max-width: 1344px;
+  padding: 0 16px;
   margin: 0 auto;
+  display: grid;
+  grid-template-areas: 
+    'title title'
+    'filter products'
+    'notfound notfound';
+  grid-template-columns: 200px auto;
+  column-gap: 16px;
+  @include mediaBreakpoint(lg) {
+    grid-template-columns: 150px auto;
+  }
+  @include mediaBreakpoint(md) {
+    column-gap: 20px;
+    grid-template-columns: auto;
+    grid-template-areas: 
+    'title'
+    'products'
+    'notfound';
+  }  
+  @include mediaBreakpoint(sm1) {
+    padding: 0 8px;
+  }      
 
   .title {
     @include fontStyle(700, 36px, 44px);
     color: $black;
+    grid-area: title;
     margin-bottom: 40px;
-
+    @include mediaBreakpoint(lg) {
+      @include fontStyle(700, 26px, 34px);
+    }
+    @include mediaBreakpoint(sm) {
+      margin-bottom: 20px;
+    }
+  
     &:first-letter {
       text-transform: uppercase;
     }
   } 
+
+  .notFound {
+    grid-area: notfound;
+    @include fontStyle(700, 36px, 44px);
+    color: $black;
+    margin: 60px auto;
+    text-align: center;
+  }
+
+  .filter {
+    grid-area: filter;
+    width: 100%;
+    @include mediaBreakpoint(md) {
+      display: none;
+    }  
+  }
+
+  .products {
+    grid-area: products;
+    display: flex;
+    flex-direction: column;
+    
+    &Header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 16px;
+      @include mediaBreakpoint(md) {
+        justify-content: flex-start;
+        gap: 16px;
+      }
+      @include mediaBreakpoint(sm) {
+        flex-direction: column;
+      }
+  
+      .filterChecked {
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 8px;
+      }
+
+      .sort {
+        margin-left: auto;
+        flex-shrink: 0;
+        margin-top: 7px;
+        @include mediaBreakpoint(sm) {
+          margin-left: 0;
+        }  
+        @include mediaBreakpoint(xs) {
+          width: 100%;
+        }      
+      }
+
+      .filterButton {
+        display: none;
+    
+        @include mediaBreakpoint(md) {
+          display: block;
+        }  
+      }    
+    }
+    
+    &Container {
+      overflow-y: scroll;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      justify-content: space-between;
+      align-items: center;
+      justify-items: center;
+      gap: 16px;
+      @include mediaBreakpoint(md) {
+        gap: 0;
+      }      
+      @include mediaBreakpoint(sm) {
+        grid-template-columns: repeat(2, 1fr);
+      }      
+      @include mediaBreakpoint(sm1) {
+        grid-template-columns: repeat(1, 1fr);
+      }      
+    }
+  }
 }

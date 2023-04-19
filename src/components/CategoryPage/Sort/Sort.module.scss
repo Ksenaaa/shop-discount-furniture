@@ -1,0 +1,47 @@
+@import 'styles/colors';
+@import 'styles/fontMixin';
+@import 'styles/mediaBreakpoint';
+
+.wrapper {
+  position: relative;
+
+  .sortOption {
+    border-bottom: 1px solid $lightBlueTransparent;
+    padding-bottom: 3px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 5px;  
+    
+    .option {
+      cursor: pointer;
+      @include fontStyle(400, 16px, 20px);
+      color: $black;
+      display: flex;
+      align-items: center;
+      gap: 5px;  
+      @include mediaBreakpoint(lg) {
+        @include fontStyle(400, 14px, 18px);
+      }
+  
+      > img {
+        width: 12px;
+        height: 12px;
+      }
+    }
+
+    .sortOrder {
+      padding: 0 10px;
+      cursor: pointer;
+
+      > img {
+        width: 22px;
+        height: 22px;
+      }
+    }
+
+    .sortOrderAsc img {
+      transform: scaleY(-1);
+    }
+  }
+}

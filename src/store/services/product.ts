@@ -10,25 +10,29 @@ export const productApi = api.injectEndpoints({
       query: () => 'product/new',
       providesTags: () => [{ type: 'Product' }]
     }),
-    getProductsByCategory: builder.query<IPageData<ICardProduct[]>, IParamsGetQuery>({
-      query: ({ key, page, limit }) => ({
-        url: `product/category/${key}`,
+    getProductsList: builder.query<IPageData<ICardProduct[]>, IParamsGetQuery>({
+      query: ({ elementName, page, limit, filter, sort }) => ({
+        url: `product/list/${elementName}`,
         params: {
           page,
-          limit
+          limit,
+          filter,
+          sort
         }
       }),
-      providesTags: (arg) => [{ type: 'Product', category: arg }]
+      providesTags: (arg) => [{ type: 'Product', elementName: arg }]
     }),
-    getProductsByType: builder.query<IPageData<ICardProduct[]>, IParamsGetQuery>({
-      query: ({ key, page, limit }) => ({
-        url: `product/type/${key}`,
+    getProductsByElement: builder.query<IPageData<ICardProduct[]>, IParamsGetQuery>({
+      query: ({ element, elementName, page, limit }) => ({
+        url: `product/${element}/${elementName}`,
         params: {
+          element,
+          elementName,
           page,
           limit
         }
       }),
-      providesTags: (arg) => [{ type: 'Product', typeProduct: arg }]
+      providesTags: (arg) => [{ type: 'Product', elements: arg }]
     }),
     getProduct: builder.query<IProduct, string>({
       query: id => `product/${id}`,
@@ -40,7 +44,7 @@ export const productApi = api.injectEndpoints({
 
 export const {
   useGetNewProductsQuery,
-  useGetProductsByCategoryQuery,
-  useGetProductsByTypeQuery,
+  useGetProductsListQuery,
+  useGetProductsByElementQuery,
   useGetProductQuery
 } = productApi
